@@ -1,140 +1,115 @@
-# Main Quest Version 🦇✨
+# Main Quest
 
-This is the shorter version of the roadmap.
+This is the lower-volume route through the roadmap. It remains viable for a true
+beginner by retaining prerequisite labs while limiting which projects receive
+portfolio-level effort.
 
-Use this if you do not want to build all 42 projects seriously.
+Do not skip a required lab merely because it is not marked "serious." Complete
+its acceptance criteria with the smallest implementation that proves the concept.
 
-## Serious projects
+## Phase 1 - Required Foundations
 
-## 1. Todo List CLI
+Complete Projects 1-10 in order.
 
-Learn:
+Build seriously:
 
-- strings
-- vectors
-- indexing
-- simple CLI structure
-- persistence later
+- Project 8: Interactive Todo List
+- Project 10: Multi-File Build and Test Lab
 
-## 2. Bank Account Simulator
+Keep Projects 1-7 and 9 as focused labs. This sequence supplies syntax, functions,
+control flow, data modeling, const, pointers, debugging, tests, namespaces,
+linkage, the ODR, and introductory CMake.
 
-Learn:
+## Phase 2 - Required Object Model
 
-- classes
-- invariants
-- constructors
-- encapsulation
+Complete Projects 11-17 in order.
 
-## 3. File Wrapper
+Build seriously:
 
-Learn:
+- Project 12: Bank Account Simulator
+- Project 13: RAII File Wrapper
+- Project 17: Config Parser and Error Policy
 
-- RAII
-- resource ownership
-- destructors
-- non-copyable types
+Keep Projects 11 and 14-16 as focused labs. They are not optional knowledge:
+lifetime, copy/move mechanics, Rule of Zero, ownership graphs, and error policy
+are prerequisites for the rest of the roadmap.
 
-## 4. Dynamic String / Buffer
+## Phase 3 - Standard Library Route
 
-Learn:
+Complete:
 
-- dynamic allocation
-- copy semantics
-- move semantics
-- Rule of Five
+- Project 18: Contact Book
+- Project 19: Playlist Iterator Lab
+- Project 20: Event Dispatcher and Callable Objects
+- Project 21: Student Grade Analyzer
+- Project 22: Data Processing with Ranges
 
-## 5. Config File Parser
+Then choose one:
 
-Learn:
+- Project 23: Directory Analyzer
+- Project 24: C++23 Table Printer
+- Project 25: Testable Pomodoro Timer
 
-- parsing
-- error handling
-- optional values
-- validation
+Build Projects 18, 21, and 22 seriously. The others may remain focused labs.
 
-## 6. Contact Book
+## Phase 4 - Abstraction Route
 
-Learn:
+Complete:
 
-- standard containers
-- maps
-- sets
-- lookup tradeoffs
+- Project 26: Vector2 Value Type
+- Project 27: Shape Design Comparison
+- Project 28: Generic Stack
+- Project 29: Compile-Time Math and Validation
+- Project 30: Constrained Generic Algorithms
 
-## 7. Student Grade Analyzer
+Then choose one:
 
-Learn:
+- Project 31: Serialization Customization Library
+- Project 32: Type-Erased Command System
 
-- algorithms
-- predicates
-- sorting
-- accumulation
+Build Projects 26-28 seriously. Project 27 is required because it compares
+composition, variants, and inheritance instead of teaching inheritance alone.
 
-## 8. Event Dispatcher
+## Phase 5 - Concurrency Route
 
-Learn:
+Complete in order:
 
-- lambdas
-- callbacks
-- `std::function`
-- event-driven design
+- Project 33: Cancellable Worker
+- Project 34: Blocking Queue and Deadlock Lab
+- Project 35: Parallel File Hasher
+- Project 36: Atomics and Memory Model Lab
+- Project 37: Profiling Before Optimization
 
-## 9. Vector2 Math Library
+Project 35 is the serious project. Project 38 is optional specialization. Project
+39 is optional toolchain-sensitive study.
 
-Learn:
+## Phase 6 - Professional Route
 
-- operator overloading
-- clean small APIs
-- value types
+Complete all three:
 
-## 10. Shape Renderer
+- Project 40: Quality Engineering Pass
+- Project 41: Package and Release One Project
+- Project 42: Milestone-Driven Capstone
 
-Learn:
+These are not cleanup tasks. They demonstrate that the earlier code can be
+verified, consumed, maintained, and released.
 
-- inheritance
-- polymorphism
-- virtual destructors
-- owning polymorphic objects
+## Main Quest Portfolio
 
-## 11. Generic Stack
+A completed short-path portfolio should contain:
 
-Learn:
+1. Interactive Todo List
+2. Bank Account Simulator
+3. RAII File Wrapper
+4. Config Parser and Error Policy
+5. Contact Book
+6. Student Grade Analyzer
+7. Data Processing with Ranges
+8. Vector2 Value Type
+9. Shape Design Comparison
+10. Generic Stack
+11. Parallel File Hasher
+12. Released Library
+13. Capstone
 
-- class templates
-- generic programming
-- compile-time polymorphism
-
-## 12. Data Processing Pipeline
-
-Learn:
-
-- ranges
-- views
-- transformations
-- composable pipelines
-
-## 13. Tiny Serialization Library
-
-Learn:
-
-- advanced templates
-- type traits
-- `if constexpr`
-- API design
-
-## 14. Parallel File Hasher
-
-Learn:
-
-- threads
-- mutexes
-- race conditions
-- parallel work
-
-## 15. Final Boss Project
-
-Choose:
-
-- Mini Game Engine
-- Mini Database
-- Mini Shell
+Every portfolio project must pass the relevant phase gate in `checklists.md`.

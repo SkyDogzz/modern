@@ -1,133 +1,191 @@
-# Modern C++ Project Roadmap 🦇✨
+# Modern C++23 Project Roadmap
 
-A project-based path to learn modern C++ in a clean order.
+A prerequisite-driven, project-based path from first compilation to packaging
+and releasing modern C++ software.
 
-This roadmap is designed around this progression:
+## Curriculum Structure
 
-1. Language basics
-2. Idiomatic C++
-3. Standard library mastery
-4. Abstraction power
-5. Advanced modern C++
-6. Professional C++
+1. Foundations and Workflow
+2. Object Semantics, Lifetime, and Ownership
+3. Standard Library Fluency
+4. Generic Programming and Design
+5. Concurrency and Advanced Facilities
+6. Professional Delivery
 
-The goal is not to memorize the language.  
-The goal is to build small projects that force you to understand:
+Phase documents:
 
-- types
-- ownership
-- lifetime
-- RAII
-- value semantics
-- standard containers
-- algorithms
-- templates
-- modern tooling
-- architecture
+- [Phase 1 - Foundations and Workflow](phase-01-foundations.md)
+- [Phase 2 - Object Semantics, Lifetime, and Ownership](phase-02-object-semantics.md)
+- [Phase 3 - Standard Library Fluency](phase-03-standard-library-fluency.md)
+- [Phase 4 - Generic Programming and Design](phase-04-generic-programming.md)
+- [Phase 5 - Concurrency and Advanced Facilities](phase-05-concurrency-advanced.md)
+- [Phase 6 - Professional Delivery](phase-06-professional-delivery.md)
 
-## Recommended usage
+The roadmap develops:
 
-Create one repository:
+- language fundamentals and the C++ object model;
+- ownership, lifetime, RAII, and value semantics;
+- containers, algorithms, ranges, and modern error handling;
+- templates, concepts, polymorphism, and type erasure;
+- concurrency, profiling, and advanced facilities;
+- testing, debugging, CMake, packaging, CI, and releases.
 
-```txt
-modern-cpp-roadmap/
-├── README.md
-├── projects/
-│   ├── 01-hello-build-system/
-│   ├── 02-command-line-greeter/
-│   └── ...
-├── notes/
-│   ├── phase-01-basics.md
-│   ├── phase-02-idiomatic-cpp.md
-│   └── ...
-└── playground/
+This repository is a curriculum roadmap, not a language reference. Use a current
+C++ reference and compiler documentation when studying each project's concepts.
+
+## Required Toolchain
+
+- A compiler with usable C++23 language and library support
+- CMake 3.25 or newer
+- GDB, LLDB, or an equivalent debugger
+- Git
+- AddressSanitizer and UndefinedBehaviorSanitizer where supported
+- ThreadSanitizer for concurrency projects where supported
+
+Direct compiler examples use:
+
+```bash
+c++ -std=c++23 -Wall -Wextra -Wpedantic -g source.cpp -o app
 ```
+
+CMake targets request C++23 explicitly:
+
+```cmake
+target_compile_features(app PRIVATE cxx_std_23)
+```
+
+Library support varies by compiler and standard-library version. Optional
+features in Project 39 require feature detection and documented fallbacks.
+
+## How to Use the Roadmap
 
 For every project:
 
-1. Read the objective.
-2. Implement the minimum version.
-3. Add the stretch goal only if the concept feels clear.
-4. Write a tiny `README.md` for what you learned.
-5. Compile with warnings enabled.
+1. Read its prerequisites and learning outcomes.
+2. Implement only the baseline requirements.
+3. Pass every acceptance criterion.
+4. Run the phase's warning, test, debugger, and sanitizer quality gate.
+5. Record bugs, evidence, tradeoffs, and remaining questions.
+6. Attempt stretch goals only after the baseline is explainable and tested.
 
-Recommended flags:
+Use [project-template.md](project-template.md) for project documentation and
+[checklists.md](checklists.md) for phase gates.
 
-```bash
--std=c++20 -Wall -Wextra -Wpedantic
+## Repository Layout
+
+```txt
+modern-cpp-roadmap/
+|-- README.md
+|-- projects/
+|   |-- 01-hello-cpp23/
+|   |-- 02-character-stat-sheet/
+|   `-- ...
+|-- notes/
+|   |-- phase-01-foundations.md
+|   |-- phase-02-object-semantics.md
+|   `-- ...
+`-- playground/
 ```
 
-For learning, also use sanitizers when possible:
+Start with one source file. Add libraries, include directories, tests, presets,
+installation, and packaging only when the relevant roadmap stage introduces them.
 
-```bash
--fsanitize=address,undefined -g
-```
+## Full Project Order
 
-## The full project order
+### Phase 1 - Foundations and Workflow
 
-1. Hello Build System
-2. Command-Line Greeter
+1. Hello C++23
+2. Character Stat Sheet
 3. Unit Converter
-4. Character Stat Sheet
-5. Expression Calculator
-6. Number Guessing Game
-7. Dice Roller
-8. Inventory Editor
-9. Todo List CLI
-10. Bank Account Simulator
-11. Logger Object
-12. File Wrapper
-13. Dynamic String Class
-14. Movable Buffer
-15. Dungeon Room Graph
-16. Lifetime Visualizer
-17. Config File Parser
+4. Expression Calculator
+5. Number Guessing Game
+6. Dice Roller
+7. Inventory Editor
+8. Interactive Todo List
+9. Command-Line Greeter
+10. Multi-File Build and Test Lab
+
+### Phase 2 - Object Semantics, Lifetime, and Ownership
+
+11. Lifetime and Storage Visualizer
+12. Bank Account Simulator
+13. RAII File Wrapper
+14. Dynamic String Copy Lab
+15. Movable Buffer and Rule of Zero Refactor
+16. Dungeon Ownership Graph
+17. Config Parser and Error Policy
+
+### Phase 3 - Standard Library Fluency
+
 18. Contact Book
-19. Playlist Manager
-20. Student Grade Analyzer
-21. Event Dispatcher
-22. Directory Cleaner
-23. Pretty Table Printer
-24. Pomodoro Timer
-25. Vector2 Math Library
-26. Shape Renderer
-27. Generic Stack
-28. Compile-Time Math Library
-29. Constrained Generic Algorithms
-30. Data Processing Pipeline
-31. Tiny Serialization Library
-32. Plugin Command System
-33. Safe Conversion Lab
-34. Parallel File Hasher
-35. Lazy Number Generator
-36. Modular Math Library
-37. Arena-Based Text Processor
-38. Warning-Clean Utility Library
-39. Modern CLI Toolkit
-40. Test Everything
-41. Professionalize One Project
-42. Final Boss Project
+19. Playlist Iterator Lab
+20. Event Dispatcher and Callable Objects
+21. Student Grade Analyzer
+22. Data Processing with Ranges
+23. Directory Analyzer
+24. C++23 Table Printer
+25. Testable Pomodoro Timer
 
-## Suggested serious projects
+### Phase 4 - Generic Programming and Design
 
-Not every project needs to be huge.
+26. Vector2 Value Type
+27. Shape Design Comparison
+28. Generic Stack
+29. Compile-Time Math and Validation
+30. Constrained Generic Algorithms
+31. Serialization Customization Library
+32. Type-Erased Command System
 
-Make these ones more serious:
+### Phase 5 - Concurrency and Advanced Facilities
 
-1. Todo List CLI
+33. Cancellable Worker
+34. Blocking Queue and Deadlock Lab
+35. Parallel File Hasher
+36. Atomics and Memory Model Lab
+37. Profiling Before Optimization
+38. Profiled PMR Text Processor
+39. Optional Modern Feature Tracks
+
+### Phase 6 - Professional Delivery
+
+40. Quality Engineering Pass
+41. Package and Release One Project
+42. Milestone-Driven Capstone
+
+## Effort Model
+
+Not every project should become a large repository:
+
+- **Lab:** focused experiment, usually 1-6 hours.
+- **Project:** tested component or application, usually 6-16 hours.
+- **Delivery project:** packaging, CI, or capstone work, usually 16 hours or more.
+
+Difficulty and time estimates are comparative, not guarantees. Stop at a phase
+gate when you cannot explain the prerequisite concepts.
+
+## Serious Project Recommendations
+
+Build these as portfolio-quality checkpoints:
+
+1. Interactive Todo List
 2. Bank Account Simulator
-3. File Wrapper
-4. Dynamic String / Buffer
-5. Config File Parser
-6. Contact Book
-7. Student Grade Analyzer
-8. Event Dispatcher
-9. Vector2 Math Library
-10. Shape Renderer
-11. Generic Stack
-12. Data Processing Pipeline
-13. Tiny Serialization Library
-14. Parallel File Hasher
-15. Final Boss Project
+3. RAII File Wrapper
+4. Config Parser and Error Policy
+5. Contact Book
+6. Student Grade Analyzer
+7. Data Processing with Ranges
+8. Vector2 Value Type
+9. Shape Design Comparison
+10. Generic Stack
+11. Parallel File Hasher
+12. Package and Release One Project
+13. Milestone-Driven Capstone
 
-Everything else can be a small lab.
+The remaining projects can be smaller labs, but their acceptance criteria still apply.
+
+## Optional Topics
+
+Modules, custom coroutine promise types, `std::mdspan`, PMR specialization, and
+weak memory ordering are not required to write professional C++. Treat them as
+focused advanced study after the core ownership, library, testing, and build
+skills are reliable.

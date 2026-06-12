@@ -1,58 +1,115 @@
-# Modern C++ Learning Checklists 🖤
+# Modern C++ Learning Checklists
 
-## Per-project checklist
+## Baseline Project Checklist
 
-- [ ] I can explain the main concept.
-- [ ] I compiled with warnings.
-- [ ] I tested invalid input.
-- [ ] I separated code into functions/classes when useful.
-- [ ] I avoided unnecessary raw pointers.
-- [ ] I used standard library tools where appropriate.
-- [ ] I wrote a short README.
-- [ ] I can explain one bug I fixed.
+- [ ] I can explain each project learning outcome without reading the code.
+- [ ] The project builds as C++23.
+- [ ] I compiled with warnings and investigated every warning.
+- [ ] I tested normal, boundary, invalid-input, and failure cases.
+- [ ] I separated pure logic from I/O where practical.
+- [ ] I documented ownership, lifetime, and error behavior.
+- [ ] I used standard-library facilities instead of unnecessary custom machinery.
+- [ ] I wrote a short README with build, run, and test commands.
+- [ ] I can reproduce and explain at least one bug I fixed.
 
-## Warning flags
+## Baseline Commands
 
-Use these often:
-
-```bash
--std=c++20 -Wall -Wextra -Wpedantic
-```
-
-Optional stricter flags:
+Direct compiler invocations use:
 
 ```bash
--Wconversion -Wshadow -Werror
+c++ -std=c++23 -Wall -Wextra -Wpedantic -g source.cpp -o app
 ```
+
+Optional stricter diagnostics:
+
+```bash
+-Wconversion -Wshadow
+```
+
+Use `-Werror` only for code and compiler versions controlled by the project. Do
+not make third-party warnings or cross-compiler differences fatal by default.
 
 ## Sanitizers
 
-Use during learning:
+AddressSanitizer and UndefinedBehaviorSanitizer:
 
 ```bash
--fsanitize=address,undefined -g
+-fsanitize=address,undefined -fno-omit-frame-pointer -g
 ```
 
-## Good habits
+ThreadSanitizer for concurrency projects, in a separate build:
 
-- Prefer `std::vector` over raw dynamic arrays.
-- Prefer `std::string` over C strings.
+```bash
+-fsanitize=thread -fno-omit-frame-pointer -g
+```
+
+Do not combine ThreadSanitizer with AddressSanitizer in the same executable.
+
+## Phase Gates
+
+### End of Phase 1
+
+- [ ] I can compile, debug, and test a small multi-file C++23 program.
+- [ ] I understand initialization, control flow, functions, structs, references, and const.
+- [ ] I can explain declarations, definitions, namespaces, linkage, and the ODR.
+- [ ] I can create CMake executable and test targets.
+
+### End of Phase 2
+
+- [ ] I can reason about storage duration, object lifetime, and ownership.
+- [ ] I use RAII and the Rule of Zero by default.
+- [ ] I can explain copy, move, value categories, copy elision, and `noexcept`.
+- [ ] I can choose among exceptions, `std::optional`, and `std::expected`.
+
+### End of Phase 3
+
+- [ ] I select containers using complexity and invalidation guarantees.
+- [ ] I can use iterators, lambdas, algorithms, ranges, and views safely.
+- [ ] I can design testable filesystem, formatting, and chrono code.
+
+### End of Phase 4
+
+- [ ] I can design regular value types and constrained templates.
+- [ ] I can compare composition, inheritance, variants, and type erasure.
+- [ ] I understand the template compilation model and customization points.
+
+### End of Phase 5
+
+- [ ] I can identify data races, deadlocks, unsafe cancellation, and invalid memory ordering.
+- [ ] I can use `std::jthread`, mutexes, condition variables, and atomics deliberately.
+- [ ] I profile before optimizing and can justify allocator or PMR use with evidence.
+- [ ] I understand that modules and coroutines are optional, toolchain-sensitive facilities.
+
+### End of Phase 6
+
+- [ ] I can test, fuzz, analyze, package, document, and release a C++ project.
+- [ ] I can maintain a CI matrix and reproducible CMake presets.
+- [ ] I can define and enforce a capstone scope through milestones and non-goals.
+
+## Good Habits
+
+- Prefer initialization over assignment after construction.
+- Prefer values and the Rule of Zero.
+- Prefer `std::vector` and `std::string` over owning raw arrays.
+- Use `std::span` and `std::string_view` only when their non-owning lifetime is safe.
 - Prefer RAII over manual cleanup.
-- Prefer `std::unique_ptr` for single ownership.
-- Prefer `const` where possible.
-- Prefer algorithms over hand-written loops when clearer.
-- Prefer value semantics when possible.
-- Avoid inheritance until it actually solves a problem.
-- Avoid raw `new` and `delete`.
-- Avoid casts unless you can justify them.
+- Prefer `std::unique_ptr` for exclusive dynamic ownership.
+- Use `std::shared_ptr` only when ownership is genuinely shared.
+- Prefer `const` and narrow interfaces where they improve reasoning.
+- Prefer algorithms and ranges when they make intent clearer.
+- Prefer composition until runtime substitutability justifies inheritance.
+- Avoid raw `new`, raw `delete`, and unjustified casts.
+- Measure before optimizing.
 
-## Questions to ask after each project
+## Review Questions
 
-1. Who owns each resource?
-2. When is each object created?
-3. When is each object destroyed?
-4. Can this code leak memory?
-5. Can this code throw?
-6. What happens on invalid input?
-7. What would I test?
-8. What could be simpler?
+1. What are this project's invariants?
+2. Who owns every resource and view?
+3. What is each object's storage duration and lifetime?
+4. Can any reference, pointer, iterator, view, or callback dangle?
+5. What is the error policy and exception guarantee?
+6. What happens on invalid, partial, or hostile input?
+7. Which tests prove the important behavior?
+8. Which debugger, sanitizer, analyzer, or profiler evidence supports the result?
+9. What are the time and space complexity tradeoffs?
+10. What could be removed or simplified?
