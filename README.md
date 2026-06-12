@@ -1,46 +1,72 @@
 # Modern C++23 Project Roadmap
 
-A prerequisite-driven, project-based path from first compilation to packaging
-and releasing modern C++ software.
+A prerequisite-driven path from first compilation to independently building,
+testing, packaging, releasing, and maintaining modern C++ software.
+
+This repository teaches **professional foundations in C++23**. It does not claim
+exhaustive mastery of the language, every platform API, or production engineering
+from projects alone. Use the concept briefs, a current C++ reference, compiler
+documentation, code review, and sustained practice together.
 
 ## Curriculum Structure
 
-1. Foundations and Workflow
-2. Object Semantics, Lifetime, and Ownership
-3. Standard Library Fluency
+1. Language Foundations and Workflow
+2. Classes, Lifetime, Ownership, and Errors
+3. Standard Library and Data Processing
 4. Generic Programming and Design
-5. Concurrency and Advanced Facilities
-6. Professional Delivery
+5. Concurrency, Performance, and Advanced Facilities
+6. Delivery and Maintenance
 
 Phase documents:
 
-- [Phase 1 - Foundations and Workflow](phase-01-foundations.md)
-- [Phase 2 - Object Semantics, Lifetime, and Ownership](phase-02-object-semantics.md)
-- [Phase 3 - Standard Library Fluency](phase-03-standard-library-fluency.md)
+- [Phase 1 - Language Foundations and Workflow](phase-01-foundations.md)
+- [Phase 2 - Classes, Lifetime, Ownership, and Errors](phase-02-object-semantics.md)
+- [Phase 3 - Standard Library and Data Processing](phase-03-standard-library-fluency.md)
 - [Phase 4 - Generic Programming and Design](phase-04-generic-programming.md)
-- [Phase 5 - Concurrency and Advanced Facilities](phase-05-concurrency-advanced.md)
-- [Phase 6 - Professional Delivery](phase-06-professional-delivery.md)
+- [Phase 5 - Concurrency, Performance, and Advanced Facilities](phase-05-concurrency-advanced.md)
+- [Phase 6 - Delivery and Maintenance](phase-06-professional-delivery.md)
 
-The roadmap develops:
+Use [concept-briefs.md](concept-briefs.md) before each project,
+[project-template.md](project-template.md) for project records, and
+[checklists.md](checklists.md) for phase gates.
 
-- language fundamentals and the C++ object model;
-- ownership, lifetime, RAII, and value semantics;
-- containers, algorithms, ranges, and modern error handling;
-- templates, concepts, polymorphism, and type erasure;
-- concurrency, profiling, and advanced facilities;
-- testing, debugging, CMake, packaging, CI, and releases.
+## Project Categories
 
-This repository is a curriculum roadmap, not a language reference. Use a current
-C++ reference and compiler documentation when studying each project's concepts.
+- **Core lab:** small, focused prerequisite work. Complete it, but keep it small.
+- **Core project:** integrated work required for progression.
+- **Portfolio project:** a core project worth polishing for external review.
+- **Track project:** required breadth work where only one sibling project needs
+  portfolio-level depth.
+- **Optional specialization:** advanced work that does not block later phases.
+- **Delivery project:** verification, release, capstone, or maintenance work.
+
+Every core lab and core project is required. Optional specializations are never
+part of a mandatory phase gate.
+
+## Learning Method
+
+For every project:
+
+1. Read the linked concept brief and complete its review questions.
+2. Explain the prerequisite rules before writing code.
+3. Implement only the baseline requirements.
+4. Pass every acceptance criterion and the current phase quality gate.
+5. Record one defect, the evidence used to diagnose it, and the correction.
+6. Attempt stretch goals only after the baseline is explainable and tested.
+
+A project applies knowledge; it must not be the learner's first unexplained
+encounter with that knowledge.
 
 ## Required Toolchain
 
-- A compiler with usable C++23 language and library support
+- A compiler and standard library with usable C++23 support
 - CMake 3.25 or newer
 - GDB, LLDB, or an equivalent debugger
 - Git
+- A formatter such as `clang-format`
 - AddressSanitizer and UndefinedBehaviorSanitizer where supported
 - ThreadSanitizer for concurrency projects where supported
+- A maintained unit-test framework by Project 14
 
 Direct compiler examples use:
 
@@ -55,137 +81,141 @@ target_compile_features(app PRIVATE cxx_std_23)
 ```
 
 Library support varies by compiler and standard-library version. Optional
-features in Project 39 require feature detection and documented fallbacks.
+specializations require feature detection and documented fallbacks.
 
-## How to Use the Roadmap
+## Testing and Tooling Progression
 
-For every project:
-
-1. Read its prerequisites and learning outcomes.
-2. Implement only the baseline requirements.
-3. Pass every acceptance criterion.
-4. Run the phase's warning, test, debugger, and sanitizer quality gate.
-5. Record bugs, evidence, tradeoffs, and remaining questions.
-6. Attempt stretch goals only after the baseline is explainable and tested.
-
-Use [project-template.md](project-template.md) for project documentation and
-[checklists.md](checklists.md) for phase gates.
+1. Project 1 uses a direct compiler command without test infrastructure.
+2. Projects 2-5 add CTest smoke checks and a supplied minimal assertion pattern.
+3. Projects 6-13 use focused test executables while language structure remains the
+   primary objective.
+4. Project 14 adopts one maintained test framework or a documented repository
+   harness.
+5. Phases 2-4 add fixtures, compile-fail tests, sanitizers, formatting, static
+   analysis, and basic CI incrementally.
+6. Phases 5-6 add stress tests, TSan, benchmarks, fuzzing, coverage, packaging,
+   release verification, and maintenance tests.
 
 ## Repository Layout
 
 ```txt
 modern-cpp-roadmap/
 |-- README.md
+|-- concept-briefs.md
+|-- checklists.md
+|-- main-quest.md
+|-- project-template.md
+|-- phase-01-foundations.md
+|-- phase-02-object-semantics.md
+|-- phase-03-standard-library-fluency.md
+|-- phase-04-generic-programming.md
+|-- phase-05-concurrency-advanced.md
+|-- phase-06-professional-delivery.md
 |-- projects/
-|   |-- 01-hello-cpp23/
-|   |-- 02-character-stat-sheet/
-|   `-- ...
-|-- notes/
-|   |-- phase-01-foundations.md
-|   |-- phase-02-object-semantics.md
+|   |-- 01-compile-run-diagnostics/
 |   `-- ...
 `-- playground/
 ```
 
-Start with one source file. Add libraries, include directories, tests, presets,
-installation, and packaging only when the relevant roadmap stage introduces them.
+Start with one source file. Add source libraries, public include directories,
+install rules, and packaging only when the relevant project introduces them.
 
 ## Full Project Order
 
-### Phase 1 - Foundations and Workflow
+### Phase 1 - Language Foundations and Workflow
 
-1. Hello C++23
-2. Character Stat Sheet
-3. Unit Converter
-4. Expression Calculator
-5. Number Guessing Game
-6. Dice Roller
-7. Inventory Editor
-8. Interactive Todo List
-9. Command-Line Greeter
-10. Multi-File Build and Test Lab
+1. Compile, Run, and Read Diagnostics - core lab
+2. Debugger, CMake, and Smoke-Test Orientation - core lab
+3. Character Stat Sheet - core lab
+4. Integer and Conversion Lab - core lab
+5. Unit Converter - core project
+6. Expression Calculator - core project
+7. Number Guessing Game - core lab
+8. Dice Roller and Basic Containers - core project
+9. References, Pointers, and Views Lab - core lab
+10. Inventory Editor - core project
+11. Interactive Todo List - portfolio project
+12. Command-Line Greeter - core project
+13. Compilation and Linking Lab - core lab
+14. Target-Based CMake and Test Lab - portfolio project
 
-### Phase 2 - Object Semantics, Lifetime, and Ownership
+### Phase 2 - Classes, Lifetime, Ownership, and Errors
 
-11. Lifetime and Storage Visualizer
-12. Bank Account Simulator
-13. RAII File Wrapper
-14. Dynamic String Copy Lab
-15. Movable Buffer and Rule of Zero Refactor
-16. Dungeon Ownership Graph
-17. Config Parser and Error Policy
+15. Class and Special-Member Mechanics - core lab
+16. Lifetime and Storage Visualizer - core lab
+17. Bank Account Simulator - portfolio project
+18. Error-Handling Policy Lab - core lab
+19. RAII File Wrapper - portfolio project
+20. Raw Allocation Mechanics - core lab
+21. Dynamic String Copy Lab - core lab
+22. Movable Buffer and Rule of Zero Refactor - core project
+23. Dungeon Ownership Graph - core project
+24. Config Parser and Error Policy - portfolio project
 
-### Phase 3 - Standard Library Fluency
+### Phase 3 - Standard Library and Data Processing
 
-18. Contact Book
-19. Playlist Iterator Lab
-20. Event Dispatcher and Callable Objects
-21. Student Grade Analyzer
-22. Data Processing with Ranges
-23. Directory Analyzer
-24. C++23 Table Printer
-25. Testable Pomodoro Timer
+25. Contact Book and Container Selection - portfolio project
+26. Playlist Iterator Lab - core lab
+27. Event Dispatcher and Callable Objects - core project
+28. Student Grade Analyzer - portfolio project
+29. Range, View, and Sentinel Lab - core lab
+30. Data Processing with Ranges - portfolio project
+31. Directory Analyzer - track project
+32. C++23 Table Printer - track project
+33. Testable Pomodoro Timer - track project
 
 ### Phase 4 - Generic Programming and Design
 
-26. Vector2 Value Type
-27. Shape Design Comparison
-28. Generic Stack
-29. Compile-Time Math and Validation
-30. Constrained Generic Algorithms
-31. Serialization Customization Library
-32. Type-Erased Command System
+34. Vector2 Regular Value Type - portfolio project
+35. Runtime Polymorphism Safety Lab - core lab
+36. Shape Design Comparison - portfolio project
+37. Generic Stack - portfolio project
+38. Template Mechanics Lab - core lab
+39. Compile-Time Math and Validation - core project
+40. Constrained Generic Algorithms - core project
+41. Traits, Variadics, and Customization Lab - core lab
+42. Serialization Customization Library - optional specialization
+43. Type-Erased Command System - optional specialization
 
-### Phase 5 - Concurrency and Advanced Facilities
+### Phase 5 - Concurrency, Performance, and Advanced Facilities
 
-33. Cancellable Worker
-34. Blocking Queue and Deadlock Lab
-35. Parallel File Hasher
-36. Atomics and Memory Model Lab
-37. Profiling Before Optimization
-38. Profiled PMR Text Processor
-39. Optional Modern Feature Tracks
+44. Thread Lifecycle and Data-Race Lab - core lab
+45. Mutex Invariants and Deadlock Lab - core lab
+46. Blocking Queue - core project
+47. Cancellable Worker - core project
+48. Task Results with Futures and Promises - core lab
+49. Parallel File Hasher - portfolio project
+50. Atomics and Memory Model Lab - core lab
+51. Profiling Before Optimization - core project
+52. Profiled PMR Text Processor - optional specialization
+53. Optional Modern Feature Tracks - optional specialization
 
-### Phase 6 - Professional Delivery
+### Phase 6 - Delivery and Maintenance
 
-40. Quality Engineering Pass
-41. Package and Release One Project
-42. Milestone-Driven Capstone
+54. Quality Engineering Pass - delivery project
+55. Package and Release One Project - delivery project
+56. Milestone-Driven Capstone - delivery project
+57. Maintenance and Patch Release - delivery project
 
 ## Effort Model
 
-Not every project should become a large repository:
+- **Micro-lab:** 1-3 hours.
+- **Core lab:** 3-8 hours.
+- **Core or track project:** 6-16 hours.
+- **Portfolio project:** 12-24 hours including documentation and review.
+- **Delivery project:** 16 hours or more.
 
-- **Lab:** focused experiment, usually 1-6 hours.
-- **Project:** tested component or application, usually 6-16 hours.
-- **Delivery project:** packaging, CI, or capstone work, usually 16 hours or more.
+Estimates are comparative. Beginner completion data should be used to revise them.
+Stop at a phase gate when prerequisite concepts cannot be explained.
 
-Difficulty and time estimates are comparative, not guarantees. Stop at a phase
-gate when you cannot explain the prerequisite concepts.
+## Portfolio Route
 
-## Serious Project Recommendations
-
-Build these as portfolio-quality checkpoints:
-
-1. Interactive Todo List
-2. Bank Account Simulator
-3. RAII File Wrapper
-4. Config Parser and Error Policy
-5. Contact Book
-6. Student Grade Analyzer
-7. Data Processing with Ranges
-8. Vector2 Value Type
-9. Shape Design Comparison
-10. Generic Stack
-11. Parallel File Hasher
-12. Package and Release One Project
-13. Milestone-Driven Capstone
-
-The remaining projects can be smaller labs, but their acceptance criteria still apply.
+The authoritative portfolio route is defined in [main-quest.md](main-quest.md).
+README does not duplicate that list.
 
 ## Optional Topics
 
-Modules, custom coroutine promise types, `std::mdspan`, PMR specialization, and
-weak memory ordering are not required to write professional C++. Treat them as
-focused advanced study after the core ownership, library, testing, and build
-skills are reliable.
+Modules, custom coroutine promise types, `std::mdspan`, PMR specialization,
+manual type erasure, serialization frameworks, and weak memory ordering are not
+required to write professional C++. Treat them as focused advanced study after
+ownership, library, testing, build, and concurrency fundamentals are reliable.

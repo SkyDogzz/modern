@@ -1,115 +1,121 @@
 # Main Quest
 
-This is the lower-volume route through the roadmap. It remains viable for a true
-beginner by retaining prerequisite labs while limiting which projects receive
-portfolio-level effort.
+This is the required route through the roadmap. It limits portfolio-level effort,
+not prerequisite knowledge. Complete core labs with the smallest implementation
+that proves the concept; invest substantial design and documentation effort only
+in the named portfolio projects.
 
-Do not skip a required lab merely because it is not marked "serious." Complete
-its acceptance criteria with the smallest implementation that proves the concept.
+Optional specializations never block the next phase.
+
+Core labs may use supplied starter code and be completed as diagnosis, repair,
+compile-fail, or code-reading exercises when the phase specification permits. They
+do not each require a standalone repository or greenfield implementation.
 
 ## Phase 1 - Required Foundations
 
-Complete Projects 1-10 in order.
+Complete Projects 1-14 in order.
 
 Build seriously:
 
-- Project 8: Interactive Todo List
-- Project 10: Multi-File Build and Test Lab
+- Project 11: Interactive Todo List
+- Project 14: Target-Based CMake and Test Lab
 
-Keep Projects 1-7 and 9 as focused labs. This sequence supplies syntax, functions,
-control flow, data modeling, const, pointers, debugging, tests, namespaces,
-linkage, the ODR, and introductory CMake.
+Keep the remaining projects focused. This sequence supplies diagnostics, types,
+integer behavior, conversions, control flow, functions, enums, arrays, vectors,
+references, pointers, views, invalidation, CLI parsing, the translation model,
+Git habits, a test framework, and target-based CMake.
 
 ## Phase 2 - Required Object Model
 
-Complete Projects 11-17 in order.
+Complete Projects 15-24 in order.
 
 Build seriously:
 
-- Project 12: Bank Account Simulator
-- Project 13: RAII File Wrapper
-- Project 17: Config Parser and Error Policy
+- Project 17: Bank Account Simulator
+- Project 19: RAII File Wrapper
+- Project 24: Config Parser and Error Policy
 
-Keep Projects 11 and 14-16 as focused labs. They are not optional knowledge:
-lifetime, copy/move mechanics, Rule of Zero, ownership graphs, and error policy
-are prerequisites for the rest of the roadmap.
+Projects 15-16 and 18-23 may remain focused labs or compact projects. Class
+mechanics, lifetime, raw allocation mechanics, copy/move behavior, Rule of Zero,
+ownership graphs, and error policy are not optional knowledge.
 
 ## Phase 3 - Standard Library Route
 
-Complete:
+Complete Projects 25-30 in order.
 
-- Project 18: Contact Book
-- Project 19: Playlist Iterator Lab
-- Project 20: Event Dispatcher and Callable Objects
-- Project 21: Student Grade Analyzer
-- Project 22: Data Processing with Ranges
+Then complete the baseline requirements for all three breadth tracks:
 
-Then choose one:
+- Project 31: Directory Analyzer
+- Project 32: C++23 Table Printer
+- Project 33: Testable Pomodoro Timer
 
-- Project 23: Directory Analyzer
-- Project 24: C++23 Table Printer
-- Project 25: Testable Pomodoro Timer
+Choose one of Projects 31-33 for portfolio-level depth. Keep the other two as
+small, tested adapters. This satisfies the phase gate for filesystem, formatting,
+and chrono without requiring three large repositories.
 
-Build Projects 18, 21, and 22 seriously. The others may remain focused labs.
+Build Projects 25, 28, and 30 seriously.
 
 ## Phase 4 - Abstraction Route
 
-Complete:
+Complete Projects 34-41 in order.
 
-- Project 26: Vector2 Value Type
-- Project 27: Shape Design Comparison
-- Project 28: Generic Stack
-- Project 29: Compile-Time Math and Validation
-- Project 30: Constrained Generic Algorithms
+Build seriously:
 
-Then choose one:
+- Project 34: Vector2 Regular Value Type
+- Project 36: Shape Design Comparison
+- Project 37: Generic Stack
 
-- Project 31: Serialization Customization Library
-- Project 32: Type-Erased Command System
+Projects 42 and 43 are optional specializations:
 
-Build Projects 26-28 seriously. Project 27 is required because it compares
-composition, variants, and inheritance instead of teaching inheritance alone.
+- Project 42: Serialization Customization Library
+- Project 43: Type-Erased Command System
 
-## Phase 5 - Concurrency Route
+The core route teaches traits, variadics, customization protocols, and the design
+tradeoffs of type erasure without requiring a beginner to implement a framework.
 
-Complete in order:
+## Phase 5 - Concurrency and Performance Route
 
-- Project 33: Cancellable Worker
-- Project 34: Blocking Queue and Deadlock Lab
-- Project 35: Parallel File Hasher
-- Project 36: Atomics and Memory Model Lab
-- Project 37: Profiling Before Optimization
+Complete Projects 44-51 in order.
 
-Project 35 is the serious project. Project 38 is optional specialization. Project
-39 is optional toolchain-sensitive study.
+Project 49, Parallel File Hasher, is the portfolio project. Projects 52 and 53 are
+optional specializations:
 
-## Phase 6 - Professional Route
+- Project 52: Profiled PMR Text Processor
+- Project 53: Optional Modern Feature Tracks
 
-Complete all three:
+PMR, modules, coroutines, and `mdspan` are not part of the mandatory Phase 5 gate.
 
-- Project 40: Quality Engineering Pass
-- Project 41: Package and Release One Project
-- Project 42: Milestone-Driven Capstone
+## Phase 6 - Delivery and Maintenance Route
 
-These are not cleanup tasks. They demonstrate that the earlier code can be
-verified, consumed, maintained, and released.
+Complete all four:
+
+- Project 54: Quality Engineering Pass
+- Project 55: Package and Release One Project
+- Project 56: Milestone-Driven Capstone
+- Project 57: Maintenance and Patch Release
+
+These are not cleanup tasks. They demonstrate that earlier code can be verified,
+consumed, maintained, upgraded, and released.
 
 ## Main Quest Portfolio
 
-A completed short-path portfolio should contain:
+A completed portfolio should contain:
 
 1. Interactive Todo List
-2. Bank Account Simulator
-3. RAII File Wrapper
-4. Config Parser and Error Policy
-5. Contact Book
-6. Student Grade Analyzer
-7. Data Processing with Ranges
-8. Vector2 Value Type
-9. Shape Design Comparison
-10. Generic Stack
-11. Parallel File Hasher
-12. Released Library
-13. Capstone
+2. Target-Based CMake and Test Lab
+3. Bank Account Simulator
+4. RAII File Wrapper
+5. Config Parser and Error Policy
+6. Contact Book and Container Selection
+7. Student Grade Analyzer
+8. Data Processing with Ranges
+9. One system-library track project
+10. Vector2 Regular Value Type
+11. Shape Design Comparison
+12. Generic Stack
+13. Parallel File Hasher
+14. Released Library
+15. Capstone
+16. Maintenance and Patch Release
 
 Every portfolio project must pass the relevant phase gate in `checklists.md`.

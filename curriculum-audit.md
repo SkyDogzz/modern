@@ -1,4 +1,30 @@
-# C++23 Curriculum Audit
+# C++23 Curriculum Audit - Pre-Remediation Snapshot
+
+> Historical note: this audit describes the curriculum before the remediation
+> that introduced 57 prerequisite-correct projects, concept briefs, explicit
+> project categories, aligned phase gates, independent breadth tracks, and a
+> maintenance release. Project numbers and findings below refer to the earlier
+> 42-project sequence. Use `README.md` and the phase files as the current
+> curriculum specification.
+
+## Remediation Status
+
+The current curriculum resolves the audit's actionable findings:
+
+- compact prerequisite teaching now exists in `concept-briefs.md`;
+- Project 1 tooling was split and testing now progresses in explicit stages;
+- integer behavior, views, C strings, `from_chars`, special-member rules,
+  exception syntax, range vocabulary, template mechanics, and thread basics have
+  dedicated prerequisite work;
+- compile/link concepts precede multi-target CMake and library extraction;
+- filesystem, formatting, and chrono are independent breadth tracks with aligned gates;
+- runtime-polymorphism safety precedes comparative design;
+- serialization, manual type erasure, PMR, modules, coroutines, and `mdspan` are
+  unambiguously optional;
+- phase gates, Main Quest, README, and project numbering use one 57-project sequence;
+- capstone scope was narrowed and the unsupported POSIX option was removed;
+- Git, CI, review, compatibility, dependency upgrades, and a patch release are
+  now assessed professional skills.
 
 ## Global Summary
 

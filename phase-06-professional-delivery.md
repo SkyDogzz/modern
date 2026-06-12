@@ -1,143 +1,156 @@
-# Phase 6 - Professional Delivery
+# Phase 6 - Delivery and Maintenance
 
-Earlier phases already require warnings, tests, debugging, sanitizers, and progressively staged
-CMake. This phase extends those habits into verification, packaging, CI, and
-release engineering.
+Earlier phases already require warnings, tests, debugging, formatting, sanitizers,
+static analysis, basic CI, and progressively staged CMake. This phase integrates
+those habits into risk-based verification, packaging, releases, and maintenance.
+
+Read [Concept Brief 22](concept-briefs.md#22-verification-packaging-and-maintenance)
+before this phase.
 
 Focus on:
 
-- advanced unit, integration, property, fuzz, and regression testing;
-- sanitizer and static-analysis matrices;
+- unit, integration, property, fuzz, regression, and concurrency testing;
+- sanitizer, static-analysis, compiler, and platform matrices;
 - dependency management and reproducible builds;
 - CMake installation, export, packaging, and presets;
-- documentation, versioning, releases, and scoped capstones.
+- documentation, compatibility, versioning, releases, and maintenance;
+- scoped capstones with explicit non-goals.
 
-## 40. Quality Engineering Pass
+## 54. Quality Engineering Pass
+
+**Category:** Delivery project
 
 **Prerequisites:** Phases 1-5.
 
 **Difficulty:** 4/5
 
-**Estimated time:** 12-18 hours
+**Estimated time:** 14-22 hours
 
-**CMake stage:** Add test labels, sanitizer presets, coverage, and optional fuzz targets.
+**Tooling stage:** Integrate test labels, sanitizers, coverage, static analysis, and fuzz targets.
 
 ### Learning Outcomes
 
-- Select tests by risk rather than only by code unit.
-- Use regression, property, fuzz, integration, and concurrency tests.
-- Combine compiler warnings, sanitizers, and static analysis without conflating them.
+- Select verification techniques by risk.
+- Combine regression, property, fuzz, integration, and concurrency tests.
+- Distinguish warnings, sanitizers, analyzers, coverage, and review evidence.
 
 ### Goal
 
-Apply an advanced verification plan to the Config Parser, Generic Stack, and one
-concurrent project.
+Apply an advanced verification plan to Config Parser, Generic Stack, and one
+concurrent project using the framework and CI established earlier.
 
 ### Requirements
 
-- Use a maintained test framework or a clearly documented minimal harness.
-- Add property tests for a value or serialization invariant.
-- Fuzz the in-memory Config Parser entry point with libFuzzer or an equivalent tool.
+- Upgrade or consolidate the maintained test framework without replacing it gratuitously.
+- Add property tests for a value, parsing, or serialization invariant.
+- Fuzz the in-memory Config Parser with libFuzzer or an equivalent.
 - Run ASan/UBSan and TSan in separate jobs.
-- Add `clang-tidy` or an equivalent static analyzer.
-- Add coverage reporting, but do not treat percentage as proof of correctness.
+- Run the configured static analyzer and formatter checks in CI.
+- Add coverage reporting without using a percentage as a correctness claim.
+- Label slow, platform-specific, sanitizer, fuzz, and stress tests separately.
 
 ### Acceptance Criteria
 
-- [ ] At least one real defect becomes a permanent regression test.
-- [ ] The parser survives a documented fuzzing session without sanitizer findings.
-- [ ] The concurrent target is clean under TSan in a supported environment.
-- [ ] Slow, platform-specific, and sanitizer tests are labeled separately.
+- [ ] One real defect becomes a permanent regression test.
+- [ ] A documented fuzzing session has no sanitizer finding at completion.
+- [ ] The concurrent target is TSan-clean where supported.
+- [ ] The verification report maps each technique to a concrete risk.
 
 ### Stretch Goal
 
-Add mutation testing or model-based tests for one component.
+Add mutation or model-based testing to one component.
 
 ---
 
-## 41. Package and Release One Project
+## 55. Package and Release One Project
 
-**Prerequisites:** Project 40 and one reusable library project.
+**Category:** Delivery project
+
+**Prerequisites:** Project 54 and one reusable library project.
 
 **Difficulty:** 4.5/5
 
-**Estimated time:** 16-24 hours
+**Estimated time:** 20-32 hours
 
-**CMake stage:** Install, export, consume, package, and release the project.
+**Tooling stage:** Install, export, consume, package, and release.
 
 ### Learning Outcomes
 
 - Create target-based install and export rules.
-- Manage dependencies reproducibly.
-- Publish usable documentation and versioned release artifacts.
+- Manage dependencies and tool versions reproducibly.
+- Publish documented, versioned artifacts with compatibility policy.
 
 ### Goal
 
-Turn the Vector2, Config Parser, or Serialization project into a library that a
-separate consumer can install and use.
+Turn Vector2, Config Parser, Generic Stack, or the optional Serialization project
+into a library usable by a separate clean consumer.
 
 ### Requirements
 
-- Provide namespaced CMake targets and generated package configuration files.
-- Add `cmake --install` support and verify a separate consumer project.
-- Choose and document a dependency strategy: system packages, FetchContent,
-  package manager, or vendoring.
-- Add CMake presets for developer, sanitizer, and release builds.
-- Run formatting, tests, static analysis, and supported compiler jobs in CI.
-- Generate API documentation and include examples.
-- Define semantic versioning, compatibility policy, license, changelog, and release notes.
-- Produce a source archive and at least one platform-appropriate package or artifact.
+- Provide namespaced exported targets and generated package configuration files.
+- Support `cmake --install` and verify a separate consumer through `find_package`.
+- Use the supplied package skeleton before customizing it.
+- Document one dependency strategy: system package, FetchContent, package manager,
+  or vendoring; pin or constrain versions.
+- Provide developer, sanitizer, and release presets.
+- Run formatter, tests, static analysis, and at least two supported compiler
+  configurations where practical.
+- Generate API documentation and buildable examples.
+- Define semantic versioning, source compatibility, binary compatibility scope,
+  license, changelog, and release notes.
+- Produce a source archive, checksums, and one platform-appropriate artifact.
 
 ### Acceptance Criteria
 
-- [ ] A clean consumer project can locate and link the installed package.
-- [ ] Dependencies are pinned or constrained reproducibly.
-- [ ] CI builds at least two supported compiler configurations where practical.
+- [ ] A clean external project locates and links the installed package.
+- [ ] Dependency acquisition and supported tool versions are reproducible.
+- [ ] CI verifies build-tree and install-tree use.
 - [ ] A tagged release contains documentation, checksums, and artifacts.
 
 ### Stretch Goal
 
-Publish the package through a package-manager-compatible recipe.
+Publish a package-manager recipe; this is intentionally outside the baseline estimate.
 
 ---
 
-## 42. Milestone-Driven Capstone
+## 56. Milestone-Driven Capstone
 
-**Prerequisites:** Projects 40-41 and the phase gate in `checklists.md`.
+**Category:** Delivery project
+
+**Prerequisites:** Projects 54-55 and the Phase 5 gate.
 
 **Difficulty:** 5/5
 
-**Estimated time:** 40-80 hours for the defined MVP
+**Estimated time:** 50-90 hours for the defined MVP
 
-**CMake stage:** Apply the complete build, test, install, package, and CI workflow.
+**Tooling stage:** Apply the complete build, test, install, package, and CI workflow.
 
 ### Learning Outcomes
 
 - Control scope through explicit milestones and non-goals.
-- Integrate language, library, design, testing, and delivery skills.
-- Produce an autonomous engineering report supported by evidence.
+- Integrate language, library, design, concurrency, testing, and delivery skills.
+- Produce an engineering report supported by tests and measurements.
 
 ### Goal
 
-Design, implement, verify, package, and release one deliberately limited product
-that integrates the roadmap's core skills.
+Design, implement, verify, package, and release one deliberately limited product.
 
 ### Requirements
 
 - Choose one option and write a proposal before implementation.
-- Keep the MVP within the stated time budget and non-goals.
-- Complete every required milestone in order.
-- Apply the full quality and delivery workflow from Projects 40-41.
+- Keep the MVP within the stated budget and non-goals.
+- Complete every milestone in order.
+- Apply the Project 54-55 quality and release workflow.
 
 ### Required Milestones
 
-1. **Proposal:** users, use cases, constraints, risks, and explicit non-goals.
-2. **Walking skeleton:** one end-to-end operation built and tested in CI.
+1. **Proposal:** users, use cases, constraints, risks, and non-goals.
+2. **Walking skeleton:** one end-to-end operation in CI.
 3. **MVP:** only required features, with stable interfaces and error policies.
-4. **Hardening:** sanitizers, fuzzing where relevant, static analysis, and failure tests.
-5. **Performance review:** profile representative workloads; optimize only measured bottlenecks.
-6. **Release:** installable package, documentation, examples, changelog, and tagged artifact.
-7. **Retrospective:** architecture decisions, defects found, tradeoffs, and deferred work.
+4. **Hardening:** sanitizers, fuzzing where relevant, analysis, and failure tests.
+5. **Performance review:** profile representative work; optimize only measured bottlenecks.
+6. **Release:** installable package, documentation, examples, changelog, and artifact.
+7. **Retrospective:** decisions, defects, tradeoffs, and deferred work.
 
 ### Option A: Headless Game Simulation Core
 
@@ -155,75 +168,107 @@ Non-goals:
 - graphics API;
 - editor;
 - networking;
-- production game-engine claims.
+- production engine claims.
 
 ### Option B: Embedded Record Store
 
 Required MVP:
 
-- declared schemas;
+- one declared schema format;
 - typed rows;
 - insert, get, update, and delete;
 - one in-memory index;
-- append-only persistence and recovery;
-- a small query predicate API.
+- append-only log;
+- startup recovery that accepts complete records and rejects or truncates only an
+  incomplete final record;
+- one predicate-based query operation.
 
 Non-goals:
 
-- SQL parser;
-- distributed operation;
-- full ACID guarantees;
-- query optimizer.
+- SQL parsing;
+- concurrent writers;
+- transactions or ACID claims;
+- query optimization;
+- arbitrary crash consistency.
 
-### Option C: POSIX Command Runner
-
-Additional prerequisite: prior POSIX process and file-descriptor study.
-
-Required MVP:
-
-- tokenizer with quoting rules;
-- command AST;
-- external command execution;
-- one pipe;
-- input/output redirection;
-- RAII wrappers for file descriptors and child processes.
-
-Non-goals:
-
-- full shell grammar;
-- job control;
-- terminal emulation;
-- Windows portability.
-
-### Option D: Concurrent File Indexer
+### Option C: Concurrent File Catalog
 
 Required MVP:
 
 - filesystem scan;
-- cancellable worker pool;
-- content or metadata index;
+- cancellable bounded worker pool;
+- metadata or content-hash index;
 - query CLI;
-- incremental update;
-- persistent index;
+- explicit full-rescan update that replaces a prior snapshot;
+- snapshot persistence;
 - measured single-thread and concurrent modes.
 
 Non-goals:
 
 - kernel filesystem notifications;
+- continuous background synchronization;
 - distributed indexing;
 - desktop GUI.
 
 ### Acceptance Criteria
 
-- [ ] The proposal is approved against the 40-80 hour MVP scope before implementation.
-- [ ] Every milestone has demonstrable commands and tests.
+- [ ] Proposal scope is reviewed before implementation.
+- [ ] Every milestone has reproducible commands and tests.
 - [ ] Ownership, lifetime, concurrency, and error policies are documented.
-- [ ] CI runs warnings, tests, sanitizers, and static analysis as supported.
-- [ ] Profiling evidence supports every performance optimization.
-- [ ] A clean user can build, install, run, and test the released artifact.
-- [ ] Deferred features remain documented rather than silently expanding scope.
+- [ ] CI runs supported warnings, tests, sanitizers, and analysis.
+- [ ] Profiling evidence supports every optimization.
+- [ ] A clean user can build, install, run, and test the release.
+- [ ] Deferred features remain documented rather than entering the MVP silently.
 
 ### Stretch Goal
 
-Implement exactly one deferred feature after the MVP release and document the
-maintenance cost it adds.
+Implement exactly one deferred feature after release and record its maintenance cost.
+
+---
+
+## 57. Maintenance and Patch Release
+
+**Category:** Delivery project
+
+**Prerequisites:** Project 56 and [Concept Brief 22](concept-briefs.md#22-verification-packaging-and-maintenance).
+
+**Difficulty:** 4.5/5
+
+**Estimated time:** 16-24 hours
+
+**Tooling stage:** Reproduce, review, upgrade, preserve compatibility, and issue a patch.
+
+### Learning Outcomes
+
+- Change existing software safely under compatibility constraints.
+- Turn a defect report into reproduction and regression evidence.
+- Upgrade a dependency or toolchain deliberately.
+- Produce a reviewed patch release.
+
+### Goal
+
+Maintain the released capstone instead of immediately adding another greenfield feature.
+
+### Requirements
+
+- Use a real or mentor-supplied defect report with incomplete initial information.
+- Reproduce the defect on the last release and add a failing regression test.
+- Fix the root cause and document debugger, sanitizer, analyzer, or profiler evidence.
+- Review source, binary, behavioral, data-format, and dependency compatibility.
+- Upgrade one dependency, compiler, or analysis tool within documented constraints.
+- Record the change in an issue and a short architecture or decision note where appropriate.
+- Have another person or a structured self-review checklist review the diff.
+- Release a semantic-versioning-appropriate patch with changelog, notes, artifacts,
+  and checksums.
+
+### Acceptance Criteria
+
+- [ ] The regression test fails on the old release and passes on the patch.
+- [ ] The fix does not silently expand product scope.
+- [ ] Consumer and install-tree tests still pass.
+- [ ] Compatibility effects and dependency changes are explicit.
+- [ ] Release artifacts reproduce from the documented process.
+
+### Stretch Goal
+
+Backport the fix to one supported maintenance branch and document the merge strategy.

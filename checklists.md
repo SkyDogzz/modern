@@ -1,20 +1,22 @@
 # Modern C++ Learning Checklists
 
+Use the checklist for the current phase. `Not applicable` is valid only with a
+short reason; early projects are not required to pretend they have complex
+ownership, packaging, or concurrency concerns.
+
 ## Baseline Project Checklist
 
-- [ ] I can explain each project learning outcome without reading the code.
-- [ ] The project builds as C++23.
-- [ ] I compiled with warnings and investigated every warning.
-- [ ] I tested normal, boundary, invalid-input, and failure cases.
+- [ ] I can explain each learning outcome without reading the code.
+- [ ] The project builds as C++23 from documented commands.
+- [ ] I investigated every compiler warning.
+- [ ] I tested normal, boundary, invalid-input, and relevant failure cases.
 - [ ] I separated pure logic from I/O where practical.
-- [ ] I documented ownership, lifetime, and error behavior.
+- [ ] I documented ownership, lifetime, and error behavior when they are relevant.
 - [ ] I used standard-library facilities instead of unnecessary custom machinery.
-- [ ] I wrote a short README with build, run, and test commands.
-- [ ] I can reproduce and explain at least one bug I fixed.
+- [ ] I recorded at least one defect, diagnostic observation, and fix.
+- [ ] I reviewed the diff before committing focused changes to Git.
 
 ## Baseline Commands
-
-Direct compiler invocations use:
 
 ```bash
 c++ -std=c++23 -Wall -Wextra -Wpedantic -g source.cpp -o app
@@ -26,8 +28,8 @@ Optional stricter diagnostics:
 -Wconversion -Wshadow
 ```
 
-Use `-Werror` only for code and compiler versions controlled by the project. Do
-not make third-party warnings or cross-compiler differences fatal by default.
+Use `-Werror` only for controlled code and compiler versions. Do not make
+third-party warnings or cross-compiler differences fatal by default.
 
 ## Sanitizers
 
@@ -37,69 +39,133 @@ AddressSanitizer and UndefinedBehaviorSanitizer:
 -fsanitize=address,undefined -fno-omit-frame-pointer -g
 ```
 
-ThreadSanitizer for concurrency projects, in a separate build:
+ThreadSanitizer, in a separate build:
 
 ```bash
 -fsanitize=thread -fno-omit-frame-pointer -g
 ```
 
-Do not combine ThreadSanitizer with AddressSanitizer in the same executable.
+Do not combine ThreadSanitizer with AddressSanitizer in one executable.
+Intentionally undefined or racy demonstrations belong in isolated executables and
+never in the normal passing test suite.
+
+## Phase Project Gates
+
+### Phase 1 Projects
+
+- [ ] Every variable is initialized and conversions are deliberate.
+- [ ] User input and exit status have defined failure behavior.
+- [ ] References, pointers, spans, and string views are documented as non-owning.
+- [ ] Tests use the current staged harness instead of inventing new infrastructure.
+- [ ] Generated build files are ignored by Git.
+
+### Phase 2 Projects
+
+- [ ] Class invariants cannot be bypassed through the public interface.
+- [ ] Special-member behavior is intentional: defaulted, deleted, or implemented.
+- [ ] Every resource has one documented owner and an RAII release path.
+- [ ] Error type and exception guarantee match the public API.
+- [ ] ASan/UBSan pass for normal tests.
+
+### Phase 3 Projects
+
+- [ ] Container choice is justified by operations, complexity, and invalidation.
+- [ ] Iterator, view, callback, and filesystem lifetimes are safe.
+- [ ] Algorithms satisfy comparator, projection, and empty-input requirements.
+- [ ] Operating-system effects are behind testable adapters.
+- [ ] Formatting and static-analysis configuration are applied consistently.
+
+### Phase 4 Projects
+
+- [ ] Value types have unsurprising copy, move, comparison, and operator behavior.
+- [ ] Runtime polymorphism uses virtual destruction and `override` correctly.
+- [ ] Template constraints express actual implementation requirements.
+- [ ] Compile-fail examples are separate from the passing test suite.
+- [ ] Advanced machinery is justified against a simpler value, callable, or variant.
+
+### Phase 5 Projects
+
+- [ ] Every thread has an owner and deterministic shutdown path.
+- [ ] Shared invariants have explicit synchronization.
+- [ ] Stress tests terminate and TSan runs separately where supported.
+- [ ] Memory-order claims include a written happens-before argument.
+- [ ] Performance claims identify workload, hardware, build, repetitions, and noise.
+
+### Phase 6 Projects
+
+- [ ] CI runs documented compiler, test, sanitizer, and analysis jobs.
+- [ ] Dependencies and tool versions are constrained reproducibly.
+- [ ] Installed-package behavior is verified from a clean external consumer.
+- [ ] Versioning, compatibility, license, changelog, and artifacts are defined.
+- [ ] Post-release fixes include reproduction, regression test, review, and release notes.
 
 ## Phase Gates
 
 ### End of Phase 1
 
-- [ ] I can compile, debug, and test a small multi-file C++23 program.
-- [ ] I understand initialization, control flow, functions, structs, references, and const.
-- [ ] I can explain declarations, definitions, namespaces, linkage, and the ODR.
-- [ ] I can create CMake executable and test targets.
+- [ ] I can compile, debug, test, and commit a small multi-file C++23 program.
+- [ ] I understand initialization, integer behavior, control flow, functions,
+      structs, enums, arrays, vectors, references, pointers, views, and const.
+- [ ] I can explain declarations, definitions, preprocessing, translation units,
+      linkage, namespaces, and the ODR.
+- [ ] I can create target-based CMake library, executable, and test targets.
 
 ### End of Phase 2
 
-- [ ] I can reason about storage duration, object lifetime, and ownership.
+- [ ] I can reason about scope, storage duration, object lifetime, and ownership.
 - [ ] I use RAII and the Rule of Zero by default.
-- [ ] I can explain copy, move, value categories, copy elision, and `noexcept`.
-- [ ] I can choose among exceptions, `std::optional`, and `std::expected`.
+- [ ] I can explain special-member generation, copy, move, value categories,
+      copy elision, and `noexcept`.
+- [ ] I can choose among preconditions, exceptions, `optional`, `expected`, and
+      `error_code`.
 
 ### End of Phase 3
 
-- [ ] I select containers using complexity and invalidation guarantees.
-- [ ] I can use iterators, lambdas, algorithms, ranges, and views safely.
-- [ ] I can design testable filesystem, formatting, and chrono code.
+- [ ] I select containers using operation, complexity, layout, and invalidation needs.
+- [ ] I can use iterators, sentinels, lambdas, algorithms, ranges, and views safely.
+- [ ] I can design testable filesystem, formatting, and chrono adapters.
+- [ ] I completed all three system-library breadth tracks and can identify the
+      portfolio-depth track.
 
 ### End of Phase 4
 
 - [ ] I can design regular value types and constrained templates.
-- [ ] I can compare composition, inheritance, variants, and type erasure.
-- [ ] I understand the template compilation model and customization points.
+- [ ] I can compare composition, inheritance, variants, callables, and type erasure.
+- [ ] I understand template deduction, forwarding, traits, variadics, folds,
+      compilation, and named customization protocols.
+- [ ] I know that manual serialization frameworks and type erasure are optional
+      specializations.
 
 ### End of Phase 5
 
-- [ ] I can identify data races, deadlocks, unsafe cancellation, and invalid memory ordering.
-- [ ] I can use `std::jthread`, mutexes, condition variables, and atomics deliberately.
-- [ ] I profile before optimizing and can justify allocator or PMR use with evidence.
-- [ ] I understand that modules and coroutines are optional, toolchain-sensitive facilities.
+- [ ] I can identify data races, deadlocks, unsafe cancellation, and invalid ordering.
+- [ ] I can use threads, `jthread`, mutexes, condition variables, futures, and
+      atomics deliberately.
+- [ ] I profile before optimizing and distinguish measurement from speculation.
+- [ ] I know that PMR, modules, coroutines, `mdspan`, and weak ordering are optional.
 
 ### End of Phase 6
 
-- [ ] I can test, fuzz, analyze, package, document, and release a C++ project.
+- [ ] I can test, fuzz, analyze, package, document, release, and maintain a project.
 - [ ] I can maintain a CI matrix and reproducible CMake presets.
-- [ ] I can define and enforce a capstone scope through milestones and non-goals.
+- [ ] I can review a change for source, binary, behavior, and dependency compatibility.
+- [ ] I can scope a capstone through milestones and complete a post-release patch.
 
 ## Good Habits
 
 - Prefer initialization over assignment after construction.
 - Prefer values and the Rule of Zero.
-- Prefer `std::vector` and `std::string` over owning raw arrays.
-- Use `std::span` and `std::string_view` only when their non-owning lifetime is safe.
+- Prefer `std::vector`, `std::array`, and `std::string` over owning raw arrays.
+- Use `std::span` and `std::string_view` only when non-owning lifetime is safe.
 - Prefer RAII over manual cleanup.
 - Prefer `std::unique_ptr` for exclusive dynamic ownership.
 - Use `std::shared_ptr` only when ownership is genuinely shared.
-- Prefer `const` and narrow interfaces where they improve reasoning.
+- Prefer const and narrow interfaces where they improve reasoning.
 - Prefer algorithms and ranges when they make intent clearer.
 - Prefer composition until runtime substitutability justifies inheritance.
-- Avoid raw `new`, raw `delete`, and unjustified casts.
+- Avoid raw `new`, raw `delete`, and unjustified casts in production code.
 - Measure before optimizing.
+- Keep commits focused and reviewable.
 
 ## Review Questions
 
@@ -112,4 +178,5 @@ Do not combine ThreadSanitizer with AddressSanitizer in the same executable.
 7. Which tests prove the important behavior?
 8. Which debugger, sanitizer, analyzer, or profiler evidence supports the result?
 9. What are the time and space complexity tradeoffs?
-10. What could be removed or simplified?
+10. What API, ABI, behavior, or dependency compatibility could this change affect?
+11. What could be removed or simplified?

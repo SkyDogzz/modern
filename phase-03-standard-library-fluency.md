@@ -1,73 +1,80 @@
-# Phase 3 - Standard Library Fluency
+# Phase 3 - Standard Library and Data Processing
 
-This phase teaches deliberate selection and composition of standard-library tools. The goal
-is fluency and sound tradeoffs, not memorization or premature claims of mastery.
+This phase teaches deliberate selection and composition of standard-library tools.
+The goal is fluency and defensible tradeoffs, not memorization.
+
+Read Concept Briefs 11-14 before and during this phase.
 
 Focus on:
 
 - sequence and associative containers;
-- complexity and iterator invalidation;
-- lambdas, function objects, and callbacks;
-- algorithms, ranges, views, and view lifetime;
+- complexity, layout, iterator categories, sentinels, and invalidation;
+- lambdas, function objects, callbacks, and lifetime;
+- algorithms, projections, ranges, views, and materialization;
 - filesystem, formatting, printing, and chrono;
 - testable adapters around operating-system effects.
 
-## 18. Contact Book
+## 25. Contact Book and Container Selection
 
-**Prerequisites:** Phases 1-2.
+**Category:** Portfolio project
+
+**Prerequisites:** Phases 1-2 and [Concept Brief 11](concept-briefs.md#11-containers-iterators-and-algorithms).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 8-12 hours
 
-**CMake stage:** Build a reusable contact library and a thin CLI target.
+**Tooling stage:** Build a reusable contact library and thin CLI.
 
 ### Learning Outcomes
 
-- Select containers using lookup, insertion, ordering, and memory tradeoffs.
-- Use `std::vector`, `std::map`, `std::unordered_map`, and `std::set`.
-- Explain average versus worst-case complexity.
+- Select containers from required operations and invalidation rules.
+- Compare vector, ordered-map, unordered-map, and set use cases.
+- Distinguish average from worst-case complexity and simple timing from benchmarking.
 
 ### Goal
 
-Manage contacts with names, email addresses, phone numbers, and tags.
+Manage contacts with names, email addresses, phone numbers, and unique tags.
 
 ### Requirements
 
-- Implement the first version using `std::vector`.
-- Add an indexed version using `std::unordered_map`.
-- Use a set only where uniqueness is required.
-- Use structured bindings when they make map iteration clearer.
-- Measure lookup with a release build and enough data to be meaningful.
-- Document iterator and reference invalidation for each chosen container.
+- Write an operation table before choosing containers.
+- Implement a vector baseline.
+- Add one indexed implementation using `unordered_map`.
+- Use `set` only for uniqueness and `map` for one genuinely ordered report.
+- Use structured bindings where they improve readability.
+- Collect simple Release-build lookup timings but make no rigorous performance claim.
+- Document iterator and reference invalidation for each selected container.
 
 ### Acceptance Criteria
 
-- [ ] Duplicate identities and missing contacts have defined behavior.
-- [ ] Container choices are justified with operations and complexity.
-- [ ] Benchmark conclusions distinguish measured facts from assumptions.
+- [ ] Duplicate identity and missing-contact behavior are explicit.
+- [ ] Every container has a workload-based reason.
+- [ ] Timing observations are labeled exploratory, not a benchmark conclusion.
 
 ### Stretch Goal
 
-Evaluate `std::flat_map` when the selected standard library implements it.
+Evaluate `std::flat_map` when the standard library supports it.
 
 ---
 
-## 19. Playlist Iterator Lab
+## 26. Playlist Iterator Lab
 
-**Prerequisites:** Project 18.
+**Category:** Core lab
+
+**Prerequisites:** Project 25 and [Concept Brief 11](concept-briefs.md#11-containers-iterators-and-algorithms).
 
 **Difficulty:** 3/5
 
 **Estimated time:** 6-8 hours
 
-**CMake stage:** Add focused invalidation tests.
+**Tooling stage:** Add focused invalidation tests.
 
 ### Learning Outcomes
 
-- Use iterators, ranges, and range-based loops.
+- Use iterator operations and identify iterator categories.
 - Recognize invalidation after insertion, erasure, and reallocation.
-- Compare contiguous and node-based containers.
+- Compare contiguous and node-based mutation without assuming one is superior.
 
 ### Goal
 
@@ -75,116 +82,169 @@ Implement next, previous, insert, remove-current, and shuffle behavior.
 
 ### Requirements
 
-- Build a `std::vector` version first.
-- Never dereference an iterator after an operation that invalidates it.
-- Rebuild the experiment with `std::list` and compare costs.
-- Define behavior for empty playlists and removal of the current item.
+- Build a vector version first.
+- Name the iterator category required by each operation.
+- Never use an iterator after an invalidating operation.
+- Rebuild the mutation experiment with `list`.
+- Define empty, first, last, and removal-of-current behavior.
 
 ### Acceptance Criteria
 
-- [ ] Tests cover first, last, empty, insertion, and erasure states.
-- [ ] The learner can state the relevant invalidation rules.
-- [ ] The list version is not declared superior without workload evidence.
+- [ ] Boundary and invalidation states are tested.
+- [ ] The learner states the relevant invalidation rules.
+- [ ] The list version is not called faster without workload evidence.
 
 ### Stretch Goal
 
-Add a `std::deque` version and compare its invalidation rules.
+Add a deque comparison focused only on its invalidation rules.
 
 ---
 
-## 20. Event Dispatcher and Callable Objects
+## 27. Event Dispatcher and Callable Objects
 
-**Prerequisites:** Projects 18-19 and Phase 2 lifetime rules.
+**Category:** Core project
 
-**Difficulty:** 3.5/5
+**Prerequisites:** Projects 25-26, Phase 2 lifetime rules, and
+[Concept Brief 12](concept-briefs.md#12-lambdas-callables-and-callback-lifetime).
 
-**Estimated time:** 8-11 hours
+**Difficulty:** 4/5
 
-**CMake stage:** Test the dispatcher as a library without CLI dependencies.
+**Estimated time:** 10-14 hours
+
+**Tooling stage:** Test the dispatcher as a library without CLI dependencies.
 
 ### Learning Outcomes
 
 - Write lambdas with value, reference, and explicit captures.
 - Compare function pointers, function objects, generic callables, and `std::function`.
-- Reason about callback ownership and captured-object lifetime.
+- Define callback ownership, reentrancy, and mutation-during-dispatch policy.
 
 ### Goal
 
-Register, remove, and invoke multiple callbacks for named events.
+Register, remove, and invoke callbacks for named events.
 
 ### Requirements
 
 - Return a subscription token from registration.
-- Define removal during dispatch.
-- Prevent callbacks from silently capturing short-lived references.
-- Use `std::function` deliberately and document its type-erasure cost.
+- Choose and document immediate, deferred, or forbidden mutation during dispatch.
+- Prevent callbacks from silently retaining short-lived reference captures.
+- Use `std::function` deliberately and document possible allocation/indirection.
+- Never invoke unknown callback code while an internal mutex is held; the baseline
+  itself remains single-threaded.
 
 ### Acceptance Criteria
 
-- [ ] Multiple callbacks execute in a defined order.
-- [ ] Unsubscription and mutation during dispatch are tested.
-- [ ] At least one test demonstrates and then fixes a capture-lifetime defect.
+- [ ] Callback order and reentrancy behavior are defined.
+- [ ] Unsubscription and attempted mutation during dispatch are tested.
+- [ ] A test demonstrates and fixes one capture-lifetime defect.
 
 ### Stretch Goal
 
-Add event priorities without invalidating active iteration.
+Make subscription lifetime RAII-based.
 
 ---
 
-## 21. Student Grade Analyzer
+## 28. Student Grade Analyzer
 
-**Prerequisites:** Projects 18-20.
+**Category:** Portfolio project
+
+**Prerequisites:** Projects 25-27.
 
 **Difficulty:** 3/5
 
-**Estimated time:** 7-9 hours
+**Estimated time:** 8-11 hours
 
-**CMake stage:** Add table-driven algorithm tests.
+**Tooling stage:** Add table-driven algorithm tests.
 
 ### Learning Outcomes
 
-- Use `sort`, `find_if`, `count_if`, `transform`, and numeric algorithms.
-- Write predicates and comparators with lambdas.
-- Prefer algorithms when they express intent more clearly than manual loops.
+- Use sorting, search, counting, transformation, and numeric algorithms.
+- Write valid predicates, comparators, and projections.
+- Prefer algorithms when they state intent more clearly than loops.
 
 ### Goal
 
-Compute averages, ranking, failed students, highest grades, and the top ten.
+Compute averages, ranking, failures, highest grades, grouped results, and top ten.
 
 ### Requirements
 
-- Keep input order unchanged unless mutation is explicitly intended.
-- Define tie handling and empty-input behavior.
-- Use a stable sort when equal grades must preserve original order.
-- Parse CSV only in an adapter outside the analysis logic.
+- Keep input order unchanged unless mutation is explicit.
+- Define tie and empty-input behavior.
+- Use stable sorting where equal grades preserve original order.
+- Use a projection or projected comparison for one record field.
+- Parse CSV only in an adapter outside analysis logic.
 
 ### Acceptance Criteria
 
-- [ ] Empty, singleton, tied, and invalid-grade cases are tested.
-- [ ] Comparator requirements are satisfied.
-- [ ] Each algorithm use is clearer than the equivalent manual loop.
+- [ ] Empty, singleton, tied, invalid, and boundary grades are tested.
+- [ ] Every comparator satisfies strict weak ordering.
+- [ ] Integer and floating average semantics are explicit.
 
 ### Stretch Goal
 
-Add grouped statistics by course using associative containers.
+Use a standard container adaptor for one naturally stack-, queue-, or priority-based task.
 
 ---
 
-## 22. Data Processing with Ranges
+## 29. Range, View, and Sentinel Lab
 
-**Prerequisites:** Project 21.
+**Category:** Core lab
+
+**Prerequisites:** Projects 25-28 and [Concept Brief 13](concept-briefs.md#13-ranges-and-views).
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 6-9 hours
 
-**CMake stage:** Compile classic-algorithm and ranges implementations in the same test suite.
+**Tooling stage:** Keep dangling demonstrations isolated under sanitizers.
+
+### Learning Outcomes
+
+- Explain ranges, iterators, sentinels, views, and borrowed ranges.
+- Compose lazy adaptors without confusing a view with an owner.
+- Decide when to materialize.
+
+### Goal
+
+Build small pipelines over owned arrays, vectors, strings, and temporary ranges.
+
+### Requirements
+
+- Implement one iterator/sentinel loop.
+- Build filter and transform views over a persistent owner.
+- Materialize one pipeline into a vector.
+- Demonstrate a safe borrowed-range case without claiming universal lifetime.
+- Keep one dangling-view example disabled or isolated.
+
+### Acceptance Criteria
+
+- [ ] Every view names the storage that owns its elements.
+- [ ] Returned results do not refer to destroyed temporaries.
+- [ ] The learner explains exactly what borrowed-range status guarantees.
+
+### Stretch Goal
+
+Write a small view-returning function with a documented lifetime contract.
+
+---
+
+## 30. Data Processing with Ranges
+
+**Category:** Portfolio project
+
+**Prerequisites:** Project 29.
+
+**Difficulty:** 3.5/5
+
+**Estimated time:** 8-12 hours
+
+**Tooling stage:** Compile classic-algorithm and ranges implementations in one suite.
 
 ### Learning Outcomes
 
 - Compose range algorithms and lazy views.
-- Distinguish views from owning containers.
-- Avoid dangling views and reason about borrowed ranges.
+- Preserve source data by materializing before mutation.
+- Compare classic and ranges interfaces on the same behavior.
 
 ### Goal
 
@@ -192,45 +252,48 @@ Process users containing name, score, and active state.
 
 ### Requirements
 
-Perform operations in a data-preserving order:
+Use this order:
 
-1. filter active user records;
-2. sort or partially select records by score;
-3. take the top ten records;
-4. transform the selected records into names.
+1. filter active records;
+2. materialize selected records into an owning container;
+3. sort or partially select by score;
+4. take the top ten;
+5. transform selected records into names.
 
 - Implement classic-algorithm and ranges versions.
-- Do not transform records into names before score-based ordering.
-- Materialize a container where an owning result is required.
+- Keep the original user collection unchanged.
+- Use a projection where supported and clearer.
 
 ### Acceptance Criteria
 
 - [ ] Both implementations return equivalent results.
-- [ ] No returned view refers to a destroyed temporary.
+- [ ] The source collection remains unchanged.
 - [ ] Tests cover fewer than ten, exactly ten, ties, and no active users.
 
 ### Stretch Goal
 
-Use applicable C++23 range additions when the toolchain supports them and guard
-them with feature-test macros.
+Use applicable C++23 range additions behind feature-test macros.
 
 ---
 
-## 23. Directory Analyzer
+## 31. Directory Analyzer
 
-**Prerequisites:** Projects 18-22 and Project 17 error-policy work.
+**Category:** Track project
+
+**Prerequisites:** Project 30, Project 24 error policy, and
+[Concept Brief 14](concept-briefs.md#14-filesystem-formatting-and-chrono).
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 8-12 hours
+**Estimated time:** 7-11 hours
 
-**CMake stage:** Separate filesystem traversal from report generation.
+**Tooling stage:** Separate traversal from report generation.
 
 ### Learning Outcomes
 
-- Use `std::filesystem::path` and directory iteration.
-- Handle filesystem errors with exceptions or `std::error_code`.
-- Treat destructive operations as a separate, explicit capability.
+- Use `filesystem::path`, directory iteration, and temporary directories.
+- Handle errors with exceptions or `error_code`.
+- Define recursion, permission, and symlink policy.
 
 ### Goal
 
@@ -238,38 +301,41 @@ Report largest files, empty files, duplicate names, and files grouped by extensi
 
 ### Requirements
 
-- Accept a path argument.
-- Define behavior for permissions, missing paths, and symlinks.
+- Accept a path argument and preserve path values as paths.
+- State whether traversal is recursive.
+- Define missing-path, permission, changing-file, and symlink behavior.
 - Keep traversal results independent from presentation.
-- Do not delete files in the baseline project.
+- Do not delete files in the baseline.
 
 ### Acceptance Criteria
 
-- [ ] Tests use temporary directories and clean them through RAII.
-- [ ] Symlink and permission policy is documented.
-- [ ] Errors identify the affected path and operation.
+- [ ] Tests use RAII-managed temporary directories.
+- [ ] Errors identify path and operation.
+- [ ] Symlink cycles cannot cause unbounded traversal.
 
 ### Stretch Goal
 
-Add a dry-run cleanup plan, then require explicit confirmation before deletion.
+Add a dry-run cleanup plan with explicit confirmation separated from analysis.
 
 ---
 
-## 24. C++23 Table Printer
+## 32. C++23 Table Printer
 
-**Prerequisites:** Projects 18-23.
+**Category:** Track project
+
+**Prerequisites:** Project 30 and [Concept Brief 14](concept-briefs.md#14-filesystem-formatting-and-chrono).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 6-8 hours
+**Estimated time:** 6-9 hours
 
-**CMake stage:** Add compile-time feature checks for library support.
+**Tooling stage:** Add compile-time feature checks for library support.
 
 ### Learning Outcomes
 
 - Use `std::format` and `std::print` where available.
-- Control alignment, width, and numeric precision.
-- Define scope limits for terminal and Unicode behavior.
+- Control alignment, width, and precision.
+- Distinguish byte length from terminal display width.
 
 ### Goal
 
@@ -277,57 +343,59 @@ Render aligned text, numeric, and Markdown tables.
 
 ### Requirements
 
-- Auto-size columns from provided cell text.
-- Align text and numbers differently.
+- Auto-size ASCII columns from cell text.
+- Align text and numeric values differently.
 - Keep rendering separate from output destination.
 - Provide a documented fallback when `std::print` is unavailable.
-- Treat terminal display width for complex Unicode as out of scope unless implemented deliberately.
+- Declare complex Unicode terminal width out of scope.
 
 ### Acceptance Criteria
 
 - [ ] Empty tables, long cells, negative values, and precision are tested.
-- [ ] The fallback produces equivalent content.
-- [ ] Feature detection does not rely on compiler version guesses alone.
+- [ ] Fallback output is content-equivalent.
+- [ ] Feature detection uses feature-test macros or compile checks, not version guesses.
 
 ### Stretch Goal
 
-Add a custom formatter for one project value type.
+Add a custom formatter for the Phase 4 `Vector2` type after Project 34.
 
 ---
 
-## 25. Testable Pomodoro Timer
+## 33. Testable Pomodoro Timer
 
-**Prerequisites:** Projects 18-24.
+**Category:** Track project
+
+**Prerequisites:** Project 30 and [Concept Brief 14](concept-briefs.md#14-filesystem-formatting-and-chrono).
 
 **Difficulty:** 3.5/5
 
 **Estimated time:** 7-10 hours
 
-**CMake stage:** Add unit tests with a fake clock and one real-time integration test.
+**Tooling stage:** Add fake-clock unit tests and one real-time integration test.
 
 ### Learning Outcomes
 
-- Use clocks, durations, time points, and sleeping.
-- Select a monotonic clock for elapsed-time measurement.
-- Isolate time dependencies so logic can be tested without waiting.
+- Use durations, time points, monotonic clocks, and sleeping.
+- Separate elapsed time from wall-clock timestamps.
+- Inject time dependencies for fast tests.
 
 ### Goal
 
-Run work, short-break, and long-break cycles while recording session history.
+Run work, short-break, and long-break cycles and record session history.
 
 ### Requirements
 
-- Use `std::chrono::steady_clock` for elapsed intervals.
-- Inject clock/sleep behavior into scheduling logic.
-- Support accelerated or fake time in tests.
-- Write session timestamps separately from elapsed-time calculations.
+- Use `steady_clock` for elapsed intervals.
+- Use a wall clock only for recorded timestamps.
+- Inject clock and sleep behavior through a small explicit interface.
+- Support accelerated or fake time in unit tests.
 
 ### Acceptance Criteria
 
-- [ ] Unit tests complete without real multi-minute sleeps.
+- [ ] Unit tests perform no real multi-minute sleeps.
 - [ ] Four-cycle long-break behavior is tested.
 - [ ] Wall-clock changes cannot corrupt elapsed-time calculations.
 
 ### Stretch Goal
 
-Persist session history and analyze it using the ranges pipeline.
+Persist history and analyze it with the Project 30 ranges pipeline.

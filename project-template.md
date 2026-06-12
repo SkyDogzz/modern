@@ -1,19 +1,28 @@
 # Project Template
 
-Use this template for every roadmap project. A project is complete only when its
-acceptance criteria and quality gate pass.
+Use this template for roadmap projects. A project is complete only when its
+acceptance criteria and current phase gate pass.
 
 ## Project Name
 
 `project-name-here`
 
-**Prerequisites:** List earlier projects or concepts that must already be understood.
+**Category:** Core lab, core project, portfolio project, track project, optional
+specialization, or delivery project.
+
+**Prerequisites:** Earlier projects and concept-brief sections that must already be
+understood.
 
 **Difficulty:** 1/5
 
 **Estimated time:** 2-4 hours
 
-**CMake stage:** State the build-system skill added or practiced.
+**Tooling stage:** State the build, test, analysis, or delivery skill added.
+
+## Concept Check
+
+Before implementation, answer three to five prerequisite questions without notes.
+Link to the relevant section of `concept-briefs.md`.
 
 ## Learning Outcomes
 
@@ -25,11 +34,11 @@ After completing this project, the learner can:
 
 ## Goal
 
-Describe the observable behavior of the program and why this project exists.
+Describe observable behavior and why the project exists.
 
 ## Non-Goals
 
-- State features or techniques intentionally excluded from this project.
+- State features or techniques intentionally excluded.
 - Keep the project focused on its learning outcomes.
 
 ## Requirements
@@ -40,11 +49,12 @@ Describe the observable behavior of the program and why this project exists.
 
 ## Acceptance Criteria
 
-- [ ] The minimum behavior is demonstrated with documented example commands.
-- [ ] Invalid input and failure paths have defined behavior.
-- [ ] Automated tests cover the core logic where the current phase requires tests.
-- [ ] The project builds with the phase warning and sanitizer configuration.
-- [ ] The README explains the design, ownership model, and error policy.
+- [ ] Minimum behavior is demonstrated with documented commands.
+- [ ] Invalid input and relevant failure paths have defined behavior.
+- [ ] Automated tests cover the core logic required by the current phase.
+- [ ] The current phase warning, formatter, analyzer, and sanitizer expectations pass.
+- [ ] Ownership, lifetime, and error policy are documented, or marked not
+      applicable with a reason.
 
 ## Stretch Goals
 
@@ -64,6 +74,9 @@ project/
 `-- tests/
 ```
 
+Early core labs may use one source file. Do not create public include directories
+or library targets before the roadmap introduces the translation and CMake model.
+
 ## Build
 
 ```bash
@@ -71,14 +84,13 @@ cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
 ```
 
-All targets must request C++23 through CMake:
+All CMake targets request C++23:
 
 ```cmake
 target_compile_features(app PRIVATE cxx_std_23)
 ```
 
-Do not rely only on a global `CMAKE_CXX_STANDARD` setting once the roadmap
-introduces target-based CMake.
+Do not rely only on global `CMAKE_CXX_STANDARD` after target-based CMake is taught.
 
 ## Run
 
@@ -92,30 +104,32 @@ introduces target-based CMake.
 ctest --test-dir build --output-on-failure
 ```
 
-Record which of these are currently expected:
+Record which are expected at the current stage:
 
 - smoke tests;
 - unit tests;
 - integration tests;
+- compile-fail tests;
 - sanitizer runs;
-- fuzz or property tests;
-- concurrency tests.
+- property or fuzz tests;
+- concurrency stress tests;
+- clean-consumer package tests.
 
 ## Quality Gate
 
 - [ ] Warnings are enabled and understood.
-- [ ] Formatting has been applied.
-- [ ] The debugger or a sanitizer was used for at least one diagnosed defect.
-- [ ] No ownership or lifetime rule is left implicit.
-- [ ] Public interfaces document errors and invalid inputs.
+- [ ] The repository formatter configuration has been applied.
+- [ ] The relevant debugger, sanitizer, analyzer, or profiler was used.
+- [ ] Public interfaces document invalid inputs and errors.
+- [ ] `git diff` was reviewed and generated files are not tracked.
+
+## Evidence
+
+Record commands, representative output, defect reproduction, diagnosis, and fix.
 
 ## Notes
 
-Write what you learned and which assumptions changed.
-
-## Mistakes Encountered
-
-Record bugs, misunderstandings, diagnostic evidence, and fixes.
+Write what was learned and which assumptions changed.
 
 ## What I Would Improve
 

@@ -1,114 +1,209 @@
-# Phase 1 - Foundations and Workflow
+# Phase 1 - Language Foundations and Workflow
 
-This phase builds the language and tooling foundation needed for later C++.
-Projects must be completed in order.
+This phase teaches language fundamentals and introduces tools in controlled
+increments. Projects must be completed in order.
+
+Read Concept Briefs 1-6 before and during this phase.
 
 Focus on:
 
-- compiling and debugging C++23;
-- initialization, types, expressions, and control flow;
-- functions, scope, references, pointers, and const;
-- strings, `std::array`, vectors, structs, and enums;
-- declarations, definitions, namespaces, linkage, and the ODR;
-- introductory testing and target-based CMake.
+- translation, diagnostics, debugging, Git, and staged testing;
+- initialization, types, integer behavior, expressions, and conversions;
+- control flow, functions, scope, references, pointers, and const;
+- strings, scoped enums, arrays, vectors, structs, spans, and string views;
+- command-line input, declarations, definitions, linkage, and the ODR;
+- target-based CMake only after the compile and link model is understood.
 
-## 1. Hello C++23
+## 1. Compile, Run, and Read Diagnostics
 
-**Prerequisites:** A C++23-capable compiler and a terminal.
+**Category:** Core lab
+
+**Prerequisites:** A C++23 compiler and [Concept Brief 1](concept-briefs.md#1-translation-and-execution).
 
 **Difficulty:** 1/5
 
 **Estimated time:** 1-2 hours
 
-**CMake stage:** Build one executable target after compiling once by hand.
+**Tooling stage:** Direct compiler command only.
 
 ### Learning Outcomes
 
-- Compile, run, and intentionally break a one-file C++23 program.
-- Read a compiler diagnostic and inspect execution in a debugger.
-- Add a smoke test that checks the program's exit status.
+- Explain source, compilation, linking, execution, and exit status at a basic level.
+- Compile, run, and intentionally break a one-file program.
+- Read the first relevant compiler diagnostic.
 
 ### Goal
 
-Create a program that prints a greeting, returns success, and can be built both
-with a direct compiler command and CMake.
+Print a greeting and return success without relying on an IDE build button.
 
 ### Requirements
 
 - Compile with `-std=c++23 -Wall -Wextra -Wpedantic -g`.
-- Set a breakpoint on `main` in GDB or LLDB and step over one statement.
-- Add one `assert`-based check or CTest smoke test.
-- Create an executable target using `target_compile_features(app PRIVATE cxx_std_23)`.
+- Produce and fix one syntax error and one type error.
+- Return zero on success and a chosen non-zero status on an intentional failure path.
+- Document the exact build and run commands.
 
 ### Acceptance Criteria
 
-- [ ] A clean checkout can be configured, built, run, and tested using documented commands.
-- [ ] The README includes one compiler error and explains how it was corrected.
-- [ ] No IDE-only build steps are required.
+- [ ] A clean shell can build and run the program.
+- [ ] The learner distinguishes a compiler diagnostic from runtime output.
+- [ ] No CMake, debugger, or unit-test framework is required yet.
 
 ### Stretch Goal
 
-Add `CMakePresets.json` with a Debug preset.
+Inspect the generated object file and executable names without interpreting their
+binary contents.
 
 ---
 
-## 2. Character Stat Sheet
+## 2. Debugger, CMake, and Smoke-Test Orientation
 
-**Prerequisites:** Project 1.
+**Category:** Core lab
+
+**Prerequisites:** Project 1 and [Concept Brief 6](concept-briefs.md#6-tests-debugging-cmake-and-git).
+
+**Difficulty:** 1.5/5
+
+**Estimated time:** 2-3 hours
+
+**Tooling stage:** One executable target, one CTest smoke test, and Git initialization.
+
+### Learning Outcomes
+
+- Step through `main` and inspect one value in a debugger.
+- Configure and build one CMake executable target.
+- Distinguish a smoke test from a unit test.
+- Create a focused Git commit and ignore generated build output.
+
+### Goal
+
+Put Project 1 under a minimal, reproducible build and smoke-test workflow.
+
+### Requirements
+
+- Set a breakpoint on `main` and step over one statement.
+- Create one executable target with `target_compile_features`.
+- Register a CTest that checks exit success.
+- Add a `.gitignore` for build directories.
+- Review `git diff` before committing.
+
+### Acceptance Criteria
+
+- [ ] Configure, build, test, and run commands are documented.
+- [ ] The smoke test is not described as proof of program correctness.
+- [ ] Generated files are not tracked.
+
+### Stretch Goal
+
+Add a Debug `CMakePresets.json` preset.
+
+---
+
+## 3. Character Stat Sheet
+
+**Category:** Core lab
+
+**Prerequisites:** Projects 1-2 and [Concept Brief 2](concept-briefs.md#2-initialization-types-and-integer-behavior).
 
 **Difficulty:** 1/5
 
 **Estimated time:** 2-3 hours
 
-**CMake stage:** Reuse the executable target and warning configuration.
+**Tooling stage:** Reuse the single executable and smoke-test workflow.
 
 ### Learning Outcomes
 
-- Declare and initialize fundamental types and `std::string`.
-- Distinguish initialization from later assignment.
-- Use `const`, local scope, standard input, and formatted output.
+- Declare and initialize fundamental values and `std::string`.
+- Distinguish initialization from assignment.
+- Use const, block scope, a struct, and a scoped enum.
 
 ### Goal
 
-Read a character name and print a stat sheet containing health, mana, strength,
-agility, and an alive/dead flag.
+Read a character name and print a stat sheet with class, health, mana, strength,
+agility, and alive state.
 
 ### Requirements
 
-- Use brace initialization.
-- Use appropriate integer, floating-point, Boolean, character, and string values.
-- Make values `const` when they do not change.
-- Demonstrate a nested local scope without leaking names outside it.
+- Use brace initialization and initialize every object.
+- Define `enum class CharacterClass` and a `Character` struct.
+- Make values const when they do not change.
+- Demonstrate a nested block without leaking names outside it.
 - Reject an empty name.
 
 ### Acceptance Criteria
 
-- [ ] The program handles valid and empty input deliberately.
-- [ ] Every variable is initialized.
-- [ ] The learner can explain each variable's type and scope.
+- [ ] Valid and empty input have deliberate behavior.
+- [ ] Every field's type and valid range can be explained.
+- [ ] No integer code substitutes for the scoped enum.
 
 ### Stretch Goal
 
-Add a scoped `enum class CharacterClass` and print a selected class.
+Write a function that converts every enum value to display text.
 
 ---
 
-## 3. Unit Converter
+## 4. Integer and Conversion Lab
 
-**Prerequisites:** Projects 1-2.
+**Category:** Core lab
 
-**Difficulty:** 1.5/5
+**Prerequisites:** Project 3 and [Concept Brief 2](concept-briefs.md#2-initialization-types-and-integer-behavior).
 
-**Estimated time:** 3-4 hours
+**Difficulty:** 2/5
 
-**CMake stage:** Extract conversion logic into a small library target.
+**Estimated time:** 3-5 hours
+
+**Tooling stage:** Add a small assertion-based test executable supplied by the roadmap.
 
 ### Learning Outcomes
 
-- Use arithmetic expressions, precedence, and functions.
-- Distinguish implicit conversion, explicit conversion, and narrowing.
-- Use `auto` only when the deduced type remains clear.
-- Separate pure calculations from input/output.
+- Explain narrowing, signed and unsigned ranges, integer division, and overflow.
+- Validate before an explicit conversion.
+- Parse an integer with `std::from_chars`.
+- Recognize undefined behavior without putting it in the normal test suite.
+
+### Goal
+
+Build a set of focused experiments that classify safe, rejected, lossy, and
+undefined arithmetic operations.
+
+### Requirements
+
+- Demonstrate a brace-initialization narrowing rejection as a compile-fail example.
+- Compare signed and unsigned values only after a deliberate range decision.
+- Check addition or multiplication before it can overflow.
+- Parse valid, partial, out-of-range, and invalid text with `from_chars`.
+- Keep an intentional signed-overflow UBSan demonstration in a separate executable.
+
+### Acceptance Criteria
+
+- [ ] Normal tests execute no undefined behavior.
+- [ ] `from_chars` checks both its error code and final pointer.
+- [ ] The learner explains why a cast alone does not make a conversion safe.
+
+### Stretch Goal
+
+Implement a checked integer-add function returning a small result struct containing
+either a value or a status enum.
+
+---
+
+## 5. Unit Converter
+
+**Category:** Core project
+
+**Prerequisites:** Projects 1-4 and [Concept Brief 3](concept-briefs.md#3-control-flow-functions-and-scope).
+
+**Difficulty:** 1.5/5
+
+**Estimated time:** 3-5 hours
+
+**Tooling stage:** One application source plus a focused calculation test executable.
+
+### Learning Outcomes
+
+- Use arithmetic expressions, precedence, and pure functions.
+- Choose integer or floating-point types from the domain.
+- Separate calculations from terminal input/output.
 
 ### Goal
 
@@ -117,54 +212,58 @@ Build an interactive converter for distance, temperature, and mass.
 ### Requirements
 
 - Implement each conversion as a pure function.
-- Use `double` where fractional results are expected.
-- Demonstrate one safe `static_cast` and one rejected narrowing conversion.
-- Test representative and boundary values without reading from standard input.
+- Use `double` where fractional values are expected.
+- Use scoped enums for categories and units.
+- Test representative, negative where meaningful, and boundary values.
+- Document the tolerance used for floating-point comparisons.
 
 ### Acceptance Criteria
 
-- [ ] Conversion functions have automated tests.
 - [ ] Invalid categories and units have defined behavior.
-- [ ] Floating-point comparisons use a documented tolerance.
+- [ ] Calculation tests do not read standard input.
+- [ ] Every explicit conversion has a stated range argument.
 
 ### Stretch Goal
 
-Represent conversion categories and units with scoped enums.
+Add a table-driven conversion test.
 
 ---
 
-## 4. Expression Calculator
+## 6. Expression Calculator
 
-**Prerequisites:** Projects 1-3.
+**Category:** Core project
+
+**Prerequisites:** Projects 1-5.
 
 **Difficulty:** 2/5
 
-**Estimated time:** 3-5 hours
+**Estimated time:** 4-6 hours
 
-**CMake stage:** Add a dedicated test executable and register it with CTest.
+**Tooling stage:** Register a dedicated logic test executable with CTest.
 
 ### Learning Outcomes
 
-- Use `if`, `else`, `switch`, comparison, and logical operators.
-- Explain integer division, remainder, and floating-point division.
-- Validate user input and define failure behavior.
+- Use `if`, `switch`, comparisons, and logical operators.
+- Distinguish integer and floating-point operation domains.
+- Define input and arithmetic failure behavior.
 
 ### Goal
 
-Evaluate two operands and one operator from an interactive prompt.
+Evaluate two operands and an operator in either integer mode or floating-point mode.
 
 ### Requirements
 
-- Support `+`, `-`, `*`, `/`, `%`, `<`, `>`, and `==`.
-- Reject remainder operations on floating-point operands.
-- Detect division by zero.
-- Keep evaluation logic independent from terminal I/O.
+- Support `+`, `-`, `*`, `/`, `<`, `>`, and `==` in both modes.
+- Support `%` only in integer mode.
+- Detect zero divisors and checked integer overflow where applicable.
+- Keep parsing, evaluation, and terminal I/O separate.
+- Use a scoped operation enum rather than dispatching on raw characters internally.
 
 ### Acceptance Criteria
 
-- [ ] Every operator has normal and invalid-case tests.
-- [ ] Stream input failure does not cause an infinite loop.
-- [ ] The debugger is used to inspect at least one failing case.
+- [ ] Every operation has normal and invalid-case tests.
+- [ ] Floating equality is described as exact input equality, not approximate analysis.
+- [ ] Stream failure cannot create an infinite loop.
 
 ### Stretch Goal
 
@@ -172,148 +271,196 @@ Repeat calculations until the user chooses to quit.
 
 ---
 
-## 5. Number Guessing Game
+## 7. Number Guessing Game
 
-**Prerequisites:** Projects 1-4.
+**Category:** Core lab
+
+**Prerequisites:** Projects 1-6.
 
 **Difficulty:** 2/5
 
 **Estimated time:** 3-4 hours
 
-**CMake stage:** Add reusable project warning and sanitizer options.
+**Tooling stage:** Add reusable warning and sanitizer options for local targets.
 
 ### Learning Outcomes
 
 - Use `while`, `for`, `break`, and `continue`.
-- Generate random numbers with `<random>`.
-- Model loop invariants and termination conditions.
+- Generate values with a random engine and distribution.
+- State a loop invariant and termination argument.
 
 ### Goal
 
-Let the user guess a generated number and report whether each guess is too high
-or too low.
+Let the user guess a generated number and report whether each guess is high or low.
 
 ### Requirements
 
-- Use a modern random engine and distribution, not `std::rand`.
+- Use `<random>`, not `std::rand`.
 - Count attempts and reject out-of-range input.
 - Add easy, normal, and hard ranges.
-- Test the comparison logic separately from randomness and input.
+- Test comparison logic separately from randomness and input.
 
 ### Acceptance Criteria
 
-- [ ] The game always has a reachable termination condition.
+- [ ] The game has a reachable termination condition.
 - [ ] Invalid input is cleared and reported.
-- [ ] The core comparison function is deterministic and tested.
+- [ ] Deterministic core tests do not depend on random output.
 
 ### Stretch Goal
 
-Accept a seed for reproducible debugging sessions.
+Accept a seed for reproducible debugging.
 
 ---
 
-## 6. Dice Roller
+## 8. Dice Roller and Basic Containers
 
-**Prerequisites:** Projects 1-5.
+**Category:** Core project
 
-**Difficulty:** 2.5/5
-
-**Estimated time:** 4-6 hours
-
-**CMake stage:** Keep parsing and rolling in separate library targets or source units.
-
-### Learning Outcomes
-
-- Design functions with parameters, return values, and overloads.
-- Use a `struct` and `enum class` to model data.
-- Apply pass-by-value, `const&`, and local scope deliberately.
-
-### Goal
-
-Roll dice from a simple count-and-sides request such as `3 6` or `1 20`.
-
-### Requirements
-
-- Define a `DiceRequest` struct.
-- Validate positive count and sides.
-- Return individual rolls and a total.
-- Overload one helper only where the overload improves the API.
-- Do not parse full expressions such as `2d8+1d6+3` in the baseline project.
-
-### Acceptance Criteria
-
-- [ ] Invalid dice requests are tested.
-- [ ] No function relies on unexplained global mutable state.
-- [ ] The learner can justify each value or reference parameter.
-
-### Stretch Goal
-
-Parse a single term such as `4d10+2`, or build a fixed-size d6 histogram with
-`std::array`.
-
----
-
-## 7. Inventory Editor
-
-**Prerequisites:** Projects 1-6.
+**Prerequisites:** Projects 1-7 and [Concept Brief 4](concept-briefs.md#4-records-enums-and-basic-containers).
 
 **Difficulty:** 2.5/5
 
 **Estimated time:** 5-7 hours
 
-**CMake stage:** Build a reusable inventory library plus app and test targets.
+**Tooling stage:** Keep one target; separate logic with functions, not source libraries.
 
 ### Learning Outcomes
 
-- Store records in `std::vector` and text in `std::string`.
-- Use indexes, range-based loops, references, pointers, and `nullptr`.
-- Explain when vector growth invalidates references and pointers.
+- Use `std::vector`, `std::array`, structs, and scoped enums.
+- Design functions with values, `const&`, and mutable references deliberately.
+- Explain fixed-size versus dynamic contiguous storage.
 
 ### Goal
 
-Manage an in-memory inventory with add, remove, rename, upgrade, find, and list
-operations.
+Roll requests such as three six-sided dice and report individual rolls, a total,
+and a fixed-size d6 histogram.
 
 ### Requirements
 
-- Model an item with a `struct`.
-- Provide const and mutable search operations.
-- Return a pointer only as a non-owning result and document its validity.
-- Validate indexes before access.
-- Add tests that trigger vector insertion and removal.
+- Define a validated `DiceRequest` struct.
+- Return individual rolls in a vector.
+- Build a d6 histogram with `std::array`.
+- Overload one helper only if the overload improves the interface.
+- Keep full dice-expression parsing out of scope.
 
 ### Acceptance Criteria
 
-- [ ] No pointer or reference is retained across an operation that can invalidate it.
-- [ ] Search failure is represented explicitly.
-- [ ] Const functions do not mutate the inventory.
+- [ ] Invalid count and side values are tested.
+- [ ] No unexplained global mutable random state exists.
+- [ ] Each parameter-passing choice can be justified.
 
 ### Stretch Goal
 
-Replace the pointer-returning search API with an index-based result and compare
-the lifetime tradeoffs.
+Parse one term such as `4d10+2`.
 
 ---
 
-## 8. Interactive Todo List
+## 9. References, Pointers, and Views Lab
 
-**Prerequisites:** Projects 1-7.
+**Category:** Core lab
+
+**Prerequisites:** Project 8 and [Concept Brief 5](concept-briefs.md#5-references-pointers-views-and-c-strings).
+
+**Difficulty:** 2.5/5
+
+**Estimated time:** 4-6 hours
+
+**Tooling stage:** Run invalid lifetime demonstrations only in isolated sanitizer targets.
+
+### Learning Outcomes
+
+- Distinguish references, pointers, ownership, and absence.
+- Use `std::span` and `std::string_view` as non-owning views.
+- Predict invalidation after vector or string mutation.
+
+### Goal
+
+Observe one owned object through references, pointers, spans, and string views,
+then document every observer's validity.
+
+### Requirements
+
+- Show a reference observer and a nullable pointer observer.
+- Pass an array and vector through `span<const int>`.
+- Pass owned text through `string_view`.
+- Trigger vector reallocation and string mutation without dereferencing stale observers.
+- Keep one intentionally dangling example disabled or isolated under ASan.
+
+### Acceptance Criteria
+
+- [ ] Every observer names its owner and validity period.
+- [ ] No normal test dereferences an invalid observer.
+- [ ] The learner explains why a non-null pointer can still dangle.
+
+### Stretch Goal
+
+Compare an owning string return with a string-view return and document when each is valid.
+
+---
+
+## 10. Inventory Editor
+
+**Category:** Core project
+
+**Prerequisites:** Projects 1-9.
 
 **Difficulty:** 2.5/5
 
 **Estimated time:** 5-8 hours
 
-**CMake stage:** Add integration tests that drive the command-processing layer.
+**Tooling stage:** Focused model tests; still no public library target.
 
 ### Learning Outcomes
 
-- Combine strings, vectors, loops, structs, and functions in one program.
-- Separate command processing from storage and terminal I/O.
-- Maintain state during a single process.
+- Apply vector mutation and invalidation rules.
+- Provide const and mutable search interfaces.
+- Represent search failure explicitly.
 
 ### Goal
 
-Run one interactive session:
+Manage an in-memory inventory with add, remove, rename, upgrade, find, and list.
+
+### Requirements
+
+- Model an item with a struct and stable numeric ID.
+- Implement an index-returning search first.
+- Add pointer-returning const and mutable searches only as a comparison.
+- Validate user-visible positions and IDs before access.
+- Test insertion, erasure, and reallocation.
+
+### Acceptance Criteria
+
+- [ ] No observer is retained across an invalidating operation.
+- [ ] Search failure cannot be mistaken for a valid item.
+- [ ] Const access cannot mutate inventory state.
+
+### Stretch Goal
+
+Compare stable IDs with vector indexes after erasure.
+
+---
+
+## 11. Interactive Todo List
+
+**Category:** Portfolio project
+
+**Prerequisites:** Projects 1-10.
+
+**Difficulty:** 3/5
+
+**Estimated time:** 8-12 hours
+
+**Tooling stage:** Add integration tests around command processing.
+
+### Learning Outcomes
+
+- Combine text, containers, control flow, records, and functions.
+- Separate command parsing, storage, and terminal I/O.
+- Maintain documented in-process state.
+
+### Goal
+
+Run an interactive session:
 
 ```txt
 todo> add Learn RAII
@@ -325,38 +472,39 @@ todo> quit
 
 ### Requirements
 
-- Store tasks in memory for the duration of the process.
-- Give each task stable text and completion state.
-- Validate user-visible task numbers.
-- Keep persistence out of the baseline project.
+- Store tasks only for the process duration.
+- Give each task a stable ID, text, and completion state.
+- Keep persistence out of the baseline.
+- Define empty, malformed, and unknown-command responses.
 
 ### Acceptance Criteria
 
-- [ ] The documented interface does not imply state survives separate process invocations.
-- [ ] Command parsing and task operations have automated tests.
-- [ ] Empty, unknown, and malformed commands have defined responses.
+- [ ] The interface does not imply cross-process persistence.
+- [ ] Parsing and task operations have automated tests.
+- [ ] The README documents invariants and command failures.
 
 ### Stretch Goal
 
-Add save/load persistence, then support separate invocations such as
-`./todo add` and `./todo list`.
+Revisit persistence after Project 24 rather than implementing an ad hoc format now.
 
 ---
 
-## 9. Command-Line Greeter
+## 12. Command-Line Greeter
 
-**Prerequisites:** Projects 1-8.
+**Category:** Core project
 
-**Difficulty:** 2/5
+**Prerequisites:** Projects 1-11 and [Concept Brief 5](concept-briefs.md#5-references-pointers-views-and-c-strings).
 
-**Estimated time:** 3-5 hours
+**Difficulty:** 2.5/5
 
-**CMake stage:** Add CTest cases with different command-line arguments.
+**Estimated time:** 4-6 hours
+
+**Tooling stage:** Add CTest cases with command-line arguments and expected statuses.
 
 ### Learning Outcomes
 
-- Interpret `main(int argc, char** argv)`.
-- Parse positional arguments and simple options.
+- Explain `main(int argc, char** argv)` and null-terminated argument strings.
+- Convert arguments to safe views and parse numbers with `from_chars`.
 - Produce useful help, usage, and error messages.
 
 ### Goal
@@ -372,68 +520,109 @@ Support:
 
 ### Requirements
 
-- Reject unknown options and missing option values.
-- Convert the repeat count safely and validate its range.
-- Keep parsed options in a struct.
-- Return a non-zero exit status on invalid invocation.
+- Reject unknown options and missing values.
+- Never read beyond `argc`.
+- Convert arguments promptly to `string_view`.
+- Parse and range-check repeat count with `from_chars`.
+- Store parsed options in a struct and return non-zero on invalid invocation.
 
 ### Acceptance Criteria
 
-- [ ] Success and failure exit statuses are tested.
-- [ ] `--help` documents every supported form.
-- [ ] Parsing does not read past `argv`.
+- [ ] Success, help, and failure statuses are tested.
+- [ ] Partial numeric input such as `3x` is rejected.
+- [ ] The learner explains who owns every argument string.
 
 ### Stretch Goal
 
-Allow options before or after the name without duplicating parsing logic.
+Allow options before or after the name without duplicated parsing logic.
 
 ---
 
-## 10. Multi-File Build and Test Lab
+## 13. Compilation and Linking Lab
 
-**Prerequisites:** Projects 1-9.
+**Category:** Core lab
+
+**Prerequisites:** Projects 1-12 and [Concept Brief 1](concept-briefs.md#1-translation-and-execution).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 6-8 hours
+**Estimated time:** 5-7 hours
 
-**CMake stage:** Use target-based include paths, compile features, libraries, and tests.
+**Tooling stage:** Build several source files with direct compiler commands first.
 
 ### Learning Outcomes
 
 - Distinguish declarations, definitions, translation units, and linkage.
-- Use namespaces, include guards, and internal linkage correctly.
-- Explain the One Definition Rule and basic storage-duration categories.
-- Debug and test a multi-file C++23 program.
+- Explain preprocessing, headers, namespaces, include guards, and the ODR.
+- Diagnose compile-time and link-time failures separately.
 
 ### Goal
 
-Refactor an earlier project into:
-
-```txt
-include/roadmap/model.hpp
-include/roadmap/operations.hpp
-src/operations.cpp
-src/main.cpp
-tests/operations_tests.cpp
-```
+Split an earlier project's model and operations across self-contained headers and
+source files before introducing multi-target CMake.
 
 ### Requirements
 
 - Place public names in a project namespace.
-- Demonstrate and fix one linker error.
-- Demonstrate and fix one ODR violation.
-- Identify automatic, static, and dynamic storage in the project.
-- Build library, app, and test targets with CMake.
-- Run AddressSanitizer and UndefinedBehaviorSanitizer in a separate preset.
+- Demonstrate and fix one missing-definition linker error.
+- Demonstrate and fix one ODR violation in isolated broken examples.
+- Use include guards or `#pragma once` consistently.
+- Explain that include guards and feature-test macros use preprocessing, and avoid
+  function-like macros where functions, constants, or templates suffice.
+- Identify automatic, static, thread-local, and dynamic storage examples without
+  requiring dynamic allocation.
 
 ### Acceptance Criteria
 
-- [ ] Headers are self-contained and do not contain accidental definitions.
-- [ ] Target usage requirements are `PUBLIC`, `PRIVATE`, or `INTERFACE` for a stated reason.
-- [ ] All tests pass from a clean build directory.
-- [ ] The learner can explain compilation and linking without invoking CMake terminology.
+- [ ] Headers compile when included alone.
+- [ ] Headers contain no accidental non-inline definitions.
+- [ ] The learner explains the failure without CMake terminology.
 
 ### Stretch Goal
 
-Add installable headers locally, without yet creating a distributable package.
+Use an unnamed namespace for one source-file-only helper and explain internal linkage.
+
+---
+
+## 14. Target-Based CMake and Test Lab
+
+**Category:** Portfolio project
+
+**Prerequisites:** Projects 1-13 and [Concept Brief 6](concept-briefs.md#6-tests-debugging-cmake-and-git).
+
+**Difficulty:** 3/5
+
+**Estimated time:** 7-10 hours
+
+**Tooling stage:** Library, application, maintained test framework, formatter, and sanitizer presets.
+
+### Learning Outcomes
+
+- Model a library, application, and tests as CMake targets.
+- Choose `PUBLIC`, `PRIVATE`, and `INTERFACE` usage requirements deliberately.
+- Adopt one maintained test framework or a documented repository harness.
+- Apply formatter and sanitizer configurations reproducibly.
+
+### Goal
+
+Put the Project 13 multi-file program under a clean target-based build and test workflow.
+
+### Requirements
+
+- Build library, application, and test targets.
+- Request C++23 per target and use target-based include paths.
+- Add Debug and ASan/UBSan presets.
+- Configure one repository formatter.
+- Fetch, vendor, or locate the test framework through a documented pinned strategy.
+- Add a basic CI job that configures, builds, and tests one supported compiler.
+
+### Acceptance Criteria
+
+- [ ] A clean checkout configures, builds, tests, and formats from documented commands.
+- [ ] Target usage requirements have stated reasons.
+- [ ] All tests pass from a clean build directory.
+- [ ] Dependency acquisition is reproducible.
+
+### Stretch Goal
+
+Install headers and the library to a local prefix without yet exporting a package.
