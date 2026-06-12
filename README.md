@@ -8,6 +8,16 @@ exhaustive mastery of the language, every platform API, or production engineerin
 from projects alone. Use the concept briefs, a current C++ reference, compiler
 documentation, code review, and sustained practice together.
 
+## AI Disclosure and Learning Policy
+
+All README files and roadmap documentation in this repository were created using
+artificial intelligence (AI).
+
+Advice: do not use AI to implement, complete, debug, or test the projects in
+this curriculum. Write the project code and tests yourself, investigate failures
+yourself, and be able to explain every result. Learning to design tests, identify
+edge cases, and understand failures is as important as learning to code.
+
 ## Curriculum Structure
 
 1. Language Foundations and Workflow
