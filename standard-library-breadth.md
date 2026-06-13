@@ -4,7 +4,7 @@ These labs complete Route B together with Projects 25-33. Complete B1-B9 in orde
 then pass B10. Surveys S1-S5 are integrated into the named labs and require written
 evidence even when no production implementation is appropriate.
 
-Total target time: 90-140 hours, including survey work and the final assessment.
+Total target time: 92-143 hours, including survey work and the final assessment.
 
 ## Survey Evidence and Pass Rules
 
@@ -169,13 +169,15 @@ failed survey.
 **Prerequisites:** B2, Projects 26 and 29-30, and
 [Brief 3](standard-library-briefs.md#3-iterators-algorithms-and-ranges).
 
-**Estimated time:** 10-16 hours
+**Estimated time:** 12-19 hours
 
 ### Outcomes
 
 - Use iterator adaptors and structured algorithm results.
 - Apply every major classic algorithm family.
 - Compare classic, ranges, numeric, and raw-memory algorithms.
+- Manage explicit object lifetime, address conversion, and alignment only inside an
+  isolated raw-storage exercise.
 
 ### Required Work
 
@@ -185,14 +187,28 @@ failed survey.
 - Use at least four numeric algorithms, including one scan.
 - Use ranges projections and inspect one structured algorithm result.
 - Diagnose an invalid comparator and an invalidated iterator.
-- Use uninitialized construction and destruction only in an isolated raw-storage lab.
+- Allocate raw storage for several non-trivial objects; use `construct_at`,
+  `destroy_at`, at least one `uninitialized_*` algorithm, and `destroy` or
+  `destroy_n`, including cleanup after an injected constructor failure.
+- Use `addressof`, `pointer_traits`, and `to_address` to distinguish an object address
+  from a pointer-like representation.
+- Use `align` to carve an aligned region from a byte buffer, pair aligned allocation
+  with the matching deallocation, and call `assume_aligned` only after a proven
+  alignment precondition.
+- Feature-gate `start_lifetime_as`; compare its native path with construction of a
+  value from copied bytes without treating arbitrary bytes as a live object.
 - Compare a serial algorithm with its execution-policy interface without claiming a
   speedup.
 
 ### Acceptance
 
 - [ ] Sorted-input and iterator-category requirements are documented and tested.
-- [ ] The raw-memory lab has one owner and no leak under sanitizers.
+- [ ] The raw-memory lab has one storage owner, destroys exactly the constructed
+      elements after success or injected failure, and has no leak under sanitizers.
+- [ ] Every dereferenced pointer designates a live object of the correct type, and no
+      unchecked alignment promise is executed.
+- [ ] Allocation/deallocation form and alignment match; native and fallback lifetime
+      paths record their feature evidence.
 - [ ] Classic and ranges versions agree on behavior.
 - [ ] Parallel-policy discussion identifies callable and exception constraints.
 

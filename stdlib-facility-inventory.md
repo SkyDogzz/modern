@@ -44,6 +44,8 @@ Assessment codes:
 | `unique_ptr`, `shared_ptr`, `weak_ptr` | `<memory>` | C++11 | Core | P23 | Implement, Compare | Required in every profile |
 | Allocator model and `allocator_traits` | `<memory>` | C++11 | Working | B1, S5 | Compare, Retrieve | Use normal allocator as baseline |
 | Raw-memory algorithms | `<memory>` | C++17-23 | Working | B3 | Implement, Diagnose | No manual owner in production artifact |
+| Address and lifetime utilities: `addressof`, `pointer_traits`, `to_address`, `construct_at`, `destroy_at`, `start_lifetime_as` | `<memory>` | C++11-23 | Working | B3 | Implement, Retrieve | Gate `start_lifetime_as` with `__cpp_lib_start_lifetime_as`; construct-value fallback |
+| Alignment utilities and aligned allocation: `align`, `assume_aligned`, `align_val_t` | `<memory>`, `<new>` | C++11-20 | Working | B3 | Implement, Diagnose | Check alignment before promising it; matched aligned delete required |
 | `out_ptr`, `inout_ptr` | `<memory>` | C++23 | Survey | S5, B9 | Compare, Retrieve | `__cpp_lib_out_ptr`; document manual C-adapter fallback |
 | PMR resources and containers | `<memory_resource>` | C++17 | Survey | S5, P52 | Compare | Optional implementation after profiling |
 

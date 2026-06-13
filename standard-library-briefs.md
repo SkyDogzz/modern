@@ -95,6 +95,19 @@ Algorithm families include:
 - numeric folds, reductions, scans, and adjacent operations;
 - raw-memory construction and destruction.
 
+Raw storage is not an object until the relevant lifetime has begun. Raw-memory
+algorithms and `construct_at` create objects; `destroy`, `destroy_n`, and
+`destroy_at` end lifetimes. Cleanup after partial construction must destroy only the
+objects that were successfully created.
+
+`addressof` obtains an actual object address even when unary `&` is overloaded.
+`pointer_traits` and `to_address` bridge pointer-like types without inventing
+ownership. `align` adjusts a pointer and remaining-space count; `assume_aligned`
+asserts a precondition to the implementation and is undefined when that promise is
+false. Aligned allocation must use the matching aligned deallocation form.
+C++23 `start_lifetime_as` is feature-gated and does not make arbitrary object
+representations valid.
+
 Ranges algorithms can return structured result types and accept projections. Views
 compose lazy traversal. Materialize when ownership, stable lifetime, mutation, or
 multiple traversal requires it.
@@ -110,6 +123,9 @@ unavailable or backed by an implementation dependency.
 3. Why can a projection be safer than a custom comparator?
 4. When must a lazy pipeline be materialized?
 5. What new obligations can an execution policy introduce?
+6. Which objects must be destroyed after the third construction in a five-element
+   raw-storage operation throws?
+7. Why must `assume_aligned` follow proof rather than serve as an alignment check?
 
 ## 4. Numerics, Mathematics, Bits, and Randomness
 
