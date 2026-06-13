@@ -262,7 +262,8 @@ Evaluate two operands and an operator in either integer mode or floating-point m
 ### Acceptance Criteria
 
 - [ ] Every operation has normal and invalid-case tests.
-- [ ] Floating equality is described as exact input equality, not approximate analysis.
+- [ ] Floating `==` is described as exact equality of the represented parsed values,
+      not equality of the input text or an approximate numerical comparison.
 - [ ] Stream failure cannot create an infinite loop.
 
 ### Stretch Goal
