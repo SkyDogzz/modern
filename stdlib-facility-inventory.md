@@ -78,8 +78,10 @@ Assessment codes:
 |---|---|---:|---|---|---|---|
 | `array`, `vector`, `deque` | `<array>`, `<vector>`, `<deque>` | C++98/11 | Core | P8, P25, B2 | Implement, Compare | Required |
 | `list`, `forward_list` | `<list>`, `<forward_list>` | C++98/11 | Working | P26, B2 | Implement, Compare | Required |
-| `map`, `multimap`, `set`, `multiset` | `<map>`, `<set>` | C++98 | Core/Working | P25, B2 | Implement, Compare | Multicontainers are Working |
-| `unordered_map`, `unordered_multimap` | `<unordered_map>` | C++11 | Core/Working | P25, B2 | Implement, Compare | Multicontainers are Working |
+| `map`, `set` | `<map>`, `<set>` | C++98 | Core | P25, B2 | Implement, Compare | Required |
+| `multimap`, `multiset` | `<map>`, `<set>` | C++98 | Working | B2 | Implement, Compare | Duplicate-key workload required |
+| `unordered_map` | `<unordered_map>` | C++11 | Core | P25, B2 | Implement, Compare | Required |
+| `unordered_multimap` | `<unordered_map>` | C++11 | Working | B2 | Implement, Compare | Duplicate-key workload required |
 | `unordered_set`, `unordered_multiset` | `<unordered_set>` | C++11 | Working | B2 | Implement, Compare | Required |
 | `stack`, `queue`, `priority_queue` | `<stack>`, `<queue>` | C++98 | Core | P28, B2 | Implement, Compare | Required |
 | Node handles, merge, heterogeneous lookup and erasure | associative headers | C++17-23 | Working | B2, B9 | Implement, Retrieve | Gate heterogeneous erasure |
@@ -138,9 +140,11 @@ Assessment codes:
 | Facility | Header | Standard | Tier | Exercise | Assessment | Feature detection or fallback |
 |---|---|---:|---|---|---|---|
 | `thread`, `jthread`, stop tokens | `<thread>`, `<stop_token>` | C++11/20 | Core | P44, P47 | Implement, Diagnose | `__cpp_lib_jthread` |
-| Mutex and lock families | `<mutex>`, `<shared_mutex>` | C++11/14/17 | Core/Working | P45, B8 | Implement, Compare | Shared/timed variants are Working |
+| `mutex`, `lock_guard`, `unique_lock`, `scoped_lock` | `<mutex>` | C++11/17 | Core | P45 | Implement, Diagnose | Required |
+| Timed/shared mutexes and `shared_lock` | `<mutex>`, `<shared_mutex>` | C++11/14/17 | Working | B8 | Implement, Compare | Timeout/read-mostly semantics must be justified |
 | Condition variables | `<condition_variable>` | C++11 | Core | P46 | Implement, Diagnose | Required |
-| Futures, promises, packaged tasks, async | `<future>` | C++11 | Core/Working | P48, B8 | Implement, Compare | Packaged task is Working |
+| `future`, `promise`, `async` | `<future>` | C++11 | Core | P48 | Implement, Compare | Required |
+| `packaged_task` | `<future>` | C++11 | Working | B8 | Implement, Compare | Compare callable ownership and shared-state creation |
 | Latches, barriers, semaphores | synchronization headers | C++20 | Working | B8 | Implement | Feature-test each primitive |
 | Atomic scalars and memory ordering | `<atomic>` | C++11 | Core | P50 | Implement, Diagnose | Required |
 | `atomic_ref`, wait, notify | `<atomic>` | C++20 | Working | B8 | Implement, Compare | `__cpp_lib_atomic_ref`, `__cpp_lib_atomic_wait` |
