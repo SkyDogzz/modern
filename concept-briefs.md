@@ -472,10 +472,11 @@ invalid inputs in both compile-time and runtime paths.
 
 ## 18. Threads, Races, and Locks
 
-A thread must have a defined owner and shutdown path. `std::thread` requires an
-explicit join or detach decision; detached threads are usually unsuitable for
-owned application work. `std::jthread` joins during destruction and supports stop
-tokens.
+A thread must have a defined owner and shutdown path. Destroying a joinable
+`std::thread` calls `std::terminate`, including when an exception bypasses a manual
+`join`. Use a scope-bound joining owner or `std::jthread` for application work.
+Detached threads are usually unsuitable for owned work. `std::jthread` joins during
+destruction and supports stop tokens.
 
 Two evaluations conflict when they access overlapping memory and at least one
 modifies the memory or starts or ends an object's lifetime. A data race occurs when
@@ -491,7 +492,7 @@ threads; do not recreate it with an unprotected Boolean flag.
 
 **Review**
 
-1. What happens if a joinable `std::thread` is destroyed?
+1. What happens if a joinable `std::thread` is destroyed during stack unwinding?
 2. What conditions form a data race, and why do relaxed atomic operations differ?
 3. What should a mutex protect?
 4. Why is detached ownership difficult?

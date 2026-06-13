@@ -30,7 +30,7 @@ Focus on:
 
 ### Learning Outcomes
 
-- Start, join, and own `std::thread` objects.
+- Start work with `std::thread` and give every thread a scope-bound joining owner.
 - Pass values and references to threads deliberately.
 - Define conflicting evaluations and every condition required for a data race.
 - Diagnose one data race with TSan.
@@ -41,15 +41,19 @@ Run deterministic worker tasks, then isolate and repair one shared-counter race.
 
 ### Requirements
 
-- Join every started thread on all normal paths.
+- Use `std::jthread` or a scope-bound join guard so every started thread is joined
+  during normal and exceptional exits.
+- Keep direct `std::thread::join` mechanics in a small no-throw experiment.
 - Demonstrate safe value transfer and one explicitly lifetime-bounded reference transfer.
 - Keep an intentionally racy counter in a separate TSan executable.
 - Fix the race first with a mutex.
 - Explain why detaching would break the ownership model.
+- Test cleanup when an operation throws after a worker starts.
 
 ### Acceptance Criteria
 
-- [ ] No joinable thread reaches destructor in normal code.
+- [ ] No joinable `std::thread` reaches its destructor on any tested exit path.
+- [ ] An exception-path test demonstrates deterministic joining during unwinding.
 - [ ] The passing suite is race-free under TSan where supported.
 - [ ] The learner identifies overlapping conflicting evaluations, potential
       concurrency, the non-atomic-access requirement, and missing happens-before.
@@ -58,7 +62,8 @@ Run deterministic worker tasks, then isolate and repair one shared-counter race.
 
 ### Stretch Goal
 
-Write a small RAII join guard, then compare it with `std::jthread`.
+Compare a supplied or implemented RAII join guard with `std::jthread` cancellation
+and destruction behavior.
 
 ---
 
