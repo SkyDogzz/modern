@@ -6,6 +6,8 @@ than memorizing declarations.
 
 ## 1. Vocabulary Types, Utilities, and Callables
 
+**Further reference:** [Standard-Library Brief 1 sources](references.md#standard-library-brief-references).
+
 Vocabulary types communicate interface states:
 
 - `pair` and `tuple` hold a fixed heterogeneous product;
@@ -40,6 +42,8 @@ normal containers until measurement justifies allocator complexity.
 
 ## 2. Container Families and Adaptors
 
+**Further reference:** [Standard-Library Brief 2 sources](references.md#standard-library-brief-references).
+
 Select containers from operations, ordering, iterator/reference stability, memory
 layout, and measured workload.
 
@@ -68,6 +72,8 @@ mutation patterns matter.
 5. What tradeoff do flat associative containers make?
 
 ## 3. Iterators, Algorithms, and Ranges
+
+**Further reference:** [Standard-Library Brief 3 sources](references.md#standard-library-brief-references).
 
 Iterator categories and concepts express movement and access. Iterator adaptors
 change how algorithms read or write:
@@ -107,6 +113,8 @@ unavailable or backed by an implementation dependency.
 
 ## 4. Numerics, Mathematics, Bits, and Randomness
 
+**Further reference:** [Standard-Library Brief 4 sources](references.md#standard-library-brief-references).
+
 `numeric_limits` describes representational properties. `<cmath>` supplies
 mathematical operations and classification such as finite, infinite, and NaN checks.
 `<numbers>` supplies standard mathematical constants.
@@ -138,6 +146,8 @@ is not itself a general-purpose engine. Tests should inject or record seeds.
 
 ## 5. Text, Streams, Formatting, and Buffers
 
+**Further reference:** [Standard-Library Brief 5 sources](references.md#standard-library-brief-references).
+
 I/O streams maintain formatting state and error state. A failed extraction leaves the
 stream in a failure state until handled. Formatted and unformatted operations have
 different whitespace and delimiter behavior.
@@ -167,6 +177,8 @@ text-processing solution.
 
 ## 6. Filesystem and Chrono Breadth
 
+**Further reference:** [Standard-Library Brief 6 sources](references.md#standard-library-brief-references).
+
 Filesystem operations work with `path` values and report errors through throwing or
 `error_code` overloads. Lexical normalization does not access the filesystem;
 canonicalization does. Symlinks, permissions, races, and changing files require
@@ -193,6 +205,8 @@ timestamps. Parse and format through documented locale/timezone assumptions.
 5. What runtime dependency does timezone conversion require?
 
 ## 7. Diagnostics, Runtime Support, and Compatibility
+
+**Further reference:** [Standard-Library Brief 7 sources](references.md#standard-library-brief-references).
 
 `source_location` captures call-site file, line, column, and function information.
 `stacktrace` captures implementation-dependent execution context where supported.
@@ -221,6 +235,8 @@ thread-safety. Prefer the C++ library when it expresses the same operation safel
 
 ## 8. Concurrency Library Breadth
 
+**Further reference:** [Standard-Library Brief 8 sources](references.md#standard-library-brief-references).
+
 Shared and timed mutexes fit workloads with specific read/write or timeout semantics;
 they are not automatically faster. Latches coordinate one countdown event. Barriers
 coordinate repeated phases. Semaphores count available permits.
@@ -247,6 +263,8 @@ behavior.
 
 ## 9. C++23 Library Additions
 
+**Further reference:** [Standard-Library Brief 9 sources](references.md#standard-library-brief-references).
+
 C++23 adds vocabulary, I/O, ranges, containers, utility, diagnostics, and
 multidimensional-view facilities. Representative additions include:
 
@@ -270,6 +288,8 @@ curriculum requires portability. A compiler version check alone is insufficient.
 5. What evidence is required before claiming a native C++23 path works?
 
 ## 10. Facility Selection and Reference Navigation
+
+**Further reference:** [Standard-Library Brief 10 sources](references.md#standard-library-brief-references).
 
 Standard-library fluency means selecting a suitable abstraction and verifying exact
 requirements. For each task:

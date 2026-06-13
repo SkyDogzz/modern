@@ -4,6 +4,10 @@ This is the completion inventory for the Standard-Library Breadth route. Inciden
 use does not count as coverage: each Core or Working item requires the named exercise
 and assessment evidence.
 
+Feature-detection and fallback entries use the sourced, dated
+[compatibility workaround register](toolchain-support.md#compatibility-workaround-register).
+An unregistered workaround cannot satisfy a route gate.
+
 Exercise identifiers:
 
 - `Pnn` refers to an existing numbered project.

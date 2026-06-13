@@ -3,9 +3,13 @@
 These briefs provide the minimum conceptual preparation for the roadmap projects.
 They are not a language reference. Follow links from each phase, run every small
 example, answer the review questions without notes, and consult a current standard
-library reference for exact signatures and guarantees.
+library reference for exact signatures and guarantees. The fixed C++23 draft,
+searchable clauses, maintained reference pages, and implementation sources are
+classified in [references.md](references.md).
 
 ## 1. Translation and Execution
+
+**Further reference:** [Concept Brief 1 sources](references.md#concept-brief-references).
 
 A C++ source file is translated before it is executed:
 
@@ -38,6 +42,8 @@ by convention; non-zero values report failure.
 4. What observable behavior does an exit status provide?
 
 ## 2. Initialization, Types, and Integer Behavior
+
+**Further reference:** [Concept Brief 2 sources](references.md#concept-brief-references).
 
 Every object has a type. Prefer initialization at the declaration:
 
@@ -77,6 +83,8 @@ low-level reinterpretation. Prefer designs that do not need the latter two.
 
 ## 3. Control Flow, Functions, and Scope
 
+**Further reference:** [Concept Brief 3 sources](references.md#concept-brief-references).
+
 Use `if` for conditions, `switch` for a closed set of discrete alternatives, and
 loops when repetition is required. Every loop needs a progress argument and a
 reachable termination condition.
@@ -106,6 +114,8 @@ of the interface.
 4. What does a non-const reference communicate?
 
 ## 4. Records, Enums, and Basic Containers
+
+**Further reference:** [Concept Brief 4 sources](references.md#concept-brief-references).
 
 Use a `struct` for a passive record whose public values form a valid state. Use a
 scoped enum for a closed domain:
@@ -137,6 +147,8 @@ Never retain an observer across an operation that may invalidate it.
 
 ## 5. References, Pointers, Views, and C Strings
 
+**Further reference:** [Concept Brief 5 sources](references.md#concept-brief-references).
+
 A reference aliases an existing object and cannot represent absence. A pointer can
 represent an object address or no object with `nullptr`. Neither owns an object
 unless an interface explicitly says otherwise.
@@ -164,6 +176,8 @@ result pointer and an error code.
 5. What two conditions must be checked after `from_chars`?
 
 ## 6. Tests, Debugging, CMake, and Git
+
+**Further reference:** [Concept Brief 6 sources](references.md#concept-brief-references).
 
 A smoke test proves that a program starts and reports expected success. A unit
 test exercises isolated logic. An integration test crosses component boundaries.
@@ -196,6 +210,8 @@ Review `git diff` before committing; never commit build directories or secrets.
 
 ## 7. Classes, Invariants, and Special Members
 
+**Further reference:** [Concept Brief 7 sources](references.md#concept-brief-references).
+
 A class protects an invariant by controlling construction and mutation. Initialize
 members in the member initializer list. Mark observer member functions `const`.
 
@@ -227,6 +243,8 @@ Destruction occurs in reverse construction order.
 
 ## 8. Storage Duration and Lifetime
 
+**Further reference:** [Concept Brief 8 sources](references.md#concept-brief-references).
+
 Automatic objects normally live until their block exits. Static objects live for
 the program duration. Thread-local objects live for a thread duration. Dynamic
 objects live until their owning mechanism releases them.
@@ -246,6 +264,8 @@ some temporary lifetimes, but views and pointers generally do not.
 4. Does constructing a `string_view` extend string lifetime?
 
 ## 9. Errors, Exceptions, and Guarantees
+
+**Further reference:** [Concept Brief 9 sources](references.md#concept-brief-references).
 
 Choose an error mechanism according to the interface:
 
@@ -280,6 +300,8 @@ Exception guarantees:
 
 ## 10. RAII, Copy, Move, and Ownership
 
+**Further reference:** [Concept Brief 10 sources](references.md#concept-brief-references).
+
 RAII binds a resource to object lifetime: acquire during successful construction,
 release in the destructor. This applies to memory, files, locks, sockets, temporary
 directories, and process handles.
@@ -312,6 +334,8 @@ observe without extending that lifetime.
 
 ## 11. Containers, Iterators, and Algorithms
 
+**Further reference:** [Concept Brief 11 sources](references.md#concept-brief-references).
+
 Choose a container from required operations, complexity, ordering, invalidation,
 memory layout, and measured workload. Average hash-table lookup is not a worst-case
 guarantee.
@@ -338,6 +362,8 @@ this roadmap exists to teach templates.
 5. When is a standard container adaptor sufficient?
 
 ## 12. Lambdas, Callables, and Callback Lifetime
+
+**Further reference:** [Concept Brief 12 sources](references.md#concept-brief-references).
 
 A lambda creates a callable object. Capture by value owns a copy; capture by
 reference observes an external object. A callback that outlives a referenced
@@ -366,6 +392,8 @@ forbidden. Do not invoke unknown user code while holding an internal mutex.
 5. Why must mutation during dispatch be specified?
 
 ## 13. Ranges and Views
+
+**Further reference:** [Concept Brief 13 sources](references.md#concept-brief-references).
 
 A range provides a beginning and an end. A view is a lightweight, usually lazy
 range adaptor. Many views reference an external range, while owning and generated
@@ -397,6 +425,8 @@ Safe pipeline order for records:
 
 ## 14. Filesystem, Formatting, and Chrono
 
+**Further reference:** [Concept Brief 14 sources](references.md#concept-brief-references).
+
 `std::filesystem::path` represents paths; do not treat paths as arbitrary text.
 Traversal must define recursion, permission, error, and symlink policy. Non-throwing
 overloads report `std::error_code`; throwing overloads provide exceptions.
@@ -417,6 +447,8 @@ wait in real time.
 4. Which clock should measure elapsed work?
 
 ## 15. Regular Types, Operators, and Polymorphism
+
+**Further reference:** [Concept Brief 15 sources](references.md#concept-brief-references).
 
 A regular value type behaves predictably under construction, copy/move, equality,
 and assignment. Overloaded operators should preserve conventional meaning and
@@ -444,6 +476,8 @@ behind value-like APIs.
 5. Which design favors a closed set of alternatives?
 
 ## 16. Templates, Deduction, and Forwarding
+
+**Further reference:** [Concept Brief 16 sources](references.md#concept-brief-references).
 
 Templates are blueprints instantiated for concrete arguments. Definitions are
 usually visible where instantiation occurs. Deduction determines template
@@ -474,6 +508,8 @@ specialization. Unsupported calls should fail with readable diagnostics.
 
 ## 17. Constant Evaluation
 
+**Further reference:** [Concept Brief 17 sources](references.md#concept-brief-references).
+
 `constexpr` means an entity can participate in constant evaluation when its inputs
 and operations permit. `consteval` requires compile-time evaluation. `static_assert`
 checks a compile-time condition.
@@ -489,6 +525,8 @@ invalid inputs in both compile-time and runtime paths.
 3. What makes a compile-time calculation worthwhile?
 
 ## 18. Threads, Races, and Locks
+
+**Further reference:** [Concept Brief 18 sources](references.md#concept-brief-references).
 
 A thread must have a defined owner and shutdown path. Destroying a joinable
 `std::thread` calls `std::terminate`, including when an exception bypasses a manual
@@ -518,6 +556,8 @@ threads; do not recreate it with an unprotected Boolean flag.
 
 ## 19. Condition Variables, Cancellation, and Task Results
 
+**Further reference:** [Concept Brief 19 sources](references.md#concept-brief-references).
+
 A condition variable waits for a state predicate while atomically releasing and
 reacquiring a mutex. Always wait with a predicate because wakeups can be spurious.
 Closing a queue must wake every waiter and make future behavior explicit.
@@ -539,6 +579,8 @@ state.
 
 ## 20. Atomics and the Memory Model
 
+**Further reference:** [Concept Brief 20 sources](references.md#concept-brief-references).
+
 Atomic operations prevent data races on the atomic object, but they do not
 automatically protect a multi-object invariant. Start with sequential consistency.
 Weaker ordering is justified only by a written happens-before argument and tests
@@ -555,6 +597,8 @@ both correct and beneficial. Lock-free does not mean wait-free or faster.
 4. Does a passing stress test prove memory-order correctness?
 
 ## 21. Measurement, Profiling, and PMR
+
+**Further reference:** [Concept Brief 21 sources](references.md#concept-brief-references).
 
 Benchmarking measures a workload; profiling attributes cost. Record hardware,
 compiler, flags, build type, input, warmup, repetitions, and noise. Optimize the
@@ -573,6 +617,8 @@ evidence justifies the complexity.
 4. What lifetime relation must a PMR resource satisfy?
 
 ## 22. Verification, Packaging, and Maintenance
+
+**Further reference:** [Concept Brief 22 sources](references.md#concept-brief-references).
 
 Verification combines examples, unit and integration tests, properties, fuzzing,
 sanitizers, static analysis, concurrency tests, and review. Coverage shows executed

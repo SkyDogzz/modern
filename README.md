@@ -11,8 +11,9 @@ facility inventory, with survey or reference-only treatment for specialized area
 It does not mean memorizing every declaration or mastering every platform API.
 
 See [curriculum-routes.md](curriculum-routes.md) for completion claims, prerequisites,
-time ranges, and coverage tiers. Use the concept briefs, a current C++ reference,
-compiler documentation, code review, and sustained practice together.
+time ranges, and coverage tiers. Use the concept briefs, the
+[reference index](references.md), compiler documentation, code review, and sustained
+practice together.
 
 The authoritative standard-library mapping is
 [stdlib-facility-inventory.md](stdlib-facility-inventory.md). Compiler and library
@@ -63,6 +64,7 @@ Phase documents:
 - [Standard-Library Breadth Labs](standard-library-breadth.md)
 - [Standard-Library Breadth Briefs](standard-library-briefs.md)
 - [Objective Assessment and Retention](assessment-and-retention.md)
+- [Reference and Source Index](references.md)
 
 Use [concept-briefs.md](concept-briefs.md) before each project,
 [project-template.md](project-template.md) for project records, and
@@ -170,6 +172,7 @@ modern-cpp-roadmap/
 |-- standard-library-breadth.md
 |-- cpp20-23-delta.md
 |-- assessment-and-retention.md
+|-- references.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md

@@ -167,6 +167,7 @@ Record the immutable evidence bundle from
 - a requirement-to-code/test/command/explanation map;
 - clean configure, build, test, and run commands with representative output;
 - required warning, formatter, analyzer, sanitizer, or unsupported evidence;
+- standard clause/reference and dated implementation source for compatibility claims;
 - defect reproduction, diagnosis, correction, and regression test.
 
 Subjective words such as explain, justify, safe, portable, and maintainable use the

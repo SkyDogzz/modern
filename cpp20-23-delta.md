@@ -17,6 +17,11 @@ If a standardized feature has no dedicated macro, use a focused compile probe.
 Compiler version checks may select known workarounds only after the feature check;
 they are never the sole evidence of support.
 
+Use [references.md](references.md) for the fixed C++23 draft, searchable clauses,
+WG21 feature history, and maintained API lookup. Use
+[toolchain-support.md](toolchain-support.md) only for implementation availability
+and registered fallbacks.
+
 ## Representative Feature Lineage
 
 ### C++20 Language
