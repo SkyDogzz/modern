@@ -21,6 +21,8 @@ completing every specialization. It means:
 The Standard-Library Breadth route is complete only when every inventory item marked
 Core mastery or Working familiarity has assessment evidence. A Survey item requires
 the named comparison or review exercise. Reference-only items never block completion.
+The authoritative mapping is
+[stdlib-facility-inventory.md](stdlib-facility-inventory.md).
 
 ## Route A: Professional Foundations
 
@@ -58,6 +60,9 @@ estimate of 66-96 hours. The complete route from a new learner therefore targets
 **Completion claim:** mostly full standard-library breadth at the documented tiers,
 not memorization of every overload, locale facet, C compatibility declaration, or
 specialized numerical facility.
+
+Toolchain evidence follows [toolchain-support.md](toolchain-support.md); unavailable
+facilities cannot be silently counted as complete.
 
 ## Route C: Advanced Language and Delivery
 
@@ -123,4 +128,3 @@ specializations:
 
 These are planning ranges, not promises. Record actual completion time and revise the
 estimates from learner evidence.
-

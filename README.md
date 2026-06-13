@@ -14,6 +14,10 @@ See [curriculum-routes.md](curriculum-routes.md) for completion claims, prerequi
 time ranges, and coverage tiers. Use the concept briefs, a current C++ reference,
 compiler documentation, code review, and sustained practice together.
 
+The authoritative standard-library mapping is
+[stdlib-facility-inventory.md](stdlib-facility-inventory.md). Compiler and library
+capabilities are recorded using [toolchain-support.md](toolchain-support.md).
+
 ## AI Disclosure and Learning Policy
 
 All README files and roadmap documentation in this repository were created using
@@ -130,6 +134,8 @@ specializations require feature detection and documented fallbacks.
 modern-cpp-roadmap/
 |-- README.md
 |-- curriculum-routes.md
+|-- stdlib-facility-inventory.md
+|-- toolchain-support.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md
