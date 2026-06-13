@@ -280,6 +280,11 @@ RAII binds a resource to object lifetime: acquire during successful construction
 release in the destructor. This applies to memory, files, locks, sockets, temporary
 directories, and process handles.
 
+A destructor must not be the only place to report a fallible finalization operation.
+For buffered output or transactional resources, provide an explicit `close`,
+`finish`, or `commit` operation that returns the failure. The no-throw destructor
+remains a best-effort cleanup fallback for callers that did not finalize explicitly.
+
 Manual owners need correct destruction and copy/move behavior. A copy creates an
 independent logical value. A move transfers resources and leaves the source valid
 but otherwise unspecified unless documented.
@@ -295,10 +300,11 @@ observe without extending that lifetime.
 **Review**
 
 1. What two events does RAII couple?
-2. What must remain true about a moved-from object?
-3. Why can `noexcept` affect vector relocation?
-4. Does `std::move` itself transfer a resource?
-5. Why is shared ownership not a default graph design?
+2. Why might a file owner need an explicit fallible `close` operation?
+3. What must remain true about a moved-from object?
+4. Why can `noexcept` affect vector relocation?
+5. Does `std::move` itself transfer a resource?
+6. Why is shared ownership not a default graph design?
 
 ## 11. Containers, Iterators, and Algorithms
 

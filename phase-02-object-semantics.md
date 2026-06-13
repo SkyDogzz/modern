@@ -214,13 +214,19 @@ selected resource model explicitly.
 
 - Acquire in a constructor or named factory.
 - Release in a non-throwing destructor.
+- Provide an explicit idempotent `close()` or `finish()` operation that reports
+  finalization failure; the destructor performs only no-throw fallback cleanup.
 - Delete copy construction and copy assignment.
 - Return `expected` from a factory or throw from construction; document the choice.
 - Prove cleanup after a later operation fails.
+- Inject or fake one close failure so it can be tested portably.
 
 ### Acceptance Criteria
 
 - [ ] Missing file, successful use, and cleanup-after-failure are tested.
+- [ ] Explicit close success and failure are tested without relying on a destructor
+      to report the error.
+- [ ] Operations after a successful or failed close follow a documented state policy.
 - [ ] The wrapper cannot be copied accidentally.
 - [ ] Public failure behavior matches the implementation.
 
