@@ -138,7 +138,7 @@ IDs below refer to [references.md](references.md#canonical-sources).
 | range-for lifetime extension | bind the owning range/object to a named local before iteration | STD23 `[stmt.ranged]`, [P2718R0](https://wg21.link/p2718r0) | GCC-L, LLVM-L, MSVC-S | 2026-06-13 | the range-for macro/probe and lifetime tests pass everywhere |
 | named universal character escapes | numeric universal character name with the same code point | STD23 `[lex.universal.char]`, [P2071R2](https://wg21.link/p2071r2) | GCC-L, LLVM-L, MSVC-S | 2026-06-13 | the language macro and encoding probe pass everywhere |
 | modules | installed header/package target | STD23 `[module]`, [P1103R3](https://wg21.link/p1103r3) | GCC-L, LLVM-L, MSVC-S | 2026-06-13 | compiler, generator, dependency scanning, install, and consumer workflows pass |
-| `generator` | iterator/range implementation or the documented small coroutine type | STD23 `[coro.generator]`, [P2502R2](https://wg21.link/p2502r2) | GCC-S, LLVM-S, MSVC-S/MSSTL | 2026-06-13 | native generator macro and frame-lifetime contract pass everywhere |
+| `generator` | iterator/range implementation or an exercise-local small coroutine type | STD23 `[coro.generator]`, [P2502R2](https://wg21.link/p2502r2) | GCC-S, LLVM-S, MSVC-S/MSSTL | 2026-06-13 | native generator macro and frame-lifetime contract pass everywhere |
 
 When a workaround is exercised, the learner's feature record links the relevant row,
 installed versions, observed macro/probe, and native/fallback behavior test. Updating
