@@ -15,7 +15,7 @@ Assessment codes:
 
 - **Implement:** tested implementation using the facility.
 - **Compare:** written selection or tradeoff comparison backed by examples.
-- **Diagnose:** repair or explain supplied incorrect code.
+- **Diagnose:** repair or explain provided incorrect code.
 - **Retrieve:** locate exact requirements in a current reference and cite them.
 - **Transfer:** solve an unseen facility-selection problem.
 
@@ -156,4 +156,3 @@ Route B completion requires:
 - a toolchain feature record using `toolchain-support.md`;
 - B10, an unseen facility-selection and documentation-navigation assessment;
 - no unsupported facility silently counted as complete.
-

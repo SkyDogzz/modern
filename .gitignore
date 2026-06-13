@@ -1,0 +1,19 @@
+# CMake build trees at any project depth
+build/
+build-*/
+out/
+cmake-build-*/
+
+# Compiler and linker output
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Tool output
+compile_commands.json
+.cache/

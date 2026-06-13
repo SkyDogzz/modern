@@ -62,8 +62,8 @@ Run deterministic worker tasks, then isolate and repair one shared-counter race.
 
 ### Stretch Goal
 
-Compare a supplied or implemented RAII join guard with `std::jthread` cancellation
-and destruction behavior.
+Compare a scope-bound RAII join guard with `std::jthread` cancellation and
+destruction behavior.
 
 ---
 

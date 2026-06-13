@@ -152,7 +152,8 @@ Write a function that converts every enum value to display text.
 
 **Estimated time:** 3-5 hours
 
-**Tooling stage:** Add a small assertion-based test executable supplied by the roadmap.
+**Tooling stage:** Add a small assertion-based test executable using the
+[supplied minimal harness](support/minitest/README.md).
 
 ### Learning Outcomes
 

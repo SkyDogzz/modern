@@ -89,7 +89,8 @@ into a library usable by a separate clean consumer.
 
 - Provide namespaced exported targets and generated package configuration files.
 - Support `cmake --install` and verify a separate consumer through `find_package`.
-- Use the supplied package skeleton before customizing it.
+- Use the [supplied package skeleton](support/package-skeleton/README.md) before
+  customizing it.
 - Document one dependency strategy: system package, FetchContent, package manager,
   or vendoring; pin or constrain versions.
 - Provide developer, sanitizer, and release presets.
@@ -251,7 +252,7 @@ Maintain the released capstone instead of immediately adding another greenfield 
 
 ### Requirements
 
-- Use a real or mentor-supplied defect report with incomplete initial information.
+- Use a real or mentor-provided defect report with incomplete initial information.
 - Reproduce the defect on the last release and add a failing regression test.
 - Fix the root cause and document debugger, sanitizer, analyzer, or profiler evidence.
 - Review source, binary, behavioral, data-format, and dependency compatibility.

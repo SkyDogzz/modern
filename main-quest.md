@@ -11,9 +11,10 @@ design and documentation effort only in the named portfolio projects.
 
 Optional specializations never block the next phase.
 
-Core labs may use supplied starter code and be completed as diagnosis, repair,
-compile-fail, or code-reading exercises when the phase specification permits. They
-do not each require a standalone repository or greenfield implementation.
+Core labs may use the [supplied starter and broken-code fixtures](projects/README.md)
+and be completed as diagnosis, repair, compile-fail, or code-reading exercises when
+the phase specification permits. They do not each require a standalone repository
+or greenfield implementation.
 
 ## Phase 1 - Required Foundations
 

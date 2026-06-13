@@ -439,7 +439,8 @@ Store and execute heterogeneous commands through one `Command` value type.
 ### Requirements
 
 - Implement an inheritance version first.
-- Implement a manually type-erased value wrapper from supplied structural guidance.
+- Implement a manually type-erased value wrapper from the
+  [supplied structural guidance](projects/43-type-erased-command-system/README.md).
 - Define copyability, movability, and empty state.
 - Add commands dynamically at runtime.
 - Compare with `std::function` and variant alternatives.

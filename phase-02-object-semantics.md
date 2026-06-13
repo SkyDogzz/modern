@@ -53,7 +53,8 @@ Build a small bounded counter and an instrumented `Trace` type used by later lab
 
 ### Stretch Goal
 
-Use type traits to inspect copy and move capabilities; treat trait syntax as supplied.
+Use type traits to inspect copy and move capabilities; consult the facility inventory
+for the required trait scope.
 
 ---
 
@@ -96,7 +97,8 @@ Use the Project 15 `Trace` type to predict and observe object creation and destr
 ### Stretch Goal
 
 Observe thread-local construction and destruction in one short-lived `std::jthread`
-using supplied code; concurrency is not yet the learning objective.
+using the [supplied example](projects/16-lifetime-storage-visualizer/README.md);
+concurrency is not yet the learning objective.
 
 ---
 
@@ -275,7 +277,8 @@ Build tiny experiments that explain the mechanics hidden by `std::vector` and
 
 ### Stretch Goal
 
-Use allocator-failure injection supplied by the test harness to observe cleanup.
+Use the [supplied allocation-failure injection](support/allocation-failure/README.md)
+to observe cleanup.
 
 ---
 

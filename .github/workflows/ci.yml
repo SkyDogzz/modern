@@ -1,0 +1,63 @@
+name: curriculum-support
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  support:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cxx: [g++, clang++]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Configure
+        env:
+          CXX: ${{ matrix.cxx }}
+        run: cmake --preset debug
+
+      - name: Build
+        run: cmake --build --preset debug
+
+      - name: Test
+        run: ctest --preset debug
+
+      - name: Configure package skeleton
+        env:
+          CXX: ${{ matrix.cxx }}
+        run: >-
+          cmake -S support/package-skeleton
+          -B build/package-skeleton
+          -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Build and test package skeleton
+        run: |
+          cmake --build build/package-skeleton
+          ctest --test-dir build/package-skeleton --output-on-failure
+
+      - name: Install package skeleton
+        run: >-
+          cmake --install build/package-skeleton
+          --prefix "$PWD/build/package-prefix"
+
+      - name: Configure clean package consumer
+        env:
+          CXX: ${{ matrix.cxx }}
+        run: >-
+          cmake -S support/package-skeleton/consumer
+          -B build/package-consumer
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_PREFIX_PATH="$PWD/build/package-prefix"
+
+      - name: Build and test package consumer
+        run: |
+          cmake --build build/package-consumer
+          ctest --test-dir build/package-consumer --output-on-failure

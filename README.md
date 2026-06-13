@@ -130,7 +130,8 @@ than inferring support from language mode.
 ## Testing and Tooling Progression
 
 1. Project 1 uses a direct compiler command without test infrastructure.
-2. Projects 2-5 add CTest smoke checks and a supplied minimal assertion pattern.
+2. Projects 2-5 add CTest smoke checks and the
+   [supplied minimal assertion pattern](support/minitest/README.md).
 3. Projects 6-13 use focused test executables while language structure remains the
    primary objective.
 4. Project 14 adopts one maintained test framework or a documented repository
@@ -158,6 +159,10 @@ modern-cpp-roadmap/
 |-- phase-04-generic-programming.md
 |-- phase-05-concurrency-advanced.md
 |-- phase-06-professional-delivery.md
+|-- CMakeLists.txt
+|-- CMakePresets.json
+|-- cmake/
+|-- support/
 |-- projects/
 |   |-- 01-compile-run-diagnostics/
 |   `-- ...
@@ -166,6 +171,8 @@ modern-cpp-roadmap/
 
 Start with one source file. Add source libraries, public include directories,
 install rules, and packaging only when the relevant project introduces them.
+Supplied infrastructure is indexed in [support/README.md](support/README.md), and
+starter or broken fixtures are indexed in [projects/README.md](projects/README.md).
 
 ## Full Project Order
 
