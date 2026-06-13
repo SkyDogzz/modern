@@ -110,7 +110,8 @@ Compare the same two behaviors using `std::variant`.
 
 **Category:** Core project
 
-**Prerequisites:** Projects 34-35 and Phase 2 ownership.
+**Prerequisites:** Projects 34-35 and competencies O2-O3 from
+[diagnostic-placement.md](diagnostic-placement.md).
 
 **Difficulty:** 4/5
 
@@ -289,7 +290,8 @@ Create a compile-time validated fixed-size conversion table.
 
 **Category:** Core project
 
-**Prerequisites:** Projects 38-39 and Phase 3 ranges.
+**Prerequisites:** Projects 38-39 and competency L2 from
+[diagnostic-placement.md](diagnostic-placement.md).
 
 **Difficulty:** 4/5
 

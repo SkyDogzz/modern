@@ -106,7 +106,8 @@ Add a deque comparison focused only on its invalidation rules.
 
 **Category:** Core project
 
-**Prerequisites:** Projects 25-26, Phase 2 lifetime rules, and
+**Prerequisites:** Projects 25-26, competencies O1-O2 from
+[diagnostic-placement.md](diagnostic-placement.md), and
 [Concept Brief 12](concept-briefs.md#12-lambdas-callables-and-callback-lifetime).
 
 **Difficulty:** 4/5
