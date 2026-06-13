@@ -57,6 +57,7 @@ Phase documents:
 - [Phase 4 - Generic Programming and Design](phase-04-generic-programming.md)
 - [Phase 5 - Concurrency, Performance, and Advanced Facilities](phase-05-concurrency-advanced.md)
 - [Phase 6 - Delivery and Maintenance](phase-06-professional-delivery.md)
+- [C++20-to-C++23 Delta](cpp20-23-delta.md)
 - [Standard-Library Breadth Labs](standard-library-breadth.md)
 - [Standard-Library Breadth Briefs](standard-library-briefs.md)
 
@@ -160,6 +161,7 @@ modern-cpp-roadmap/
 |-- toolchain-support.md
 |-- standard-library-briefs.md
 |-- standard-library-breadth.md
+|-- cpp20-23-delta.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md
@@ -267,7 +269,7 @@ Surveys S1-S5 are integrated into B1-B9 and remain required Route B evidence.
 50. Atomics and Memory Model Lab - core lab
 51. Profiling Before Optimization - core project
 52. Profiled PMR Text Processor - optional specialization
-53. Optional Modern Feature Tracks - optional specialization
+53. Retired: modern feature tracks moved to D5-D7
 
 ### Phase 6 - Delivery and Maintenance
 
@@ -275,6 +277,14 @@ Surveys S1-S5 are integrated into B1-B9 and remain required Route B evidence.
 55. Package and Release One Project - delivery project
 56. Milestone-Driven Capstone - delivery project
 57. Maintenance and Patch Release - delivery project
+
+### C++20-to-C++23 Delta
+
+D1. C++20 Language Foundations - required delta lab
+D2. C++20 Library Integration - required delta lab
+D3. C++23 Language Delta - required delta lab
+D4. C++23 Library Delta and Feature Inventory - required delta assessment
+D5-D7. Modules, coroutine generators, and mdspan - optional delta specializations
 
 ## Effort Model
 
@@ -306,7 +316,9 @@ README does not duplicate that list.
 
 ## Optional Specializations
 
-Modules, custom coroutine promise types, `std::mdspan`, PMR specialization,
-manual type erasure, serialization frameworks, and weak memory ordering are not
-required to write professional C++. Treat them as focused advanced study after
-ownership, library, testing, build, and concurrency fundamentals are reliable.
+Module implementation, custom coroutine promise types, `std::mdspan` implementation,
+PMR specialization, manual type erasure, serialization frameworks, and weak memory
+ordering are not required to write professional C++. D1-D4 still require conceptual
+comparison, detection, and representative C++20/C++23 practice. Treat D5-D7 as
+focused advanced study after ownership, library, testing, build, and concurrency
+fundamentals are reliable.

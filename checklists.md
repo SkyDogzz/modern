@@ -163,7 +163,18 @@ never in the normal passing test suite.
 - [ ] I can use threads, `jthread`, mutexes, condition variables, futures, and
       atomics deliberately.
 - [ ] I profile before optimizing and distinguish measurement from speculation.
-- [ ] I know that PMR, modules, coroutines, `mdspan`, and weak ordering are optional.
+- [ ] I know that PMR, weak ordering, and the D5-D7 implementation tracks for
+      modules, coroutine generators, and `mdspan` are optional.
+
+### C++20-to-C++23 Delta Gate
+
+- [ ] I passed D1-D4.
+- [ ] I distinguish language features, library features, and implementation
+      extensions.
+- [ ] Every selected feature names its introducing standard.
+- [ ] Feature-test macros or compile probes support every availability claim.
+- [ ] Primary and secondary toolchain inventories record unsupported facilities.
+- [ ] I know that D5-D7 implementation tracks are optional.
 
 ### End of Phase 6
 

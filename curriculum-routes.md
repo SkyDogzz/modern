@@ -30,7 +30,8 @@ The authoritative mapping is
 sound ownership, error handling, generic design, concurrency, and measurement habits.
 
 **Required work:** the baseline requirements through Project 51, excluding retired
-identifiers 21-22 and optional Projects 52-53. Phase 6 is part of Route C.
+identifiers 21-22. Project 52 is optional and identifier 53 is retired. Phase 6 is
+part of Route C.
 
 **Current project estimate:** 272-402 hours.
 
@@ -89,11 +90,11 @@ competency prerequisites where possible.
 **Required work:**
 
 1. Projects 34-51;
-2. the mandatory C++20-to-C++23 delta labs;
+2. D1-D4 in [cpp20-23-delta.md](cpp20-23-delta.md);
 3. Projects 54-57.
 
-Projects 42, 43, 52, and implementation-sensitive modern-feature projects remain
-optional unless explicitly selected as a specialization.
+Projects 42, 43, 52, and D5-D7 remain optional unless explicitly selected as a
+specialization. Project identifier 53 is retired.
 
 **Target estimate:** 232-367 hours after Phase 3, including 24-40 hours reserved for
 the mandatory language/library delta work.
@@ -111,7 +112,7 @@ platform, ABI, coroutine implementation, or module toolchain.
 | 3. Standard Library | Routes A and B | Phase 2 gate or transfer assessment |
 | 4. Generic Programming | Routes A and C | Object lifetime, error policy, containers, and ranges diagnostics |
 | 5. Concurrency and Performance | Routes A and C | Ownership, callable lifetime, testing, and RAII diagnostics |
-| 6. Delivery and Maintenance | Route C | Phase 5 gate plus one reusable tested library |
+| 6. Delivery and Maintenance | Route C | Phase 5 and D1-D4 gates plus one reusable tested library |
 
 Optional specializations never satisfy missing entry evidence and never block the
 next required phase.

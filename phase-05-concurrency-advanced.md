@@ -1,8 +1,8 @@
 # Phase 5 - Concurrency, Performance, and Advanced Facilities
 
-Concurrency and measurement fundamentals are required. PMR, modules, coroutines,
-`std::mdspan`, and weak memory ordering are optional specializations and do not
-block Phase 6.
+Concurrency and measurement fundamentals are required. PMR and weak memory ordering
+are optional specializations and do not block Phase 6. Modules, coroutine generators,
+and `std::mdspan` belong to the separate C++20-to-C++23 delta module.
 
 Read Concept Briefs 18-21 before and during this phase.
 
@@ -14,7 +14,7 @@ Focus on:
 - atomics and the C++ memory model;
 - ThreadSanitizer and reproducible stress tests;
 - profiling before optimization;
-- optional memory-resource and modern-facility experiments.
+- optional memory-resource experiments.
 
 ## 44. Thread Lifecycle and Data-Race Lab
 
@@ -417,63 +417,9 @@ Compare monotonic and pool resources for different lifetimes.
 
 ---
 
-## 53. Optional Modern Feature Tracks
+## 53. Retired: Modern Feature Tracks
 
-**Category:** Optional specialization
-
-**Prerequisites:** Competencies L2 and G2 from
-[diagnostic-placement.md](diagnostic-placement.md). No track is required before
-Phase 6.
-
-**Difficulty:** 4.5-5/5
-
-**Estimated time:** 8-16 hours per selected track
-
-**Tooling stage:** Document toolchain support in dedicated presets.
-
-### Learning Outcomes
-
-- Evaluate one modern facility in a naturally matched problem.
-- Use feature-test macros and document portability.
-- Compare with a conventional fallback.
-
-### Goal
-
-Optionally complete any number of independent tracks. Completing zero tracks does
-not block the roadmap.
-
-### Requirements
-
-- Select zero or more tracks according to interest and toolchain support.
-- Record compiler, standard-library, CMake, and operating-system constraints.
-- Keep unsupported facilities from breaking unrelated projects.
-- Compare each selected facility with a conventional implementation.
-
-### Track A: Lazy Generator
-
-- Use `std::generator` where available to yield numbers or file lines.
-- Compare with an iterator/range implementation.
-- Keep custom promise types as a stretch goal.
-
-### Track B: Modular Vector Library
-
-- Convert Vector2 to a C++ module with documented toolchain-specific CMake support.
-- Keep a header fallback.
-- Compare build and distribution ergonomics.
-
-### Track C: `std::mdspan` Matrix View
-
-- Apply `mdspan` to a matrix or image problem.
-- Demonstrate extents, layouts, and non-owning lifetime.
-- Keep it out of unrelated CLI code.
-
-### Acceptance Criteria
-
-- [ ] The selected facility fits the selected problem.
-- [ ] Unsupported toolchains fail clearly or use a fallback.
-- [ ] Support detection does not rely only on compiler versions.
-- [ ] Standard guarantees and implementation limitations are distinguished.
-
-### Stretch Goal
-
-Complete a second track and compare portability cost.
+Project identifier 53 is retained to avoid renumbering. Its former module, coroutine
+generator, and `mdspan` tracks are now D5-D7 in
+[cpp20-23-delta.md](cpp20-23-delta.md), where their C++20/C++23 prerequisites and
+feature-detection requirements are taught explicitly.

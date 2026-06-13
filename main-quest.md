@@ -110,20 +110,23 @@ Complete Projects 44-51 in order.
 **Route entry:** Professional Foundations and Advanced Language and Delivery.
 Demonstrate RAII, callable lifetime, testing, and deterministic cleanup.
 
-Project 49, Parallel File Hasher, is the portfolio project. Projects 52 and 53 are
-optional specializations:
+Project 49, Parallel File Hasher, is the portfolio project. Project 52 is an optional
+specialization:
 
 - Project 52: Profiled PMR Text Processor
-- Project 53: Optional Modern Feature Tracks
 
-PMR, modules, coroutines, and `mdspan` are not part of the mandatory Phase 5 gate.
+Project identifier 53 is retired. Modules, coroutine generators, and `mdspan` moved
+to D5-D7 in [cpp20-23-delta.md](cpp20-23-delta.md).
+
+D1-D4 are mandatory for the Advanced Language and Delivery route. PMR and D5-D7 are
+not part of the mandatory Phase 5 gate.
 
 ## Phase 6 - Delivery and Maintenance Route
 
 Complete all four:
 
-**Route entry:** Advanced Language and Delivery. Pass the Phase 5 gate and provide
-one reusable tested library suitable for packaging.
+**Route entry:** Advanced Language and Delivery. Pass the Phase 5 and D1-D4 gates,
+and provide one reusable tested library suitable for packaging.
 
 - Project 54: Quality Engineering Pass
 - Project 55: Package and Release One Project
