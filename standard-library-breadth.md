@@ -4,7 +4,7 @@ These labs complete Route B together with Projects 25-33. Complete B1-B9 in orde
 then pass B10. Surveys S1-S5 are integrated into the named labs and require written
 evidence even when no production implementation is appropriate.
 
-Total target time: 95-148 hours, including survey work and the final assessment.
+Total target time: 98-152 hours, including survey work and the final assessment.
 
 ## Survey Evidence and Pass Rules
 
@@ -409,7 +409,7 @@ failed survey.
 **Prerequisites:** B1-B8, [Brief 9](standard-library-briefs.md#9-c23-library-additions),
 and [toolchain-support.md](toolchain-support.md).
 
-**Estimated time:** 11-16 hours
+**Estimated time:** 14-20 hours
 
 ### Outcomes
 
@@ -420,7 +420,11 @@ and [toolchain-support.md](toolchain-support.md).
 ### Required Work
 
 - Exercise expected, print, spanstream, move_only_function, and byteswap.
-- Use ranges::to, one fold algorithm, and at least four new C++23 views.
+- Use `ranges::to` and one fold algorithm.
+- Exercise `zip`, `adjacent`, `chunk`, `slide`, `stride`, `repeat`, and
+  `cartesian_product`. For every unavailable family, implement a small classic-loop
+  or C++20-ranges fallback with the same tested result and record the missing feature
+  macro.
 - Exercise container range insertion and heterogeneous erasure where supported.
 - Compare one flat container with its sorted-vector fallback.
 - Apply mdspan to non-owning multidimensional data where supported.
@@ -432,6 +436,8 @@ and [toolchain-support.md](toolchain-support.md).
 
 - [ ] Every native path names the observed feature macro and value.
 - [ ] Every required unavailable facility has a tested fallback.
+- [ ] The seven C++23 view families each have linked native-or-fallback evidence,
+      including empty, partial-window, and unequal-length behavior where applicable.
 - [ ] Survey-only facilities are not mislabeled as core mastery.
 - [ ] Compiler version checks are not used as the sole support test.
 

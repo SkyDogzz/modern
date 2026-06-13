@@ -306,7 +306,8 @@ multidimensional-view facilities. Representative additions include:
 
 - `expected`, `move_only_function`, `out_ptr`, and `inout_ptr`;
 - `print`, span streams, and stack traces;
-- `ranges::to`, fold algorithms, and new views;
+- `ranges::to`, fold algorithms, and the `zip`, `adjacent`, `chunk`, `slide`,
+  `stride`, `repeat`, and `cartesian_product` view families;
 - flat associative containers and container range insertion;
 - `mdspan`;
 - `byteswap`, `to_underlying`, and expanded constexpr support.
@@ -322,6 +323,8 @@ curriculum requires portability. A compiler version check alone is insufficient.
 3. Which C++23 range additions replace explicit materialization loops?
 4. When does a flat container's storage model help?
 5. What evidence is required before claiming a native C++23 path works?
+6. How do unequal input lengths or partial final groups affect the selected C++23
+   view family?
 
 ## 10. Facility Selection and Reference Navigation
 
