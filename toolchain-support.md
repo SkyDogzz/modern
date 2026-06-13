@@ -21,6 +21,16 @@ These are curriculum baselines, not claims of complete C++23 conformance. Newer
 versions are allowed. Older versions may be used for early projects but cannot sign
 off a feature that they do not implement.
 
+The pinned baseline example in
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) selects the Ubuntu 24.04
+runner family, explicit compiler/package majors, Ninja, and a commit-pinned checkout
+action. [`support/toolchain-profile.cpp`](support/toolchain-profile.cpp) makes the
+job fail unless the GCC 14 job resolves libstdc++ 14 and the Clang 18 job resolves
+libc++ 18. The workflow records the GitHub runner image and package versions because
+security and patch updates within those major profiles remain intentionally movable;
+an artifact requiring bit-for-bit reproduction must additionally pin a container
+digest.
+
 ## Compatibility Source Snapshot
 
 Source IDs and the fixed C++23 draft are defined in

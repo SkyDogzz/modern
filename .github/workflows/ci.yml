@@ -9,19 +9,52 @@ permissions:
 
 jobs:
   support:
+    name: support (${{ matrix.profile }})
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        cxx: [g++, clang++]
+        include:
+          - profile: gcc-14-libstdc++-14
+            cxx: g++-14
+            packages: g++-14
+            cxxflags: ""
+            ldflags: ""
+            guard: ROADMAP_EXPECT_GCC14
+          - profile: clang-18-libc++-18
+            cxx: clang++-18
+            packages: clang-18 libc++-18-dev libc++abi-18-dev
+            cxxflags: -stdlib=libc++
+            ldflags: -stdlib=libc++
+            guard: ROADMAP_EXPECT_CLANG18_LIBCPP18
+
+    env:
+      CXX: ${{ matrix.cxx }}
+      CXXFLAGS: ${{ matrix.cxxflags }}
+      LDFLAGS: ${{ matrix.ldflags }}
+      CMAKE_GENERATOR: Ninja
 
     steps:
       - name: Check out repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
+      - name: Install pinned baseline packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends ${{ matrix.packages }}
+
+      - name: Verify pinned compiler and library profile
+        run: |
+          echo "runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
+          dpkg-query -W ${{ matrix.packages }}
+          read -r -a compile_flags <<< "$CXXFLAGS"
+          read -r -a link_flags <<< "$LDFLAGS"
+          "$CXX" "${compile_flags[@]}" -std=c++23 \
+            -D${{ matrix.guard }} support/toolchain-profile.cpp \
+            "${link_flags[@]}" -o /tmp/roadmap-toolchain-profile
+          /tmp/roadmap-toolchain-profile
+
       - name: Configure
-        env:
-          CXX: ${{ matrix.cxx }}
         run: cmake --preset debug
 
       - name: Build
@@ -31,8 +64,6 @@ jobs:
         run: ctest --preset debug
 
       - name: Configure package skeleton
-        env:
-          CXX: ${{ matrix.cxx }}
         run: >-
           cmake -S support/package-skeleton
           -B build/package-skeleton
@@ -49,8 +80,6 @@ jobs:
           --prefix "$PWD/build/package-prefix"
 
       - name: Configure clean package consumer
-        env:
-          CXX: ${{ matrix.cxx }}
         run: >-
           cmake -S support/package-skeleton/consumer
           -B build/package-consumer

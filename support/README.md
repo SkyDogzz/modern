@@ -7,6 +7,8 @@ scaffolds and test utilities, not completed project solutions.
 - `compile-fail/`: instructions and CMake helper for expected compiler failures.
 - `allocation-failure/`: deterministic allocation failure injection.
 - `package-skeleton/`: installable CMake library skeleton for Project 55.
+- `toolchain-profile.cpp`: compile-time guard for the pinned GCC/libstdc++ and
+  Clang/libc++ CI baseline profiles.
 - `tests/`: smoke tests that verify the support utilities themselves.
 
 From the repository root:
