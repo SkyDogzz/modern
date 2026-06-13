@@ -4,7 +4,7 @@ These labs complete Route B together with Projects 25-33. Complete B1-B9 in orde
 then pass B10. Surveys S1-S5 are integrated into the named labs and require written
 evidence even when no production implementation is appropriate.
 
-Total target time: 98-152 hours, including survey work and the final assessment.
+Total target time: 99-153 hours, including survey work and the final assessment.
 
 ## Survey Evidence and Pass Rules
 
@@ -103,7 +103,7 @@ failed survey.
 **Prerequisites:** Phase 2 transfer gate and
 [Brief 1](standard-library-briefs.md#1-vocabulary-types-utilities-and-callables).
 
-**Estimated time:** 7-12 hours
+**Estimated time:** 8-13 hours
 
 ### Outcomes
 
@@ -119,13 +119,17 @@ failed survey.
 - Visit a variant exhaustively and compare it with any plus explicit type checks.
 - Use `apply`, `invoke`, `reference_wrapper`, and one bind/not adapter.
 - Compare `function`, `move_only_function`, and a templated callable parameter.
-- Implement one trait/concept diagnostic and one `integer_sequence` or ratio task.
+- Implement one trait/concept diagnostic, use `integer_sequence` to expand indexed
+  compile-time work, and use `ratio` arithmetic/conversion in a distinct unit or
+  scale calculation.
 - Complete Survey S5 on allocators, PMR, and C pointer adapters.
 
 ### Acceptance
 
 - [ ] Every vocabulary type has a state-model justification.
 - [ ] No non-owning wrapper is described as extending lifetime.
+- [ ] The integer-sequence expansion and ratio calculation each have compile-time
+      assertions and a stated reason to prefer them over runtime data.
 - [ ] Unsupported `move_only_function` and pointer-adapter paths are feature-gated.
 - [ ] S5 names one measured PMR use case and one reason not to use PMR.
 

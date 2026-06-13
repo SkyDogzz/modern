@@ -32,6 +32,11 @@ proves runtime invariants. Allocators separate storage acquisition from containe
 logic, while PMR selects a runtime memory resource. Most application code should use
 normal containers until measurement justifies allocator complexity.
 
+`integer_sequence` represents a compile-time sequence of integral values and commonly
+drives indexed expansion. `ratio` represents a normalized compile-time rational
+number and supports exact type-level scale arithmetic. They solve different problems;
+using one does not demonstrate familiarity with the other.
+
 **Review**
 
 1. When is a named struct clearer than a tuple?
@@ -39,6 +44,7 @@ normal containers until measurement justifies allocator complexity.
 3. Why does `reference_wrapper` not solve lifetime?
 4. When does `move_only_function` fit better than `function`?
 5. What problem does an allocator solve, and what problem does it not solve?
+6. How do `integer_sequence` and `ratio` differ in purpose?
 
 ## 2. Container Families and Adaptors
 
