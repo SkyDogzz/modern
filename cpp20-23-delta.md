@@ -205,7 +205,7 @@ earlier project evidence may be reused but is not required.
 
 **Category:** Optional delta specialization
 
-- Use `std::generator` where available or a small provided coroutine type.
+- Use `std::generator` where available or a small exercise-local coroutine type.
 - Trace coroutine frame ownership, suspension, exceptions, and destruction.
 - Compare the generator with an iterator/range implementation.
 - Keep a custom promise type out of the mandatory route.

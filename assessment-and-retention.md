@@ -190,23 +190,23 @@ configuration is not exposed; the error channel is justified.
 
 ### Phase 3 Transfer
 
-**Exercise:** implement an unfamiliar data-summary command from a supplied input
-contract and sample dataset.
+**Exercise:** implement an unfamiliar data-summary command from a reviewer-issued
+input contract and sample dataset.
 
 The learner must select containers, iterator/range operations, text conversion, one
 filesystem or stream adapter, and one time or formatting facility. The variant
 changes data shape and ordering requirements from the roadmap projects.
 
-**Oracle:** the implementation matches the supplied reference rows and ordering;
-empty, duplicate, malformed, and boundary records are tested; invalidation and view
-lifetime are explained; facility choices cite operations and guarantees.
+**Oracle:** the implementation matches the reviewer-issued reference rows and
+ordering; empty, duplicate, malformed, and boundary records are tested; invalidation
+and view lifetime are explained; facility choices cite operations and guarantees.
 
 **Timebox:** 95-110 minutes.
 
 ### Phase 4 Transfer
 
 **Exercise:** design one regular domain value and a constrained generic operation
-against a supplied behavior contract.
+against a reviewer-issued behavior contract.
 
 The variant requires a compile-time rejection, a runtime behavior test, and a
 comparison with either runtime polymorphism, a variant, or a callable design.
@@ -239,9 +239,9 @@ incomplete defect report.
 The learner must reproduce the defect, add a regression test, fix it, evaluate
 compatibility, verify a clean consumer, and produce release records.
 
-**Oracle:** the test fails on the supplied release and passes on the patch; build-
-tree and install-tree consumers pass; version/changelog decisions match compatibility
-impact; artifacts and checksums reproduce from documented commands.
+**Oracle:** the test fails on the reviewer-issued release fixture and passes on the
+patch; build-tree and install-tree consumers pass; version/changelog decisions match
+compatibility impact; artifacts and checksums reproduce from documented commands.
 
 **Timebox:** 110-140 minutes.
 
@@ -254,7 +254,7 @@ time, confidence before checking, correction, and one follow-up test.
 |---|---|---|
 | R2 | after Project 2 | write the compile-to-run pipeline, five diagnostic flags/policies, debugger steps for a wrong value, and the difference between a smoke test and behavior test |
 | R6 | after Project 6 | implement one small conversion/function task, predict integer and floating behavior, and write normal/boundary/invalid tests without copying earlier code |
-| R15 | after Project 15 | draw lifetime/storage for a supplied snippet, predict generated special members, identify one dangling observer, and repair an invariant violation |
+| R15 | after Project 15 | draw lifetime/storage for a reviewer-issued snippet, predict generated special members, identify one dangling observer, and repair an invariant violation |
 
 Check answers only after committing the closed-note response. Any incorrect rule is
 added to the next two project concept checks. Retrieval is formative, but a missing

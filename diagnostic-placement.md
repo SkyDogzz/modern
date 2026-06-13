@@ -63,7 +63,7 @@ compile-fail fixture rather than a greenfield repository:
 |---|---|
 | 15-16 | Predict and repair special-member, initialization-order, and lifetime defects |
 | 18 | Adapt one operation across error policies and diagnose guarantee violations |
-| 20 | Repair the provided raw owner, then refactor to Rule of Zero |
+| 20 | Repair the [provided raw owner](projects/20-ownership-mechanics/broken_buffer.hpp), then refactor to Rule of Zero |
 | 26 and 29 | Diagnose iterator invalidation and dangling-view cases |
 | 35 | Repair slicing and polymorphic-destruction defects |
 | 38 and 41 | Repair template diagnostics and unsupported customization calls |

@@ -195,7 +195,7 @@ modern-cpp-roadmap/
 
 Start with one source file. Add source libraries, public include directories,
 install rules, and packaging only when the relevant project introduces them.
-Supplied infrastructure is indexed in [support/README.md](support/README.md), and
+Repository infrastructure is indexed in [support/README.md](support/README.md), and
 starter or broken fixtures are indexed in [projects/README.md](projects/README.md).
 
 ## Full Project Order
