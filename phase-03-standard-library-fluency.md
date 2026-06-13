@@ -18,11 +18,13 @@ Focus on:
 
 **Category:** Portfolio project
 
-**Prerequisites:** Phases 1-2 and [Concept Brief 11](concept-briefs.md#11-containers-iterators-and-algorithms).
+**Prerequisites:** Competencies F3-F4 and O1-O3 from
+[diagnostic-placement.md](diagnostic-placement.md), plus
+[Concept Brief 11](concept-briefs.md#11-containers-iterators-and-algorithms).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 8-12 hours
+**Estimated time:** 6-9 hours
 
 **Tooling stage:** Build a reusable contact library and thin CLI.
 
@@ -66,7 +68,7 @@ Evaluate `std::flat_map` when the standard library supports it.
 
 **Difficulty:** 3/5
 
-**Estimated time:** 6-8 hours
+**Estimated time:** 4-6 hours
 
 **Tooling stage:** Add focused invalidation tests.
 
@@ -153,13 +155,13 @@ Make subscription lifetime RAII-based.
 
 ## 28. Student Grade Analyzer
 
-**Category:** Portfolio project
+**Category:** Core project
 
 **Prerequisites:** Projects 25-27.
 
 **Difficulty:** 3/5
 
-**Estimated time:** 8-11 hours
+**Estimated time:** 6-8 hours
 
 **Tooling stage:** Add table-driven algorithm tests.
 
@@ -240,13 +242,13 @@ Write a small view-returning function with a documented lifetime contract.
 
 ## 30. Data Processing with Ranges
 
-**Category:** Portfolio project
+**Category:** Core project
 
 **Prerequisites:** Project 29.
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 8-12 hours
+**Estimated time:** 6-9 hours
 
 **Tooling stage:** Compile classic-algorithm and ranges implementations in one suite.
 

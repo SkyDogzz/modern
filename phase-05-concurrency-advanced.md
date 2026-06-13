@@ -20,11 +20,13 @@ Focus on:
 
 **Category:** Core lab
 
-**Prerequisites:** Phases 1-4 and [Concept Brief 18](concept-briefs.md#18-threads-races-and-locks).
+**Prerequisites:** Competencies O1-O3, L1-L2, G1-G2, and C1 from
+[diagnostic-placement.md](diagnostic-placement.md), plus
+[Concept Brief 18](concept-briefs.md#18-threads-races-and-locks).
 
 **Difficulty:** 4/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Add a separate TSan preset where supported.
 
@@ -75,7 +77,7 @@ destruction behavior.
 
 **Difficulty:** 4/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Add deterministic lock-order tests and a separately labeled stress test.
 
@@ -204,7 +206,7 @@ Add a shutdown deadline and distinguish requested, graceful, and timed-out outco
 
 **Difficulty:** 4/5
 
-**Estimated time:** 6-9 hours
+**Estimated time:** 4-6 hours
 
 **Tooling stage:** Add result, exception, timeout, and broken-promise tests.
 
@@ -293,7 +295,7 @@ Add incremental cancellation from a signal-safe outer adapter.
 
 **Difficulty:** 5/5
 
-**Estimated time:** 10-15 hours
+**Estimated time:** 7-10 hours
 
 **Tooling stage:** Keep racy examples separate from passing tests.
 
@@ -332,7 +334,9 @@ Implement a release/acquire publication flag only after writing the proof.
 
 **Category:** Core project
 
-**Prerequisites:** Phases 1-4 and [Concept Brief 21](concept-briefs.md#21-measurement-profiling-and-pmr).
+**Prerequisites:** Competencies F4, L2, and G1 from
+[diagnostic-placement.md](diagnostic-placement.md), plus
+[Concept Brief 21](concept-briefs.md#21-measurement-profiling-and-pmr).
 
 **Difficulty:** 4/5
 
@@ -417,7 +421,9 @@ Compare monotonic and pool resources for different lifetimes.
 
 **Category:** Optional specialization
 
-**Prerequisites:** Phase 4. No track is required before Phase 6.
+**Prerequisites:** Competencies L2 and G2 from
+[diagnostic-placement.md](diagnostic-placement.md). No track is required before
+Phase 6.
 
 **Difficulty:** 4.5-5/5
 

@@ -39,7 +39,8 @@ edge cases, and understand failures is as important as learning to code.
 
 Routes:
 
-- **Professional Foundations:** baseline Projects 1-51.
+- **Professional Foundations:** the baseline through Project 51, excluding retired
+  identifiers 21-22.
 - **Standard-Library Breadth:** Phase 3 plus the required facility inventory and
   breadth labs.
 - **Advanced Language and Delivery:** Phases 4-6 plus the mandatory C++20-to-C++23
@@ -72,15 +73,16 @@ only in [curriculum-routes.md](curriculum-routes.md).
 - **Optional specialization:** advanced work that does not block later phases.
 - **Delivery project:** verification, release, capstone, or maintenance work.
 
-Every core lab and core project is required. Optional specializations are never
-part of a mandatory phase gate.
+Every core project is required. A core lab is required unless
+[diagnostic placement](diagnostic-placement.md) supplies equivalent evidence.
+Optional specializations are never part of a mandatory phase gate.
 
 ## Learning Method
 
 For every project:
 
 1. Read the linked concept brief and complete its review questions.
-2. Explain the prerequisite rules before writing code.
+2. Explain the prerequisite rules or pass the applicable diagnostic placement task.
 3. Implement only the baseline requirements.
 4. Pass every acceptance criterion and the current phase quality gate.
 5. Record one defect, the evidence used to diagnose it, and the correction.
@@ -88,6 +90,10 @@ For every project:
 
 A project applies knowledge; it must not be the learner's first unexplained
 encounter with that knowledge.
+
+[Diagnostic placement](diagnostic-placement.md) may replace an already-mastered core
+lab with evidence. It never replaces core projects, breadth assessments, portfolio
+milestones, delivery projects, or phase transfer gates.
 
 ## Required Toolchain
 
@@ -147,6 +153,7 @@ than inferring support from language mode.
 modern-cpp-roadmap/
 |-- README.md
 |-- curriculum-routes.md
+|-- diagnostic-placement.md
 |-- stdlib-facility-inventory.md
 |-- toolchain-support.md
 |-- concept-briefs.md
@@ -199,31 +206,30 @@ starter or broken fixtures are indexed in [projects/README.md](projects/README.m
 16. Lifetime and Storage Visualizer - core lab
 17. Bank Account Simulator - portfolio project
 18. Error-Handling Policy Lab - core lab
-19. RAII File Wrapper - portfolio project
-20. Raw Allocation Mechanics - core lab
-21. Dynamic String Copy Lab - core lab
-22. Movable Buffer and Rule of Zero Refactor - core project
+19. RAII File Wrapper - core project
+20. Ownership Mechanics Diagnosis and Rule-of-Zero Refactor - core lab
+21-22. Retired into Project 20
 23. Dungeon Ownership Graph - core project
-24. Config Parser and Error Policy - portfolio project
+24. Config Parser and Error Policy - core project
 
 ### Phase 3 - Standard Library and Data Processing
 
 25. Contact Book and Container Selection - portfolio project
 26. Playlist Iterator Lab - core lab
 27. Event Dispatcher and Callable Objects - core project
-28. Student Grade Analyzer - portfolio project
+28. Student Grade Analyzer - core project
 29. Range, View, and Sentinel Lab - core lab
-30. Data Processing with Ranges - portfolio project
+30. Data Processing with Ranges - core project
 31. Directory Analyzer - track project
 32. C++23 Table Printer - track project
 33. Testable Pomodoro Timer - track project
 
 ### Phase 4 - Generic Programming and Design
 
-34. Vector2 Regular Value Type - portfolio project
+34. Vector2 Regular Value Type - core project
 35. Runtime Polymorphism Safety Lab - core lab
-36. Shape Design Comparison - portfolio project
-37. Generic Stack - portfolio project
+36. Shape Design Comparison - core project
+37. Generic Stack - core project
 38. Template Mechanics Lab - core lab
 39. Compile-Time Math and Validation - core project
 40. Constrained Generic Algorithms - core project
@@ -264,10 +270,10 @@ Stop at a phase gate when prerequisite concepts cannot be explained.
 
 Current and target route totals:
 
-- **Professional Foundations:** 329-483 hours for Projects 1-51.
-- **Standard-Library Breadth:** 156-236 hours after Phase 2, or 286-426 hours from
+- **Professional Foundations:** 272-402 hours for the baseline through Project 51.
+- **Standard-Library Breadth:** 148-225 hours after Phase 2, or 254-383 hours from
   the beginning.
-- **Advanced Language and Delivery:** 257-405 hours after Phase 3, including the
+- **Advanced Language and Delivery:** 232-367 hours after Phase 3, including the
   reserved C++20-to-C++23 delta work.
 
 Calendar examples at 6, 10, and 15 hours per week are maintained in

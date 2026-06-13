@@ -16,6 +16,10 @@ and be completed as diagnosis, repair, compile-fail, or code-reading exercises w
 the phase specification permits. They do not each require a standalone repository
 or greenfield implementation.
 
+Core labs may also be replaced by passing evidence from
+[diagnostic-placement.md](diagnostic-placement.md). Required projects and transfer
+gates remain mandatory.
+
 ## Phase 1 - Required Foundations
 
 Complete Projects 1-14 in order.
@@ -35,7 +39,9 @@ Git habits, a test framework, and target-based CMake.
 
 ## Phase 2 - Required Object Model
 
-Complete Projects 15-24 in order.
+Complete Projects 15-20 and 23-24 in order. Project 20 is the combined ownership
+mechanics sequence; identifiers 21-22 are retired and retained only to avoid
+renumbering later projects.
 
 **Route entry:** Professional Foundations. Pass the Phase 1 gate or its diagnostic
 equivalent.
@@ -43,12 +49,12 @@ equivalent.
 Build seriously:
 
 - Project 17: Bank Account Simulator
-- Project 19: RAII File Wrapper
-- Project 24: Config Parser and Error Policy
 
-Projects 15-16 and 18-23 may remain focused labs or compact projects. Class
-mechanics, lifetime, raw allocation mechanics, copy/move behavior, Rule of Zero,
-ownership graphs, and error policy are not optional knowledge.
+Use Project 19 as a reusable component and evolve Project 11 with Project 24 rather
+than creating separate portfolio repositories. Projects 15-16, 18-20, and 23-24 may
+remain focused labs or compact milestones. Class mechanics, lifetime, raw allocation
+mechanics, copy/move behavior, Rule of Zero, ownership graphs, and error policy are
+not optional knowledge.
 
 ## Phase 3 - Standard Library Route
 
@@ -69,7 +75,8 @@ Choose one of Projects 31-33 for portfolio-level depth. Keep the other two as
 small, tested adapters. This satisfies the phase gate for filesystem, formatting,
 and chrono without requiring three large repositories.
 
-Build Projects 25, 28, and 30 seriously.
+Build Project 25 as the portfolio seed. Treat Projects 28 and 30 as tested
+extensions of the same data-processing track where practical.
 
 ## Phase 4 - Abstraction Route
 
@@ -79,11 +86,9 @@ Complete Projects 34-41 in order.
 Demonstrate object lifetime, error policy, container, iterator, and range
 competencies.
 
-Build seriously:
-
-- Project 34: Vector2 Regular Value Type
-- Project 36: Shape Design Comparison
-- Project 37: Generic Stack
+Keep Projects 34-41 as reusable libraries, design comparisons, or focused labs.
+Select Project 34 or 37 for the package-and-release evolution track instead of
+creating three separate portfolio repositories.
 
 Projects 42 and 43 are optional specializations:
 
@@ -125,23 +130,17 @@ consumed, maintained, upgraded, and released.
 
 ## Main Quest Portfolio
 
-A completed portfolio should contain:
+A completed portfolio contains six evolving tracks:
 
-1. Interactive Todo List
-2. Target-Based CMake and Test Lab
-3. Bank Account Simulator
-4. RAII File Wrapper
-5. Config Parser and Error Policy
-6. Contact Book and Container Selection
-7. Student Grade Analyzer
-8. Data Processing with Ranges
-9. One system-library track project
-10. Vector2 Regular Value Type
-11. Shape Design Comparison
-12. Generic Stack
-13. Parallel File Hasher
-14. Released Library
-15. Capstone
-16. Maintenance and Patch Release
+1. **Todo and configuration:** Project 11 evolved through Project 24 and the quality
+   pass.
+2. **Build and package:** Project 14 evolved into one installed and released library
+   using Project 34 or 37.
+3. **Domain and concurrency:** Project 17 evolved through the transfer and locking
+   exercises.
+4. **Standard-library data tool:** Project 25 evolved through Projects 28-33.
+5. **Concurrent file tool:** Project 31 evolved into Project 49.
+6. **Released capstone:** Projects 56-57, including the maintenance patch.
 
-Every portfolio project must pass the relevant phase gate in `checklists.md`.
+Each track must pass the relevant phase gate. Intermediate labs remain evidence in
+the learning log rather than becoming separate portfolio repositories.

@@ -17,13 +17,15 @@ Focus on:
 
 ## 34. Vector2 Regular Value Type
 
-**Category:** Portfolio project
+**Category:** Core project
 
-**Prerequisites:** Phases 1-3 and [Concept Brief 15](concept-briefs.md#15-regular-types-operators-and-polymorphism).
+**Prerequisites:** Competencies O1-O3 and L1-L2 from
+[diagnostic-placement.md](diagnostic-placement.md), plus
+[Concept Brief 15](concept-briefs.md#15-regular-types-operators-and-polymorphism).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Build and test a reusable value-type library.
 
@@ -69,7 +71,7 @@ Generalize dimensions after completing the template-mechanics projects.
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 5-7 hours
+**Estimated time:** 3-5 hours
 
 **Tooling stage:** Add polymorphic destruction and slicing tests.
 
@@ -106,13 +108,13 @@ Compare the same two behaviors using `std::variant`.
 
 ## 36. Shape Design Comparison
 
-**Category:** Portfolio project
+**Category:** Core project
 
 **Prerequisites:** Projects 34-35 and Phase 2 ownership.
 
 **Difficulty:** 4/5
 
-**Estimated time:** 11-16 hours
+**Estimated time:** 7-10 hours
 
 **Tooling stage:** Build separate designs behind one behavioral test contract.
 
@@ -153,13 +155,13 @@ Benchmark only after profiling identifies dispatch as relevant.
 
 ## 37. Generic Stack
 
-**Category:** Portfolio project
+**Category:** Core project
 
 **Prerequisites:** Projects 34-36 and [Concept Brief 16](concept-briefs.md#16-templates-deduction-and-forwarding).
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 8-12 hours
+**Estimated time:** 6-8 hours
 
 **Tooling stage:** Use an `INTERFACE` target for a header-only template library.
 
@@ -203,7 +205,7 @@ Expose iterators only if the abstraction should cease behaving like a stack.
 
 **Difficulty:** 4/5
 
-**Estimated time:** 8-11 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Add isolated compile-fail examples.
 
@@ -334,7 +336,7 @@ Return a richer statistics value from one pass over an input range.
 
 **Difficulty:** 4/5
 
-**Estimated time:** 8-12 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Test public customization behavior and compile-time failures.
 

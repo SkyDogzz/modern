@@ -29,13 +29,27 @@ The authoritative mapping is
 **Purpose:** independently build, test, debug, and maintain modern C++ programs with
 sound ownership, error handling, generic design, concurrency, and measurement habits.
 
-**Required work:** the baseline requirements of Projects 1-51. Projects 52-53 remain
-optional specializations. Phase 6 is part of Route C.
+**Required work:** the baseline requirements through Project 51, excluding retired
+identifiers 21-22 and optional Projects 52-53. Phase 6 is part of Route C.
 
-**Current project estimate:** 329-483 hours.
+**Current project estimate:** 272-402 hours.
 
 **Completion claim:** professional C++ foundations through C++23 mode. This route does
 not claim broad standard-library coverage or mastery of every C++20/C++23 addition.
+
+### Rebalanced Time Budget
+
+The previous baseline estimate was 329-483 hours. Combining the former Projects
+20-22, using diagnosis-first core labs, and reducing portfolio duplication lowers the
+baseline to 272-402 hours, recovering 57-81 hours.
+
+The recovered budget is assigned deliberately:
+
+- 40-60 hours to required standard-library breadth labs;
+- 17-21 hours to retrieval practice, transfer assessments, and remediation.
+
+This allocation is part of the route design; the removed portfolio polishing work is
+not silently replaced with additional greenfield projects.
 
 ## Route B: Standard-Library Breadth
 
@@ -53,9 +67,9 @@ route after passing the Phase 2 transfer assessment.
 3. the standard-library breadth labs;
 4. the final facility-selection and documentation-navigation assessment.
 
-**Target estimate:** 156-236 hours after Phase 2, including the existing Phase 3
-estimate of 66-96 hours. The complete route from a new learner therefore targets
-286-426 hours.
+**Target estimate:** 148-225 hours after Phase 2, including the existing Phase 3
+estimate of 58-85 hours. The complete route from a new learner therefore targets
+254-383 hours.
 
 **Completion claim:** mostly full standard-library breadth at the documented tiers,
 not memorization of every overload, locale facet, C compatibility declaration, or
@@ -81,7 +95,7 @@ competency prerequisites where possible.
 Projects 42, 43, 52, and implementation-sensitive modern-feature projects remain
 optional unless explicitly selected as a specialization.
 
-**Target estimate:** 257-405 hours after Phase 3, including 24-40 hours reserved for
+**Target estimate:** 232-367 hours after Phase 3, including 24-40 hours reserved for
 the mandatory language/library delta work.
 
 **Completion claim:** advanced language foundations plus demonstrated verification,
@@ -122,9 +136,9 @@ specializations:
 
 | Route | 6 hours/week | 10 hours/week | 15 hours/week |
 |---|---:|---:|---:|
-| Professional Foundations | 55-81 weeks | 33-49 weeks | 22-33 weeks |
-| Standard-Library Breadth from beginner | 48-71 weeks | 29-43 weeks | 20-29 weeks |
-| Advanced Language and Delivery after Phase 3 | 43-68 weeks | 26-41 weeks | 18-27 weeks |
+| Professional Foundations | 46-67 weeks | 28-41 weeks | 19-27 weeks |
+| Standard-Library Breadth from beginner | 43-64 weeks | 26-39 weeks | 17-26 weeks |
+| Advanced Language and Delivery after Phase 3 | 39-62 weeks | 24-37 weeks | 16-25 weeks |
 
 These are planning ranges, not promises. Record actual completion time and revise the
 estimates from learner evidence.

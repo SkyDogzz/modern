@@ -20,7 +20,7 @@ Focus on:
 
 **Category:** Delivery project
 
-**Prerequisites:** Phases 1-5.
+**Prerequisites:** Projects 24, 37, and 49 plus the Phase 5 transfer gate.
 
 **Difficulty:** 4/5
 

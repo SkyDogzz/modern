@@ -19,11 +19,13 @@ Focus on:
 
 **Category:** Core lab
 
-**Prerequisites:** Phase 1 and [Concept Brief 7](concept-briefs.md#7-classes-invariants-and-special-members).
+**Prerequisites:** Competencies F2-F4 from
+[diagnostic-placement.md](diagnostic-placement.md) and
+[Concept Brief 7](concept-briefs.md#7-classes-invariants-and-special-members).
 
 **Difficulty:** 3/5
 
-**Estimated time:** 5-7 hours
+**Estimated time:** 3-4 hours
 
 **Tooling stage:** Use the Phase 1 test framework and formatter.
 
@@ -66,7 +68,7 @@ for the required trait scope.
 
 **Difficulty:** 3/5
 
-**Estimated time:** 5-7 hours
+**Estimated time:** 3-5 hours
 
 **Tooling stage:** Add isolated sanitizer executables for invalid examples.
 
@@ -153,7 +155,7 @@ Introduce a strongly typed `Money` value without permitting implicit currency mi
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 6-8 hours
+**Estimated time:** 4-6 hours
 
 **Tooling stage:** Add table-driven failure tests.
 
@@ -191,13 +193,13 @@ Refactor Bank Account operation statuses into a typed `expected` error.
 
 ## 19. RAII File Wrapper
 
-**Category:** Portfolio project
+**Category:** Core project
 
 **Prerequisites:** Projects 15-18 and [Concept Brief 10](concept-briefs.md#10-raii-copy-move-and-ownership).
 
 **Difficulty:** 3.5/5
 
-**Estimated time:** 7-10 hours
+**Estimated time:** 5-7 hours
 
 **Tooling stage:** Add platform guards only if a native handle is used.
 
@@ -238,119 +240,45 @@ Add move operations after writing their post-move invariant.
 
 ---
 
-## 20. Raw Allocation Mechanics
+## 20. Ownership Mechanics Diagnosis and Rule-of-Zero Refactor
 
 **Category:** Core lab
 
-**Prerequisites:** Projects 15-19.
+**Prerequisites:** Competencies O1-O2 from
+[diagnostic-placement.md](diagnostic-placement.md) and Projects 15-19.
 
-**Difficulty:** 3.5/5
+**Difficulty:** 4/5
 
-**Estimated time:** 4-6 hours
+**Estimated time:** 8-12 hours
 
-**Tooling stage:** Run every path under ASan/UBSan and leak detection.
+**Tooling stage:** Diagnose the
+[provided broken owner](projects/20-ownership-mechanics/README.md) under ASan/UBSan,
+allocation-failure injection, and relocation tests.
 
 ### Learning Outcomes
 
-- Allocate and release one dynamic array in an isolated teaching context.
 - Distinguish allocation, construction, destruction, and deallocation.
-- Identify leak, double-delete, use-after-free, and partial-construction hazards.
+- Diagnose leak, double-delete, shallow-copy, use-after-free, and
+  partial-construction hazards.
+- Implement deep copy, strong copy assignment, and exception-safe moves.
+- Explain value categories, copy elision, `std::move`, and conditional `noexcept`.
+- Prefer the Rule of Zero after understanding the manual mechanics.
 
 ### Goal
 
-Build tiny experiments that explain the mechanics hidden by `std::vector` and
-`std::string`.
+Repair one deliberately broken buffer, add copy and move behavior, observe container
+relocation, and replace the manual owner in the final client with
+`std::vector<std::byte>`.
 
 ### Requirements
 
-- Use `new[]` and `delete[]` only in this lab and Projects 21-22.
+- Use `new[]` and `delete[]` only inside this sequence.
 - Track pointer, size, and initialized-element invariants.
 - Keep defect demonstrations in isolated sanitizer executables.
-- Implement an equivalent Rule-of-Zero version with `std::vector`.
-- State why the standard owner is the production default.
-
-### Acceptance Criteria
-
-- [ ] Normal tests leak no memory and execute no invalid access.
-- [ ] Every allocation has exactly one owner and release path.
-- [ ] The learner distinguishes object destruction from storage deallocation.
-
-### Stretch Goal
-
-Use the [supplied allocation-failure injection](support/allocation-failure/README.md)
-to observe cleanup.
-
----
-
-## 21. Dynamic String Copy Lab
-
-**Category:** Core lab
-
-**Prerequisites:** Project 20.
-
-**Difficulty:** 4.5/5
-
-**Estimated time:** 10-14 hours
-
-**Tooling stage:** Add copy and allocation-failure tests under sanitizers.
-
-### Learning Outcomes
-
-- Implement deep copy and the Rule of Three.
-- Handle self-assignment and partial-construction hazards.
-- Provide the strong guarantee for copy assignment.
-
-### Goal
-
-Build a deliberately small null-terminated character owner to understand mechanics
-normally handled by `std::string`.
-
-### Requirements
-
-- Implement construction from text, destruction, copy construction, and copy assignment.
-- Maintain pointer, size, and null-terminator invariants.
+- Implement destruction, deep copy, and strongly safe copy assignment.
 - Use copy-and-swap or an equivalent strongly safe assignment.
-- Test empty, copied, assigned, self-assigned, and allocation-failure cases.
-- Mark the type as a teaching artifact, not a string replacement.
-
-### Acceptance Criteria
-
-- [ ] Copies own independent buffers.
-- [ ] Sanitizers report no leak or invalid access.
-- [ ] Failed allocation cannot corrupt the target object.
-
-### Stretch Goal
-
-Expose a documented `string_view` observer.
-
----
-
-## 22. Movable Buffer and Rule of Zero Refactor
-
-**Category:** Core project
-
-**Prerequisites:** Project 21 and [Concept Brief 10](concept-briefs.md#10-raii-copy-move-and-ownership).
-
-**Difficulty:** 4.5/5
-
-**Estimated time:** 10-14 hours
-
-**Tooling stage:** Add relocation tests using `std::vector`.
-
-### Learning Outcomes
-
-- Distinguish lvalues, xvalues, prvalues, and rvalue references.
-- Implement move construction and assignment with valid post-move state.
-- Explain copy elision, `std::move`, and conditional `noexcept`.
-- Prefer the Rule of Zero after understanding manual mechanics.
-
-### Goal
-
-Add move support to the teaching buffer, then replace manual ownership in a client
-type with `std::vector<std::byte>`.
-
-### Requirements
-
+- Use the [allocation failpoint](support/allocation-failure/README.md) for failure
+  tests.
 - Instrument copy and move operations.
 - Mark moves `noexcept` only when guaranteed.
 - Compare vector relocation with throwing and non-throwing move declarations.
@@ -360,13 +288,16 @@ type with `std::vector<std::byte>`.
 
 ### Acceptance Criteria
 
+- [ ] Normal tests leak no memory and execute no invalid access.
+- [ ] Copies own independent buffers and failed allocation preserves the target.
 - [ ] Moved-from objects remain valid and destructible.
 - [ ] `std::move` is explained as a cast.
 - [ ] The final production-style type follows the Rule of Zero.
 
 ### Stretch Goal
 
-Measure relocation counts for copyable and move-only element types.
+Compare the teaching buffer with `std::unique_ptr<T[]>` and explain why `vector`
+still provides the better default sequence abstraction.
 
 ---
 
@@ -374,7 +305,7 @@ Measure relocation counts for copyable and move-only element types.
 
 **Category:** Core project
 
-**Prerequisites:** Projects 15-22.
+**Prerequisites:** Project 20 and competency O3.
 
 **Difficulty:** 4/5
 
@@ -414,9 +345,9 @@ Serialize stable IDs without serializing memory addresses.
 
 ## 24. Config Parser and Error Policy
 
-**Category:** Portfolio project
+**Category:** Core project
 
-**Prerequisites:** Projects 15-23 and Phase 1 `from_chars`/`string_view`.
+**Prerequisites:** Projects 15-20 and 23, plus competencies F3 and O1-O3.
 
 **Difficulty:** 4/5
 

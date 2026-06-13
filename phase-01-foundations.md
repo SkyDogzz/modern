@@ -1,7 +1,8 @@
 # Phase 1 - Language Foundations and Workflow
 
 This phase teaches language fundamentals and introduces tools in controlled
-increments. Projects must be completed in order.
+increments. Projects must be completed in order unless a core lab is replaced by
+approved diagnostic evidence.
 
 Read Concept Briefs 1-6 before and during this phase.
 
