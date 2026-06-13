@@ -173,6 +173,15 @@ streams read or write a caller-provided character buffer without making that buf
 immortal. Stream buffers implement the underlying character transport and should be
 customized only for a concrete need.
 
+String search operations report code-unit positions, not grapheme or display
+positions. Prefix, suffix, containment, and C++23 resize helpers improve expression
+of common byte/code-unit operations but do not add Unicode segmentation.
+
+An `istream` or `ostream` delegates character transport to a `streambuf`. A custom
+buffer must maintain its get/put-area invariants and report exhaustion or transport
+failure so the owning stream can update its state. Replacing `rdbuf` does not
+transfer ownership of the buffer or the wrapped sink.
+
 `charconv` performs locale-independent numeric conversion. Streams can be
 locale-sensitive. `format` builds formatted strings; `print` writes formatted
 output. Custom formatters must define parsing and formatting behavior without
@@ -190,6 +199,8 @@ text-processing solution.
 3. Why is `charconv` useful at a locale boundary?
 4. What two responsibilities does a custom formatter implement?
 5. When should a parser be preferred over a regular expression?
+6. What does a position returned by `string::find` count?
+7. Which object owns a stream buffer installed through `rdbuf`?
 
 ## 6. Filesystem and Chrono Breadth
 

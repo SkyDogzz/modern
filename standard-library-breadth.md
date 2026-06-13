@@ -4,7 +4,7 @@ These labs complete Route B together with Projects 25-33. Complete B1-B9 in orde
 then pass B10. Surveys S1-S5 are integrated into the named labs and require written
 evidence even when no production implementation is appropriate.
 
-Total target time: 92-143 hours, including survey work and the final assessment.
+Total target time: 94-146 hours, including survey work and the final assessment.
 
 ## Survey Evidence and Pass Rules
 
@@ -254,21 +254,29 @@ failed survey.
 **Prerequisites:** B4, Project 32, and
 [Brief 5](standard-library-briefs.md#5-text-streams-formatting-and-buffers).
 
-**Estimated time:** 10-16 hours
+**Estimated time:** 12-19 hours
 
 ### Outcomes
 
 - Control stream state and formatted/unformatted input.
 - Use file, string, span, and synchronized streams with correct ownership.
+- Apply modern string search, prefix/suffix, containment, and resize operations.
+- Explain and test the stream-buffer boundary beneath a stream.
 - Compare locale-independent conversion with stream conversion.
 - Implement and test a custom formatter.
 
 ### Required Work
 
 - Diagnose and recover from stream fail, bad, and EOF states.
+- Implement a string command/parser task using `find`/search, `starts_with`,
+  `ends_with`, feature-gated `contains`, and a resize operation; distinguish byte
+  positions from user-perceived text positions.
 - Parse equivalent input with streams and charconv.
 - Use file streams with explicit finalization/error policy.
 - Use string streams and a feature-gated spanstream path.
+- Implement one bounded output `streambuf` or forwarding/counting `streambuf`; test
+  `overflow`, bulk writes, EOF/failure propagation, and the lifetime of the wrapped
+  sink or buffer.
 - Write one stream-iterator algorithm.
 - Implement one custom formatter and equivalent stream fallback.
 - Demonstrate synchronized output without treating it as data synchronization.
@@ -277,6 +285,10 @@ failed survey.
 ### Acceptance
 
 - [ ] Every stream owner and buffer lifetime is documented.
+- [ ] String search and resize boundary cases are tested, and unsupported C++23
+      members use behaviorally equivalent fallbacks.
+- [ ] The custom stream buffer preserves its stated capacity/forwarding invariant and
+      exposes write failure through stream state.
 - [ ] Partial and malformed input cannot create an infinite loop.
 - [ ] Native and fallback formatted output are behaviorally equivalent.
 - [ ] S1 includes one regex rejection in favor of a parser and one locale-sensitive
