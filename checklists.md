@@ -138,6 +138,16 @@ never in the normal passing test suite.
 - [ ] I completed all three system-library breadth tracks and can identify the
       portfolio-depth track.
 
+### Standard-Library Breadth Route Gate
+
+- [ ] Every Core and Working row in `stdlib-facility-inventory.md` links to evidence.
+- [ ] I completed B1-B9 and Surveys S1-S5.
+- [ ] I passed the unseen B10 facility-selection assessment.
+- [ ] My feature record distinguishes native, fallback, survey, and unsupported
+      facilities.
+- [ ] I can retrieve complexity, invalidation, precondition, and guarantee facts from
+      a current reference.
+
 ### End of Phase 4
 
 - [ ] I can design regular value types and constrained templates.

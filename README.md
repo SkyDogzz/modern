@@ -57,6 +57,8 @@ Phase documents:
 - [Phase 4 - Generic Programming and Design](phase-04-generic-programming.md)
 - [Phase 5 - Concurrency, Performance, and Advanced Facilities](phase-05-concurrency-advanced.md)
 - [Phase 6 - Delivery and Maintenance](phase-06-professional-delivery.md)
+- [Standard-Library Breadth Labs](standard-library-breadth.md)
+- [Standard-Library Breadth Briefs](standard-library-briefs.md)
 
 Use [concept-briefs.md](concept-briefs.md) before each project,
 [project-template.md](project-template.md) for project records, and
@@ -156,6 +158,8 @@ modern-cpp-roadmap/
 |-- diagnostic-placement.md
 |-- stdlib-facility-inventory.md
 |-- toolchain-support.md
+|-- standard-library-briefs.md
+|-- standard-library-breadth.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md
@@ -223,6 +227,21 @@ starter or broken fixtures are indexed in [projects/README.md](projects/README.m
 31. Directory Analyzer - track project
 32. C++23 Table Printer - track project
 33. Testable Pomodoro Timer - track project
+
+### Standard-Library Breadth Route
+
+B1. Vocabulary Types, Utilities, and Callable Toolbox
+B2. Complete Container and Adaptor Comparison
+B3. Iterator Adaptors and Algorithm Families
+B4. Numerics, Mathematics, Randomness, and Bits
+B5. Streams, Text Conversion, Formatting, and Buffers
+B6. Filesystem Operations and Civil Time
+B7. Diagnostics, Exceptions, Runtime Support, and C Boundaries
+B8. Concurrency Coordination, Atomic Utilities, and Parallel Algorithms
+B9. C++23 Standard-Library Integration
+B10. Facility Selection and Documentation Navigation
+
+Surveys S1-S5 are integrated into B1-B9 and remain required Route B evidence.
 
 ### Phase 4 - Generic Programming and Design
 

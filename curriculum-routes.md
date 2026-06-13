@@ -64,7 +64,7 @@ route after passing the Phase 2 transfer assessment.
 
 1. Projects 25-33;
 2. every Core mastery and Working familiarity item in the facility inventory;
-3. the standard-library breadth labs;
+3. B1-B10 in [standard-library-breadth.md](standard-library-breadth.md);
 4. the final facility-selection and documentation-navigation assessment.
 
 **Target estimate:** 148-225 hours after Phase 2, including the existing Phase 3

@@ -78,6 +78,11 @@ and chrono without requiring three large repositories.
 Build Project 25 as the portfolio seed. Treat Projects 28 and 30 as tested
 extensions of the same data-processing track where practical.
 
+Route B then requires B1-B10 from
+[standard-library-breadth.md](standard-library-breadth.md). Surveys S1-S5 are
+embedded in those labs. Passing Projects 25-33 without this work completes the
+Professional Foundations use of the library, not the mostly-full breadth claim.
+
 ## Phase 4 - Abstraction Route
 
 Complete Projects 34-41 in order.
