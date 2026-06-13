@@ -311,7 +311,7 @@ Stop at a phase gate when prerequisite concepts cannot be explained.
 Current and target route totals:
 
 - **Professional Foundations:** 272-402 hours for the baseline through Project 51.
-- **Standard-Library Breadth:** 148-225 hours after Phase 2, or 254-383 hours from
+- **Standard-Library Breadth:** 157-238 hours after Phase 2, or 263-396 hours from
   the beginning.
 - **Advanced Language and Delivery:** 231-365 hours after Phase 3, including the
   reserved C++20-to-C++23 delta work.

@@ -71,9 +71,9 @@ route after passing the Phase 2 transfer assessment.
 3. B1-B10 in [standard-library-breadth.md](standard-library-breadth.md);
 4. the final facility-selection and documentation-navigation assessment.
 
-**Target estimate:** 148-225 hours after Phase 2, including the existing Phase 3
+**Target estimate:** 157-238 hours after Phase 2, including the existing Phase 3
 estimate of 58-85 hours. The complete route from a new learner therefore targets
-254-383 hours.
+263-396 hours.
 
 **Completion claim:** mostly full standard-library breadth at the documented tiers,
 not memorization of every overload, locale facet, C compatibility declaration, or
@@ -148,7 +148,7 @@ specializations:
 | Route | 6 hours/week | 10 hours/week | 15 hours/week |
 |---|---:|---:|---:|
 | Professional Foundations | 46-67 weeks | 28-41 weeks | 19-27 weeks |
-| Standard-Library Breadth from beginner | 43-64 weeks | 26-39 weeks | 17-26 weeks |
+| Standard-Library Breadth from beginner | 44-66 weeks | 27-40 weeks | 18-27 weeks |
 | Advanced Language and Delivery after Phase 3 | 39-61 weeks | 24-37 weeks | 16-25 weeks |
 
 These are planning ranges, not promises. Record actual completion time and revise the
