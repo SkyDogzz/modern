@@ -50,7 +50,10 @@ The recovered budget is assigned deliberately:
 - 17-21 hours to retrieval practice, transfer assessments, and remediation.
 
 This allocation is part of the route design; the removed portfolio polishing work is
-not silently replaced with additional greenfield projects.
+not silently replaced with additional greenfield projects. The assessment schedule
+and base 17-21 hour allocation are defined in
+[assessment-and-retention.md](assessment-and-retention.md); remediation after a
+failed attempt may add time.
 
 ## Route B: Standard-Library Breadth
 
@@ -108,14 +111,15 @@ platform, ABI, coroutine implementation, or module toolchain.
 | Phase | Required route context | Entry evidence |
 |---|---|---|
 | 1. Language Foundations | Route A | Toolchain can compile one C++23 source file |
-| 2. Object Semantics | Route A | Phase 1 gate or diagnostic equivalent |
-| 3. Standard Library | Routes A and B | Phase 2 gate or transfer assessment |
-| 4. Generic Programming | Routes A and C | Object lifetime, error policy, containers, and ranges diagnostics |
-| 5. Concurrency and Performance | Routes A and C | Ownership, callable lifetime, testing, and RAII diagnostics |
-| 6. Delivery and Maintenance | Route C | Phase 5 and D1-D4 gates plus one reusable tested library |
+| 2. Object Semantics | Route A | Phase 1 project gate and Phase 1 transfer pass |
+| 3. Standard Library | Routes A and B | Phase 2 project gate and Phase 2 transfer pass |
+| 4. Generic Programming | Routes A and C | Phase 3 project gate and Phase 3 transfer pass |
+| 5. Concurrency and Performance | Routes A and C | Phase 4 project gate and Phase 4 transfer pass |
+| 6. Delivery and Maintenance | Route C | Phase 5 transfer pass, D1-D4 gates, and one reusable tested library |
 
 Optional specializations never satisfy missing entry evidence and never block the
-next required phase.
+next required phase. Diagnostic placement may replace eligible core labs, but never
+a phase transfer.
 
 ## Topic Ownership
 

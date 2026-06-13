@@ -396,3 +396,12 @@ into a validated configuration.
 ### Stretch Goal
 
 Add versioned persistence to the Todo List through this parser rather than ad hoc text handling.
+
+---
+
+## Phase 2 Transfer Gate
+
+Complete R15 and revision M2, submit the phase evidence, and pass the
+[Phase 2 unseen lifetime/error diagnosis](assessment-and-retention.md#phase-2-transfer)
+at 12/15 or better. A failed transfer follows the documented remediation and uses a
+new variant.

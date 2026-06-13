@@ -17,6 +17,8 @@ compiler documentation, code review, and sustained practice together.
 The authoritative standard-library mapping is
 [stdlib-facility-inventory.md](stdlib-facility-inventory.md). Compiler and library
 capabilities are recorded using [toolchain-support.md](toolchain-support.md).
+Project and phase completion are scored using
+[assessment-and-retention.md](assessment-and-retention.md).
 
 ## AI Disclosure and Learning Policy
 
@@ -60,11 +62,14 @@ Phase documents:
 - [C++20-to-C++23 Delta](cpp20-23-delta.md)
 - [Standard-Library Breadth Labs](standard-library-breadth.md)
 - [Standard-Library Breadth Briefs](standard-library-briefs.md)
+- [Objective Assessment and Retention](assessment-and-retention.md)
 
 Use [concept-briefs.md](concept-briefs.md) before each project,
 [project-template.md](project-template.md) for project records, and
-[checklists.md](checklists.md) for phase gates. Route entry and completion are defined
-only in [curriculum-routes.md](curriculum-routes.md).
+[checklists.md](checklists.md) for phase gates. Checkboxes require the evidence and
+scores defined in `assessment-and-retention.md`; they are not self-attested passes.
+Route entry and completion are defined only in
+[curriculum-routes.md](curriculum-routes.md).
 
 ## Project Categories
 
@@ -89,7 +94,9 @@ For every project:
 3. Implement only the baseline requirements.
 4. Pass every acceptance criterion and the current phase quality gate.
 5. Record one defect, the evidence used to diagnose it, and the correction.
-6. Attempt stretch goals only after the baseline is explainable and tested.
+6. Submit the evidence bundle and pass the project rubric.
+7. Complete scheduled retrieval, older-project revisions, and the phase transfer.
+8. Attempt stretch goals only after the baseline is explainable and tested.
 
 A project applies knowledge; it must not be the learner's first unexplained
 encounter with that knowledge.
@@ -162,6 +169,7 @@ modern-cpp-roadmap/
 |-- standard-library-briefs.md
 |-- standard-library-breadth.md
 |-- cpp20-23-delta.md
+|-- assessment-and-retention.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md

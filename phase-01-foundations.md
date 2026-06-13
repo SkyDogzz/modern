@@ -632,3 +632,12 @@ Put the Project 13 multi-file program under a clean target-based build and test 
 ### Stretch Goal
 
 Install headers and the library to a local prefix without yet exporting a package.
+
+---
+
+## Phase 1 Transfer Gate
+
+Complete R2 and R6, submit the phase evidence, and pass the
+[Phase 1 unseen converter diagnosis](assessment-and-retention.md#phase-1-transfer)
+at 12/15 or better. Project checkboxes without the scored transfer do not unlock
+Phase 2.

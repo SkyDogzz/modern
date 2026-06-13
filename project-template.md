@@ -1,7 +1,9 @@
 # Project Template
 
 Use this template for roadmap projects. A project is complete only when its
-acceptance criteria and current phase gate pass.
+acceptance criteria, evidence bundle, and
+[project rubric](assessment-and-retention.md#project-rubric) pass. The current phase
+gate is a separate progression requirement.
 
 ## Project Name
 
@@ -22,7 +24,8 @@ understood.
 ## Concept Check
 
 Before implementation, answer three to five prerequisite questions without notes.
-Link to the relevant section of `concept-briefs.md`.
+Link to the relevant section of `concept-briefs.md`. Record the answers, confidence,
+corrections after checking, and one changed-condition follow-up.
 
 ## Learning Outcomes
 
@@ -157,7 +160,35 @@ Record which are expected at the current stage:
 
 ## Evidence
 
-Record commands, representative output, defect reproduction, diagnosis, and fix.
+Record the immutable evidence bundle from
+[assessment-and-retention.md](assessment-and-retention.md#evidence-bundle):
+
+- repository revision, date, and toolchain profile;
+- a requirement-to-code/test/command/explanation map;
+- clean configure, build, test, and run commands with representative output;
+- required warning, formatter, analyzer, sanitizer, or unsupported evidence;
+- defect reproduction, diagnosis, correction, and regression test.
+
+Subjective words such as explain, justify, safe, portable, and maintainable use the
+[expected evidence rules](assessment-and-retention.md#evidence-for-subjective-criteria).
+
+## Assessment Record
+
+| Dimension | Score 0-3 | Evidence |
+|---|---:|---|
+| Behavior | | |
+| Verification | | |
+| Reasoning | | |
+| Design and library use | | |
+| Evidence and maintenance | | |
+
+**Hard-fail checks:** List mandatory criteria and any failure.
+
+**Total and decision:** Record the score, reviewer, date, and `pass` or
+`remediation required`.
+
+**Remediation link:** Link the failed attempt, focused practice, new/updated test,
+and passing evidence. Leave blank only on a first-attempt pass.
 
 ## Notes
 

@@ -411,3 +411,11 @@ Run work, short-break, and long-break cycles and record session history.
 ### Stretch Goal
 
 Persist history and analyze it with the Project 30 ranges pipeline.
+
+---
+
+## Phase 3 Transfer Gate
+
+Complete revision M3, submit the phase evidence, and pass the
+[Phase 3 unseen facility-selection exercise](assessment-and-retention.md#phase-3-transfer)
+at 12/15 or better. Route B separately requires B1-B10 and its breadth gate.

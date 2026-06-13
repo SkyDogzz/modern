@@ -273,3 +273,12 @@ Maintain the released capstone instead of immediately adding another greenfield 
 ### Stretch Goal
 
 Backport the fix to one supported maintenance branch and document the merge strategy.
+
+---
+
+## Phase 6 Transfer Gate
+
+Complete revision M6, submit the phase evidence, and pass the
+[Phase 6 unseen patch-release exercise](assessment-and-retention.md#phase-6-transfer)
+at 12/15 or better. Route completion also requires the applicable breadth and
+C++20-to-C++23 delta gates.

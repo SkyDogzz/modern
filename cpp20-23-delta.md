@@ -209,7 +209,9 @@ and C++23 modes.
 
 ## Delta Gate
 
-- [ ] D1-D4 pass.
+- [ ] D1-D4 pass the
+      [project rubric](assessment-and-retention.md#project-rubric), with D4 scoring
+      at least 12/15.
 - [ ] Every representative feature names its introducing standard.
 - [ ] Language and library feature detection are not conflated.
 - [ ] The primary and secondary toolchain inventories are attached.

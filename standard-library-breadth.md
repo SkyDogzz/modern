@@ -344,6 +344,8 @@ Submit:
 
 - [ ] Every Core and Working inventory row has linked evidence.
 - [ ] All five surveys have reviewer-approved notes.
-- [ ] The unseen implementation passes behavior and quality gates.
+- [ ] The unseen implementation passes behavior and quality gates and scores at
+      least 12/15 under the
+      [project rubric](assessment-and-retention.md#project-rubric).
 - [ ] Reference citations support the actual design decisions.
 - [ ] Unsupported facilities are neither hidden nor counted as native completion.

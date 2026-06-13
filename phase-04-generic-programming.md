@@ -457,3 +457,11 @@ Store and execute heterogeneous commands through one `Command` value type.
 ### Stretch Goal
 
 Run a separately scoped dynamic-library experiment and document ABI constraints.
+
+---
+
+## Phase 4 Transfer Gate
+
+Complete revision M4, submit the phase evidence, and pass the
+[Phase 4 unseen generic-design exercise](assessment-and-retention.md#phase-4-transfer)
+at 12/15 or better. Optional Projects 42-43 cannot substitute for this gate.

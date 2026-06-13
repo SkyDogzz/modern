@@ -27,7 +27,10 @@ skippable, but an existing artifact may be upgraded instead of rebuilt.
 
 1. Take the diagnostic without notes or AI assistance.
 2. Record commands, output, reasoning, and reviewer result.
-3. A diagnostic passes only when all behavior and explanation criteria pass.
+3. Score the diagnostic with the
+   [project rubric](assessment-and-retention.md#project-rubric). It passes at 12/15
+   or better only when Behavior, Verification, and Reasoning are each at least 2 and
+   every diagnostic criterion passes.
 4. Failed evidence sends the learner to the corresponding lab; partial credit does
    not remove prerequisites.
 5. A skipped lab is recorded as `diagnostic-equivalent`, not marked as implemented.

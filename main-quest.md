@@ -18,7 +18,9 @@ or greenfield implementation.
 
 Core labs may also be replaced by passing evidence from
 [diagnostic-placement.md](diagnostic-placement.md). Required projects and transfer
-gates remain mandatory.
+gates remain mandatory. Scoring, retention checkpoints, older-project revisions,
+and transfer exercises are defined in
+[assessment-and-retention.md](assessment-and-retention.md).
 
 ## Phase 1 - Required Foundations
 
@@ -43,8 +45,8 @@ Complete Projects 15-20 and 23-24 in order. Project 20 is the combined ownership
 mechanics sequence; identifiers 21-22 are retired and retained only to avoid
 renumbering later projects.
 
-**Route entry:** Professional Foundations. Pass the Phase 1 gate or its diagnostic
-equivalent.
+**Route entry:** Professional Foundations. Pass the Phase 1 project gate and unseen
+transfer exercise. Diagnostics may replace eligible labs, not the transfer.
 
 Build seriously:
 
@@ -61,9 +63,9 @@ not optional knowledge.
 Complete Projects 25-30 in order.
 
 **Route entry:** Professional Foundations and Standard-Library Breadth. Pass the
-Phase 2 gate or its transfer assessment. Route B completion additionally requires
-the facility inventory and breadth labs; Projects 25-33 alone do not establish
-mostly full standard-library coverage.
+Phase 2 project gate and unseen transfer exercise. Route B completion additionally
+requires the facility inventory and breadth labs; Projects 25-33 alone do not
+establish mostly full standard-library coverage.
 
 Then complete the baseline requirements for all three breadth tracks:
 
@@ -88,8 +90,7 @@ Professional Foundations use of the library, not the mostly-full breadth claim.
 Complete Projects 34-41 in order.
 
 **Route entry:** Professional Foundations and Advanced Language and Delivery.
-Demonstrate object lifetime, error policy, container, iterator, and range
-competencies.
+Pass the Phase 3 project gate and unseen transfer exercise.
 
 Keep Projects 34-41 as reusable libraries, design comparisons, or focused labs.
 Select Project 34 or 37 for the package-and-release evolution track instead of
@@ -108,7 +109,7 @@ tradeoffs of type erasure without requiring a beginner to implement a framework.
 Complete Projects 44-51 in order.
 
 **Route entry:** Professional Foundations and Advanced Language and Delivery.
-Demonstrate RAII, callable lifetime, testing, and deterministic cleanup.
+Pass the Phase 4 project gate and unseen transfer exercise.
 
 Project 49, Parallel File Hasher, is the portfolio project. Project 52 is an optional
 specialization:
@@ -125,8 +126,8 @@ not part of the mandatory Phase 5 gate.
 
 Complete all four:
 
-**Route entry:** Advanced Language and Delivery. Pass the Phase 5 and D1-D4 gates,
-and provide one reusable tested library suitable for packaging.
+**Route entry:** Advanced Language and Delivery. Pass the Phase 5 unseen transfer
+and D1-D4 gates, and provide one reusable tested library suitable for packaging.
 
 - Project 54: Quality Engineering Pass
 - Project 55: Package and Release One Project
@@ -150,5 +151,6 @@ A completed portfolio contains six evolving tracks:
 5. **Concurrent file tool:** Project 31 evolved into Project 49.
 6. **Released capstone:** Projects 56-57, including the maintenance patch.
 
-Each track must pass the relevant phase gate. Intermediate labs remain evidence in
-the learning log rather than becoming separate portfolio repositories.
+Each track must pass the relevant phase gate. Revisions M2-M6 deliberately evolve
+these artifacts instead of producing replacements. Intermediate labs remain
+evidence in the learning log rather than becoming separate portfolio repositories.

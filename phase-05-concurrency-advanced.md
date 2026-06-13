@@ -423,3 +423,12 @@ Project identifier 53 is retained to avoid renumbering. Its former module, corou
 generator, and `mdspan` tracks are now D5-D7 in
 [cpp20-23-delta.md](cpp20-23-delta.md), where their C++20/C++23 prerequisites and
 feature-detection requirements are taught explicitly.
+
+---
+
+## Phase 5 Transfer Gate
+
+Complete revision M5, submit the phase evidence, and pass the
+[Phase 5 unseen concurrency diagnosis](assessment-and-retention.md#phase-5-transfer)
+at 12/15 or better. A passing stress test cannot replace the required synchronization
+argument.
