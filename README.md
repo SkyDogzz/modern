@@ -1,12 +1,18 @@
 # Modern C++23 Project Roadmap
 
-A prerequisite-driven path from first compilation to independently building,
-testing, packaging, releasing, and maintaining modern C++ software.
+A prerequisite-driven path from first compilation to standard-library breadth,
+advanced language work, and independently building, testing, packaging, releasing,
+and maintaining modern C++ software.
 
-This repository teaches **professional foundations in C++23**. It does not claim
-exhaustive mastery of the language, every platform API, or production engineering
-from projects alone. Use the concept briefs, a current C++ reference, compiler
-documentation, code review, and sustained practice together.
+This repository provides three explicit routes: **professional foundations**,
+**standard-library breadth**, and **advanced language and delivery**. "Mostly full
+standard library" means core mastery or working familiarity across the documented
+facility inventory, with survey or reference-only treatment for specialized areas.
+It does not mean memorizing every declaration or mastering every platform API.
+
+See [curriculum-routes.md](curriculum-routes.md) for completion claims, prerequisites,
+time ranges, and coverage tiers. Use the concept briefs, a current C++ reference,
+compiler documentation, code review, and sustained practice together.
 
 ## AI Disclosure and Learning Policy
 
@@ -27,6 +33,17 @@ edge cases, and understand failures is as important as learning to code.
 5. Concurrency, Performance, and Advanced Facilities
 6. Delivery and Maintenance
 
+Routes:
+
+- **Professional Foundations:** baseline Projects 1-51.
+- **Standard-Library Breadth:** Phase 3 plus the required facility inventory and
+  breadth labs.
+- **Advanced Language and Delivery:** Phases 4-6 plus the mandatory C++20-to-C++23
+  delta work.
+
+Optional specializations never become mandatory merely because they appear in a
+phase document.
+
 Phase documents:
 
 - [Phase 1 - Language Foundations and Workflow](phase-01-foundations.md)
@@ -38,7 +55,8 @@ Phase documents:
 
 Use [concept-briefs.md](concept-briefs.md) before each project,
 [project-template.md](project-template.md) for project records, and
-[checklists.md](checklists.md) for phase gates.
+[checklists.md](checklists.md) for phase gates. Route entry and completion are defined
+only in [curriculum-routes.md](curriculum-routes.md).
 
 ## Project Categories
 
@@ -111,6 +129,7 @@ specializations require feature detection and documented fallbacks.
 ```txt
 modern-cpp-roadmap/
 |-- README.md
+|-- curriculum-routes.md
 |-- concept-briefs.md
 |-- checklists.md
 |-- main-quest.md
@@ -218,12 +237,24 @@ install rules, and packaging only when the relevant project introduces them.
 Estimates are comparative. Beginner completion data should be used to revise them.
 Stop at a phase gate when prerequisite concepts cannot be explained.
 
+Current and target route totals:
+
+- **Professional Foundations:** 329-483 hours for Projects 1-51.
+- **Standard-Library Breadth:** 156-236 hours after Phase 2, or 286-426 hours from
+  the beginning.
+- **Advanced Language and Delivery:** 257-405 hours after Phase 3, including the
+  reserved C++20-to-C++23 delta work.
+
+Calendar examples at 6, 10, and 15 hours per week are maintained in
+[curriculum-routes.md](curriculum-routes.md). Optional specializations are excluded
+from these totals.
+
 ## Portfolio Route
 
 The authoritative portfolio route is defined in [main-quest.md](main-quest.md).
 README does not duplicate that list.
 
-## Optional Topics
+## Optional Specializations
 
 Modules, custom coroutine promise types, `std::mdspan`, PMR specialization,
 manual type erasure, serialization frameworks, and weak memory ordering are not

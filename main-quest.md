@@ -1,9 +1,13 @@
-# Main Quest
+# Professional Foundations Quest
 
-This is the required route through the roadmap. It limits portfolio-level effort,
-not prerequisite knowledge. Complete core labs with the smallest implementation
-that proves the concept; invest substantial design and documentation effort only
-in the named portfolio projects.
+This is Route A from [curriculum-routes.md](curriculum-routes.md). It defines the
+professional-foundations project order. The Standard-Library Breadth and Advanced
+Language and Delivery routes have additional completion evidence and must not be
+inferred from this file.
+
+This quest limits portfolio-level effort, not prerequisite knowledge. Complete core
+labs with the smallest implementation that proves the concept; invest substantial
+design and documentation effort only in the named portfolio projects.
 
 Optional specializations never block the next phase.
 
@@ -14,6 +18,9 @@ do not each require a standalone repository or greenfield implementation.
 ## Phase 1 - Required Foundations
 
 Complete Projects 1-14 in order.
+
+**Route entry:** Professional Foundations. No earlier phase is required; compile one
+C++23 source file before Project 1.
 
 Build seriously:
 
@@ -29,6 +36,9 @@ Git habits, a test framework, and target-based CMake.
 
 Complete Projects 15-24 in order.
 
+**Route entry:** Professional Foundations. Pass the Phase 1 gate or its diagnostic
+equivalent.
+
 Build seriously:
 
 - Project 17: Bank Account Simulator
@@ -42,6 +52,11 @@ ownership graphs, and error policy are not optional knowledge.
 ## Phase 3 - Standard Library Route
 
 Complete Projects 25-30 in order.
+
+**Route entry:** Professional Foundations and Standard-Library Breadth. Pass the
+Phase 2 gate or its transfer assessment. Route B completion additionally requires
+the facility inventory and breadth labs; Projects 25-33 alone do not establish
+mostly full standard-library coverage.
 
 Then complete the baseline requirements for all three breadth tracks:
 
@@ -58,6 +73,10 @@ Build Projects 25, 28, and 30 seriously.
 ## Phase 4 - Abstraction Route
 
 Complete Projects 34-41 in order.
+
+**Route entry:** Professional Foundations and Advanced Language and Delivery.
+Demonstrate object lifetime, error policy, container, iterator, and range
+competencies.
 
 Build seriously:
 
@@ -77,6 +96,9 @@ tradeoffs of type erasure without requiring a beginner to implement a framework.
 
 Complete Projects 44-51 in order.
 
+**Route entry:** Professional Foundations and Advanced Language and Delivery.
+Demonstrate RAII, callable lifetime, testing, and deterministic cleanup.
+
 Project 49, Parallel File Hasher, is the portfolio project. Projects 52 and 53 are
 optional specializations:
 
@@ -88,6 +110,9 @@ PMR, modules, coroutines, and `mdspan` are not part of the mandatory Phase 5 gat
 ## Phase 6 - Delivery and Maintenance Route
 
 Complete all four:
+
+**Route entry:** Advanced Language and Delivery. Pass the Phase 5 gate and provide
+one reusable tested library suitable for packaging.
 
 - Project 54: Quality Engineering Pass
 - Project 55: Package and Release One Project
