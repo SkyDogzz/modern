@@ -15,8 +15,8 @@ competency.
 
 ## Evidence Bundle
 
-Every required project, diagnostic, B/D lab, and transfer attempt has an immutable
-evidence record:
+Every required project, diagnostic, B/D lab, S survey, and transfer attempt has an
+immutable evidence record:
 
 | Evidence | Required content |
 |---|---|
@@ -54,6 +54,10 @@ A project passes only when:
 
 A score cannot compensate for a missing mandatory criterion. Stretch goals never
 increase a failing baseline score.
+
+Survey exercises use the dedicated 10-point rubric and pass rules in
+[standard-library-breadth.md](standard-library-breadth.md#survey-evidence-and-pass-rules).
+They use the same evidence, hard-fail, reviewer, and remediation rules as projects.
 
 ### Global Hard Fails
 

@@ -12,7 +12,8 @@ Exercise identifiers:
 
 - `Pnn` refers to an existing numbered project.
 - `B1`-`B10` refer to the required standard-library breadth labs.
-- `S1`-`S5` refer to required survey exercises.
+- `S1`-`S5` refer to the required, scored
+  [survey exercises](standard-library-breadth.md#survey-evidence-and-pass-rules).
 - `R` means reference-only recognition and does not block completion.
 
 Assessment codes:

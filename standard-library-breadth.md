@@ -6,6 +6,96 @@ evidence even when no production implementation is appropriate.
 
 Total target time: 90-140 hours, including survey work and the final assessment.
 
+## Survey Evidence and Pass Rules
+
+Surveys are bounded reference-and-experiment exercises, not implementation projects.
+Their parts may be completed in the named B labs, but each survey has one final
+evidence record containing:
+
+1. a scope table mapping every listed facility to purpose, limitations, ownership or
+   global-state concerns, standard version, and one cited requirement;
+2. the required probe, diagnosis, or comparison with reproducible commands and
+   observed output;
+3. one task where the facility fits and one where another facility is preferable;
+4. implementation-support findings separated from standard requirements;
+5. answers to two reviewer changes of input, environment, lifetime, or failure mode.
+
+Score each survey dimension from 0 to 2:
+
+| Dimension | 0 | 1 | 2 |
+|---|---|---|---|
+| Scope | listed facilities are omitted | all are named but important limits are missing | every listed facility has purpose, limits, and boundary conditions |
+| Accuracy | a central guarantee or safety claim is wrong | claims are mostly correct but imprecise | cited claims and implementation observations are clearly separated and correct |
+| Retrieval | sources are absent or do not support decisions | sources are present but weakly connected | exact requirements are cited and applied to the probe or comparison |
+| Application | no concrete use or rejection decision | examples exist without a defensible selection rule | fit and rejection cases follow from stated task requirements |
+| Reproduction | evidence cannot be reproduced | commands or expected observations are incomplete | another reviewer can reproduce every required probe and result |
+
+A survey passes at 8/10 or better, with no zero and with Accuracy and Application
+both scoring 2. Every required deliverable below must be present; a score cannot
+compensate for an omitted facility. Use the remediation rules in
+[assessment-and-retention.md](assessment-and-retention.md#remediation-rules) after a
+failed survey.
+
+### S1. Text, Regex, and Localization
+
+- Compare `char_traits`, byte/code-unit storage, `char8_t`, and Unicode processing
+  boundaries without claiming that the standard library normalizes Unicode.
+- Diagnose one regex that accepts a malformed record or is unsuitable for the task,
+  then implement or specify the clearer token/parser alternative.
+- Run one locale-sensitive numeric or collation probe under the classic locale and
+  one available named locale; record an explicit unsupported result if no named
+  locale is installed.
+- **Oracle:** the same bytes/code units, regex cases, and locale inputs produce the
+  recorded outcomes, and the selection table states where locale-independent
+  `charconv` is required.
+
+### S2. Specialized Numeric and Flat Storage
+
+- Compare `valarray` with `vector` plus algorithms/ranges for one numeric expression.
+- Compare a flat associative container, or a sorted-vector fallback, with a
+  node-based associative container for lookup and mutation requirements.
+- Probe one floating-point environment operation such as exception flags or rounding
+  mode, then document compiler/platform limitations and optimization assumptions.
+- **Oracle:** both alternatives agree on defined result data, container ordering and
+  duplicate policy are tested, and floating-environment claims match observed flags
+  or an explicitly unsupported result.
+
+### S3. C Boundaries and Execution Policies
+
+- Audit one C compatibility API for ownership, null termination, error signaling,
+  locale/global state, thread safety, and its preferred C++ alternative.
+- Compare a serial algorithm with one execution-policy form using an independent
+  callable and equivalent result check; implementation unavailability is acceptable
+  when documented.
+- Retrieve the selected policy's ordering and exception constraints.
+- **Oracle:** the boundary adapter passes success and failure tests without ownership
+  ambiguity, and the policy comparison checks result equivalence without requiring
+  a speedup.
+
+### S4. Runtime Diagnostics and Termination
+
+- Compare RTTI/`type_index` with an explicit variant, virtual operation, or registry
+  protocol for one task.
+- Probe `source_location` and feature-gated `stacktrace` while excluding unstable
+  implementation text from the test oracle.
+- Classify assertion, `error_code` category/condition, exception, and termination
+  examples; run fatal behavior only in an isolated subprocess.
+- **Oracle:** the diagnostic path preserves domain context, the alternative design
+  comparison uses the same behavior contract, and the subprocess observes the
+  expected termination category rather than exact diagnostic text.
+
+### S5. Allocators, PMR, and C Pointer Adapters
+
+- Trace one `allocator_traits` allocate/construct/destroy/deallocate lifecycle and
+  state which responsibilities belong to the container, allocator, and element.
+- Measure one bounded allocation-heavy workload with a normal allocator and one PMR
+  resource; record a case where PMR is not justified.
+- Compare a manual C out-parameter owner adapter with feature-gated `out_ptr` or
+  `inout_ptr`, including success and failure ownership transfer.
+- **Oracle:** allocation/deallocation counts balance, the PMR comparison reports
+  workload and measurements without assuming improvement, and both pointer-adapter
+  paths have equivalent leak-free ownership behavior.
+
 ## B1. Vocabulary Types, Utilities, and Callable Toolbox
 
 **Category:** Required breadth lab
@@ -63,8 +153,7 @@ Total target time: 90-140 hours, including survey work and the final assessment.
 - Use stack, queue, and priority_queue for naturally restricted operations.
 - Transfer an associative node and perform heterogeneous lookup.
 - Feature-gate C++23 range insertion and flat containers.
-- Complete the container portion of Survey S2, including valarray and flat-container
-  comparisons.
+- Complete the flat-container portion of Survey S2.
 
 ### Acceptance
 
