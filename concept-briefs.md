@@ -350,8 +350,10 @@ forbidden. Do not invoke unknown user code while holding an internal mutex.
 ## 13. Ranges and Views
 
 A range provides a beginning and an end. A view is a lightweight, usually lazy
-range adaptor and normally does not own elements. Composing views can express
-pipelines, but lifetime remains the programmer's responsibility.
+range adaptor. Many views reference an external range, while owning and generated
+views can own their underlying state or produce values without external element
+storage. Composing views can express pipelines, but the programmer must identify
+what state is owned, what is referenced, and what invalidates iteration.
 
 Materialize an owning container before returning data that must outlive its source
 or before an operation such as sorting should not mutate the source. A borrowed
@@ -368,10 +370,12 @@ Safe pipeline order for records:
 
 **Review**
 
-1. Does a view usually own its elements?
+1. Which kinds of views reference external storage, own an underlying range, or
+   generate values?
 2. Why can sorting through a view mutate the source?
 3. When should a pipeline materialize?
-4. What does borrowed range actually guarantee?
+4. What does borrowed range actually guarantee, and what does it not say about
+   element ownership?
 
 ## 14. Filesystem, Formatting, and Chrono
 

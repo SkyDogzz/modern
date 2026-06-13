@@ -201,7 +201,8 @@ Use a standard container adaptor for one naturally stack-, queue-, or priority-b
 ### Learning Outcomes
 
 - Explain ranges, iterators, sentinels, views, and borrowed ranges.
-- Compose lazy adaptors without confusing a view with an owner.
+- Compose lazy adaptors while distinguishing externally-backed, owning, and
+  generated views.
 - Decide when to materialize.
 
 ### Goal
@@ -218,7 +219,9 @@ Build small pipelines over owned arrays, vectors, strings, and temporary ranges.
 
 ### Acceptance Criteria
 
-- [ ] Every view names the storage that owns its elements.
+- [ ] Every view records whether it owns or references its underlying state and
+      where yielded elements or values come from.
+- [ ] Invalidation and the lifetime of every referenced dependency are documented.
 - [ ] Returned results do not refer to destroyed temporaries.
 - [ ] The learner explains exactly what borrowed-range status guarantees.
 
