@@ -41,6 +41,7 @@ Assessment codes:
 | Type traits and transformations | `<type_traits>` | C++11-23 | Core | P38, B1 | Implement, Diagnose | Required in every profile |
 | Standard concepts | `<concepts>` | C++20 | Core | P40, B1 | Implement, Diagnose | `__cpp_concepts >= 202002L` |
 | `integer_sequence`, compile-time ratios | `<utility>`, `<ratio>` | C++11 | Working | B1 | Implement | Always required |
+| `span`, fixed and dynamic extent | `<span>` | C++20 | Core | P9, P20 | Implement, Diagnose | `__cpp_lib_span >= 202002L`; no owning fallback |
 | `unique_ptr`, `shared_ptr`, `weak_ptr` | `<memory>` | C++11 | Core | P23 | Implement, Compare | Required in every profile |
 | Allocator model and `allocator_traits` | `<memory>` | C++11 | Working | B1, S5 | Compare, Retrieve | Use normal allocator as baseline |
 | Raw-memory algorithms | `<memory>` | C++17-23 | Working | B3 | Implement, Diagnose | No manual owner in production artifact |
