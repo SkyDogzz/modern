@@ -137,6 +137,10 @@ their totals differ by no more than two points. They resolve larger differences 
 identifying ambiguous evidence or wording and record the agreed interpretation.
 Scores are not averaged to turn a failure into a pass.
 
+A completed two-reviewer application of this procedure is recorded in
+[reviewer-calibration.md](reviewer-calibration.md). Repeat calibration when rubric
+wording changes or reviewer disagreement exceeds the thresholds above.
+
 A project may use structured self-review while it is being developed. A phase
 transfer and final route claim require a reviewer who did not author the submitted
 solution. A reviewer may be a mentor, peer, instructor, or code-review partner.
