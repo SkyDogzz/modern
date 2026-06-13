@@ -611,7 +611,8 @@ Put the Project 13 multi-file program under a clean target-based build and test 
 ### Requirements
 
 - Build library, application, and test targets.
-- Request C++23 per target and use target-based include paths.
+- Request C++23 per target, disable vendor language extensions, and use target-based
+  include paths.
 - Add Debug and ASan/UBSan presets.
 - Configure one repository formatter.
 - Fetch, vendor, or locate the test framework through a documented pinned strategy.
@@ -620,6 +621,8 @@ Put the Project 13 multi-file program under a clean target-based build and test 
 ### Acceptance Criteria
 
 - [ ] A clean checkout configures, builds, tests, and formats from documented commands.
+- [ ] The documentation distinguishes single-config and multi-config configure,
+      build, test, and executable paths.
 - [ ] Target usage requirements have stated reasons.
 - [ ] All tests pass from a clean build directory.
 - [ ] Dependency acquisition is reproducible.

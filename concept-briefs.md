@@ -177,7 +177,10 @@ Use a debugger to inspect control flow and state. Use sanitizers to detect class
 of runtime defects. They answer different questions.
 
 CMake targets model build products and usage requirements. Prefer target-scoped
-compile features, include directories, options, and linked dependencies.
+compile features, include directories, options, and linked dependencies. Request
+standard C++ mode explicitly by disabling vendor extensions when portability is an
+objective. Single-config generators choose a configuration while configuring;
+multi-config generators choose it while building and testing.
 
 Git history should contain focused commits with messages that explain intent.
 Review `git diff` before committing; never commit build directories or secrets.
@@ -188,7 +191,8 @@ Review `git diff` before committing; never commit build directories or secrets.
 2. Why is `assert` unsuitable for hostile input?
 3. What is the difference between debugger and sanitizer evidence?
 4. Why are target usage requirements preferable to global CMake settings?
-5. What should a focused commit contain?
+5. How do single-config and multi-config build commands differ?
+6. What should a focused commit contain?
 
 ## 7. Classes, Invariants, and Special Members
 

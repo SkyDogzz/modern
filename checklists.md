@@ -16,13 +16,21 @@ ownership, packaging, or concurrency concerns.
 - [ ] I recorded at least one defect, diagnostic observation, and fix.
 - [ ] I reviewed the diff before committing focused changes to Git.
 
-## Baseline Commands
+## Baseline Direct-Compiler Commands
+
+GCC or Clang:
 
 ```bash
 c++ -std=c++23 -Wall -Wextra -Wpedantic -g source.cpp -o app
 ```
 
-Optional stricter diagnostics:
+MSVC developer shell:
+
+```bat
+cl /std:c++latest /permissive- /W4 /EHsc /Zi source.cpp
+```
+
+Optional stricter GCC or Clang diagnostics:
 
 ```bash
 -Wconversion -Wshadow
@@ -30,6 +38,9 @@ Optional stricter diagnostics:
 
 Use `-Werror` only for controlled code and compiler versions. Do not make
 third-party warnings or cross-compiler differences fatal by default.
+
+After CMake is introduced, verify whether the selected generator is single-config or
+multi-config and use the matching commands from `project-template.md`.
 
 ## Sanitizers
 

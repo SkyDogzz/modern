@@ -79,29 +79,59 @@ or library targets before the roadmap introduces the translation and CMake model
 
 ## Build
 
+Single-config generator:
+
 ```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
 ```
 
-All CMake targets request C++23:
+Multi-config generator:
+
+```bash
+cmake -S . -B build-multi
+cmake --build build-multi --config Debug
+```
+
+All CMake targets request C++23 without vendor extensions:
 
 ```cmake
 target_compile_features(app PRIVATE cxx_std_23)
+set_target_properties(app PROPERTIES CXX_EXTENSIONS OFF)
 ```
 
 Do not rely only on global `CMAKE_CXX_STANDARD` after target-based CMake is taught.
+Do not pass `CMAKE_BUILD_TYPE` to a multi-config generator.
 
 ## Run
+
+Single-config Unix-like example:
 
 ```bash
 ./build/app
 ```
 
+Multi-config output commonly includes the configuration directory, for example:
+
+```bat
+build-multi\Debug\app.exe
+```
+
+Document the actual target path produced by the selected generator. Prefer CTest for
+portable automated execution instead of hard-coding executable paths in scripts.
+
 ## Tests
+
+Single-config:
 
 ```bash
 ctest --test-dir build --output-on-failure
+```
+
+Multi-config:
+
+```bash
+ctest --test-dir build-multi -C Debug --output-on-failure
 ```
 
 Record which are expected at the current stage:
@@ -118,6 +148,8 @@ Record which are expected at the current stage:
 ## Quality Gate
 
 - [ ] Warnings are enabled and understood.
+- [ ] C++23 mode is requested and vendor language extensions are disabled unless a
+      documented platform-specific target requires them.
 - [ ] The repository formatter configuration has been applied.
 - [ ] The relevant debugger, sanitizer, analyzer, or profiler was used.
 - [ ] Public interfaces document invalid inputs and errors.

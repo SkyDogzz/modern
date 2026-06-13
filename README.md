@@ -100,20 +100,32 @@ encounter with that knowledge.
 - ThreadSanitizer for concurrency projects where supported
 - A maintained unit-test framework by Project 14
 
-Direct compiler examples use:
+Direct compiler examples use the command for the selected profile.
+
+GCC or Clang:
 
 ```bash
 c++ -std=c++23 -Wall -Wextra -Wpedantic -g source.cpp -o app
 ```
 
-CMake targets request C++23 explicitly:
+MSVC developer shell:
+
+```bat
+cl /std:c++latest /permissive- /W4 /EHsc /Zi source.cpp
+```
+
+CMake targets request C++23 explicitly and disable vendor language extensions:
 
 ```cmake
 target_compile_features(app PRIVATE cxx_std_23)
+set_target_properties(app PROPERTIES CXX_EXTENSIONS OFF)
 ```
 
-Library support varies by compiler and standard-library version. Optional
-specializations require feature detection and documented fallbacks.
+Single-config and multi-config generators use different configuration commands and
+output layouts. Use the matching commands in
+[project-template.md](project-template.md). Library support varies by compiler and
+standard-library version; follow [toolchain-support.md](toolchain-support.md) rather
+than inferring support from language mode.
 
 ## Testing and Tooling Progression
 
