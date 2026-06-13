@@ -4,7 +4,12 @@ This module separates language evolution from standard-library evolution. D1-D4 
 required for the Advanced Language and Delivery route. D5-D7 are optional
 implementation-sensitive tracks.
 
-Required estimate: 24-40 hours.
+Required estimate: 23-38 hours.
+
+Route B owns standard-library facility implementation and selection at the published
+tiers. D2 and D4 instead assess when representative library features entered the
+standard and how support is detected. Existing Route B or project artifacts may be
+reused; delta evidence never satisfies an uncompleted Route B inventory row.
 
 ## Detection Model
 
@@ -159,22 +164,22 @@ and C++23 modes.
 
 **Category:** Required delta assessment
 
-**Prerequisites:** D1-D3, B9 or equivalent facility evidence, and
-`toolchain-support.md`.
+**Prerequisites:** D1-D3 and [toolchain-support.md](toolchain-support.md). B9 or
+earlier project evidence may be reused but is not required.
 
-**Estimated time:** 6-10 hours
+**Estimated time:** 5-8 hours
 
 ### Required Work
 
 - Generate a feature report from `<version>` for the selected primary and secondary
   profiles.
-- Implement at least six representative C++23 library additions across four
-  different library areas.
-- Exercise one native/fallback pair whose native path is unavailable on the
-  secondary profile.
+- Analyze at least six representative C++23 library additions across four different
+  library areas using frozen B9/project artifacts or minimal compile-and-run probes.
+- Exercise one existing or minimal native/fallback pair whose native path is
+  unavailable on the secondary profile.
 - Classify every representative feature as language, library, implementation
   extension, or unavailable.
-- Cite the proposal or standard-library status source for each implemented feature.
+- Cite the proposal or standard-library status source for each analyzed feature.
 - Explain which C++20 feature each C++23 example builds upon.
 
 ### Acceptance
@@ -184,6 +189,8 @@ and C++23 modes.
 - [ ] Primary and secondary profile results are kept separate.
 - [ ] Native and fallback tests share one behavior contract.
 - [ ] Unsupported features remain visible in the report.
+- [ ] D4 evidence is labeled as delta analysis and is not counted as Route B facility
+      mastery.
 
 ## D5. Optional Module Packaging Track
 

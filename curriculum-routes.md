@@ -99,7 +99,7 @@ competency prerequisites where possible.
 Projects 42, 43, 52, and D5-D7 remain optional unless explicitly selected as a
 specialization. Project identifier 53 is retired.
 
-**Target estimate:** 232-367 hours after Phase 3, including 24-40 hours reserved for
+**Target estimate:** 231-365 hours after Phase 3, including 23-38 hours reserved for
 the mandatory language/library delta work.
 
 **Completion claim:** advanced language foundations plus demonstrated verification,
@@ -126,13 +126,19 @@ a phase transfer.
 | Topic family | Primary route |
 |---|---|
 | Syntax, object lifetime, ownership, errors, build, tests | Professional Foundations |
-| Standard containers, algorithms, ranges, text, I/O, numerics, time, filesystem | Standard-Library Breadth |
+| Standard-library facility selection and implementation at the documented tiers, including C++20/C++23 additions | Standard-Library Breadth |
 | Templates, advanced abstraction, concurrency, performance | Advanced Language and Delivery |
-| C++20/C++23 language and library delta | Advanced Language and Delivery |
+| C++20/C++23 language evolution plus cross-version lineage and feature detection | Advanced Language and Delivery |
 | Packaging, releases, compatibility, maintenance | Advanced Language and Delivery |
 
 Projects may use earlier topics, but their assessment belongs to the primary route.
 This prevents an incidental mention from being counted as coverage.
+
+Route C's D2 and D4 exercises inspect the history and availability of selected
+library facilities. They may reuse Route B evidence, earlier project artifacts, or
+minimal compile probes, but they do not award a library mastery tier and cannot
+satisfy a Route B inventory row. Route B owns that implementation-and-selection
+claim; Route C owns the lineage-and-detection claim.
 
 ## Calendar Examples
 
@@ -143,7 +149,7 @@ specializations:
 |---|---:|---:|---:|
 | Professional Foundations | 46-67 weeks | 28-41 weeks | 19-27 weeks |
 | Standard-Library Breadth from beginner | 43-64 weeks | 26-39 weeks | 17-26 weeks |
-| Advanced Language and Delivery after Phase 3 | 39-62 weeks | 24-37 weeks | 16-25 weeks |
+| Advanced Language and Delivery after Phase 3 | 39-61 weeks | 24-37 weeks | 16-25 weeks |
 
 These are planning ranges, not promises. Record actual completion time and revise the
 estimates from learner evidence.

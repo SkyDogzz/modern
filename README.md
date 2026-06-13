@@ -313,7 +313,7 @@ Current and target route totals:
 - **Professional Foundations:** 272-402 hours for the baseline through Project 51.
 - **Standard-Library Breadth:** 148-225 hours after Phase 2, or 254-383 hours from
   the beginning.
-- **Advanced Language and Delivery:** 232-367 hours after Phase 3, including the
+- **Advanced Language and Delivery:** 231-365 hours after Phase 3, including the
   reserved C++20-to-C++23 delta work.
 
 Calendar examples at 6, 10, and 15 hours per week are maintained in
