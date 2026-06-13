@@ -127,7 +127,11 @@ Register, remove, and invoke callbacks for named events.
 
 - Return a subscription token from registration.
 - Choose and document immediate, deferred, or forbidden mutation during dispatch.
-- Prevent callbacks from silently retaining short-lived reference captures.
+- State that arbitrary callable captures cannot be inspected by the dispatcher.
+- Require self-contained callable values or an owner-bound registration containing
+  a `weak_ptr` lifetime token; expired owner-bound callbacks are not invoked.
+- Document direct reference captures as a caller precondition rather than claiming
+  the dispatcher can detect them.
 - Use `std::function` deliberately and document possible allocation/indirection.
 - Never invoke unknown callback code while an internal mutex is held; the baseline
   itself remains single-threaded.
@@ -136,7 +140,10 @@ Register, remove, and invoke callbacks for named events.
 
 - [ ] Callback order and reentrancy behavior are defined.
 - [ ] Unsubscription and attempted mutation during dispatch are tested.
-- [ ] A test demonstrates and fixes one capture-lifetime defect.
+- [ ] Destroying an owner token before dispatch prevents the owner-bound callback
+      from running.
+- [ ] The README explains why a subscription token alone does not make referenced
+      captures safe.
 
 ### Stretch Goal
 

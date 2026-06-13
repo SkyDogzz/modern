@@ -337,15 +337,23 @@ Function pointers represent a narrow callable form. Templates accept generic
 callables without type erasure. `std::function` stores compatible callables behind
 a runtime-erased interface, potentially adding allocation and indirection.
 
+A dispatcher cannot inspect an arbitrary callable to discover unsafe reference
+captures. Enforce lifetime through the API instead: require self-contained callable
+values, associate registrations with an owner token checked before invocation, or
+state a caller precondition. A subscription token controls registration lifetime but
+does not by itself extend the lifetime of captured objects.
+
 Mutation during callback dispatch needs a defined policy: immediate, deferred, or
 forbidden. Do not invoke unknown user code while holding an internal mutex.
 
 **Review**
 
-1. What lifetime must a reference capture satisfy?
+1. What lifetime must a reference capture satisfy, and why can a dispatcher not
+   verify that capture automatically?
 2. When does a template preserve a callable's concrete type?
 3. What costs can `std::function` introduce?
-4. Why must mutation during dispatch be specified?
+4. How can an owner token make callback lifetime enforceable?
+5. Why must mutation during dispatch be specified?
 
 ## 13. Ranges and Views
 
