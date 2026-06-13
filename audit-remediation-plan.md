@@ -1,5 +1,9 @@
 # Audit Remediation Plan
 
+> Status: complete as of 2026-06-13. This backlog is retained for traceability.
+> Requirement-by-requirement evidence is in
+> [audit-resolution.md](audit-resolution.md#remediation-task-ledger).
+
 This backlog orders changes by dependency and impact. It is designed to expand
 standard-library coverage without simply adding hundreds of hours to the existing
 route.
@@ -180,4 +184,3 @@ Completion evidence:
 3. Tasks 6-7 add the missing C++ and standard-library breadth.
 4. Task 8 makes completion measurable and improves retention.
 5. Task 9 improves long-term maintenance and traceability.
-

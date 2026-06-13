@@ -1,5 +1,9 @@
 # Standard-Library Coverage Audit
 
+> Historical baseline, closed on 2026-06-13. The original ratings describe the
+> pre-remediation curriculum. Current required coverage is mapped in
+> [audit-resolution.md](audit-resolution.md#standard-library-coverage-crosswalk).
+
 This matrix evaluates the required curriculum, not incidental mentions or optional
 stretch goals.
 
@@ -110,4 +114,3 @@ documentation correctly rather than reproduce APIs from memory.
 8. Concurrency library breadth and parallel algorithms.
 9. C++20/C++23 library delta with feature detection.
 10. Final facility-selection and documentation-navigation assessment.
-

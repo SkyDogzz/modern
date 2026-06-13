@@ -1,5 +1,9 @@
 # Current Curriculum Audit
 
+> Historical baseline, closed on 2026-06-13. The original findings are retained
+> unchanged for traceability. Current status and evidence are in
+> [audit-resolution.md](audit-resolution.md).
+
 Audit date: 2026-06-13
 
 ## Scope
@@ -292,4 +296,3 @@ transfer than producing many isolated repositories.
 - Confirmed the repository has no project source tree, root CMake project, presets,
   CI configuration, or test suite.
 - Preserved the pre-existing deletion of `curriculum-audit.md`.
-
