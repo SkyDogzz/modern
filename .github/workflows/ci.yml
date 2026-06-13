@@ -11,6 +11,8 @@ jobs:
   support:
     name: support (${{ matrix.profile }})
     runs-on: ubuntu-24.04
+    container:
+      image: ubuntu@sha256:786a8b558f7be160c6c8c4a54f9a57274f3b4fb1491cf65146521ae77ff1dc54
     strategy:
       fail-fast: false
       matrix:
@@ -33,20 +35,22 @@ jobs:
       CXXFLAGS: ${{ matrix.cxxflags }}
       LDFLAGS: ${{ matrix.ldflags }}
       CMAKE_GENERATOR: Ninja
+      DEBIAN_FRONTEND: noninteractive
 
     steps:
+      - name: Install build and pinned baseline packages
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends \
+            ca-certificates cmake git ninja-build ${{ matrix.packages }}
+
       - name: Check out repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
-      - name: Install pinned baseline packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends ${{ matrix.packages }}
-
       - name: Verify pinned compiler and library profile
         run: |
-          echo "runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
-          dpkg-query -W ${{ matrix.packages }}
+          echo "host runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
+          dpkg-query -W cmake ninja-build ${{ matrix.packages }}
           read -r -a compile_flags <<< "$CXXFLAGS"
           read -r -a link_flags <<< "$LDFLAGS"
           "$CXX" "${compile_flags[@]}" -std=c++23 \
