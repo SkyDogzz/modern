@@ -148,9 +148,16 @@ than assuming it is the default.
 endianness inspection, `bit_cast`, and C++23 `byteswap`. These facilities do not
 remove alignment, object representation, or protocol requirements.
 
+`bitset<N>` represents a fixed number of Boolean flags with indexed, aggregate,
+conversion, and textual operations. Its index-to-protocol mapping must be stated;
+integer conversion can fail when the represented value does not fit the destination.
+It is not a dynamically sized bit container.
+
 Random engines generate deterministic sequences from state. Distributions map engine
 output to a domain. `random_device` is an implementation-provided entropy source and
-is not itself a general-purpose engine. Tests should inject or record seeds.
+is not itself a general-purpose engine. `shuffle` permutes a range, while `sample`
+selects elements without replacement. Tests should inject or record seeds and verify
+properties rather than one sequence that the standard does not prescribe.
 
 **Review**
 
@@ -159,6 +166,8 @@ is not itself a general-purpose engine. Tests should inject or record seeds.
 3. What preconditions make `bit_cast` valid?
 4. What is the difference between an engine and a distribution?
 5. Why is a recorded seed part of defect evidence?
+6. What must be documented before a `bitset` represents an external protocol field?
+7. Which properties test `shuffle` and `sample` portably?
 
 ## 5. Text, Streams, Formatting, and Buffers
 

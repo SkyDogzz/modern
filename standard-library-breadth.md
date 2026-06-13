@@ -4,7 +4,7 @@ These labs complete Route B together with Projects 25-33. Complete B1-B9 in orde
 then pass B10. Surveys S1-S5 are integrated into the named labs and require written
 evidence even when no production implementation is appropriate.
 
-Total target time: 94-146 hours, including survey work and the final assessment.
+Total target time: 95-148 hours, including survey work and the final assessment.
 
 ## Survey Evidence and Pass Rules
 
@@ -219,7 +219,7 @@ failed survey.
 **Prerequisites:** B3 and
 [Brief 4](standard-library-briefs.md#4-numerics-mathematics-bits-and-randomness).
 
-**Estimated time:** 10-15 hours
+**Estimated time:** 11-17 hours
 
 ### Outcomes
 
@@ -235,16 +235,24 @@ failed survey.
 - Demonstrate one floating-point regrouping difference.
 - Use finite/NaN/infinity classification and standard constants.
 - Implement one complex-number domain example.
+- Model one fixed-size flag/protocol field with `bitset`; test indexing, conversion,
+  count, and string representation, and compare it with integer `<bit>` operations.
 - Use bit count, rotation, endian, bit_cast, and feature-gated byteswap.
 - Compare at least two random engines or distributions and record reproducible seeds.
+- Shuffle one dataset and sample without replacement using an injected engine; test
+  permutation, sample size, membership, and reproducibility properties rather than
+  a library-specific sequence.
 - Complete the numerical portion of Survey S2, including valarray and floating-point
   environment limitations.
 
 ### Acceptance
 
 - [ ] Initial accumulator and result types cannot truncate silently.
+- [ ] `bitset` width, bit numbering, conversion overflow, and protocol mapping are
+      explicit and tested.
 - [ ] `bit_cast` preconditions and protocol byte order are explicit.
-- [ ] Random tests do not depend on one unspecified sequence.
+- [ ] Random tests cover shuffle/sample invariants and do not depend on one
+      unspecified sequence.
 - [ ] S2 identifies when a dedicated numerical library is more appropriate.
 
 ## B5. Streams, Text Conversion, Formatting, and Buffers
