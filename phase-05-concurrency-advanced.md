@@ -32,7 +32,8 @@ Focus on:
 
 - Start, join, and own `std::thread` objects.
 - Pass values and references to threads deliberately.
-- Define a data race and diagnose one with TSan.
+- Define conflicting evaluations and every condition required for a data race.
+- Diagnose one data race with TSan.
 
 ### Goal
 
@@ -50,7 +51,10 @@ Run deterministic worker tasks, then isolate and repair one shared-counter race.
 
 - [ ] No joinable thread reaches destructor in normal code.
 - [ ] The passing suite is race-free under TSan where supported.
-- [ ] The learner states all conditions that form a data race.
+- [ ] The learner identifies overlapping conflicting evaluations, potential
+      concurrency, the non-atomic-access requirement, and missing happens-before.
+- [ ] The learner explains why relaxed atomic operations are not themselves a data
+      race on the atomic object.
 
 ### Stretch Goal
 

@@ -473,9 +473,11 @@ explicit join or detach decision; detached threads are usually unsuitable for
 owned application work. `std::jthread` joins during destruction and supports stop
 tokens.
 
-A data race occurs when threads access the same memory concurrently, at least one
-access writes, and synchronization does not order them. A data race is undefined
-behavior.
+Two evaluations conflict when they access overlapping memory and at least one
+modifies the memory or starts or ends an object's lifetime. A data race occurs when
+conflicting evaluations are potentially concurrent, at least one is non-atomic, and
+neither happens before the other. A data race is undefined behavior. Relaxed atomic
+operations can be weakly ordered without creating a data race on the atomic object.
 
 A mutex protects an invariant, not merely a variable. RAII lock objects release
 the mutex during all exits. Multiple locks need a consistent strategy such as
@@ -486,7 +488,7 @@ threads; do not recreate it with an unprotected Boolean flag.
 **Review**
 
 1. What happens if a joinable `std::thread` is destroyed?
-2. What conditions form a data race?
+2. What conditions form a data race, and why do relaxed atomic operations differ?
 3. What should a mutex protect?
 4. Why is detached ownership difficult?
 5. When does `call_once` fit better than a hand-written flag?
