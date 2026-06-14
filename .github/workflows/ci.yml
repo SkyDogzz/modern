@@ -51,11 +51,9 @@ jobs:
         run: |
           echo "host runner image: ${ImageOS:-unknown} ${ImageVersion:-unknown}"
           dpkg-query -W cmake ninja-build ${{ matrix.packages }}
-          read -r -a compile_flags <<< "$CXXFLAGS"
-          read -r -a link_flags <<< "$LDFLAGS"
-          "$CXX" "${compile_flags[@]}" -std=c++23 \
+          "$CXX" $CXXFLAGS -std=c++23 \
             -D${{ matrix.guard }} support/toolchain-profile.cpp \
-            "${link_flags[@]}" -o /tmp/roadmap-toolchain-profile
+            $LDFLAGS -o /tmp/roadmap-toolchain-profile
           /tmp/roadmap-toolchain-profile
 
       - name: Configure
