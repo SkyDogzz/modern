@@ -90,9 +90,9 @@ Put Project 1 under a minimal, reproducible build and smoke-test workflow.
 
 ### Acceptance Criteria
 
-- [ ] Configure, build, test, and run commands are documented.
-- [ ] The smoke test is not described as proof of program correctness.
-- [ ] Generated files are not tracked.
+- [x] Configure, build, test, and run commands are documented.
+- [x] The smoke test is not described as proof of program correctness.
+- [x] Generated files are not tracked.
 
 ### Stretch Goal
 
