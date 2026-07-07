@@ -17,3 +17,5 @@ cmake-build-*/
 # Tool output
 compile_commands.json
 .cache/
+
+*.out

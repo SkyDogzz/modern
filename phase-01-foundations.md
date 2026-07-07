@@ -46,9 +46,9 @@ Print a greeting and return success without relying on an IDE build button.
 
 ### Acceptance Criteria
 
-- [ ] A clean shell can build and run the program.
-- [ ] The learner distinguishes a compiler diagnostic from runtime output.
-- [ ] No CMake, debugger, or unit-test framework is required yet.
+- [x] A clean shell can build and run the program.
+- [x] The learner distinguishes a compiler diagnostic from runtime output.
+- [x] No CMake, debugger, or unit-test framework is required yet.
 
 ### Stretch Goal
 
