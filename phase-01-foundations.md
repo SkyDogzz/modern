@@ -133,9 +133,9 @@ agility, and alive state.
 
 ### Acceptance Criteria
 
-- [ ] Valid and empty input have deliberate behavior.
-- [ ] Every field's type and valid range can be explained.
-- [ ] No integer code substitutes for the scoped enum.
+- [x] Valid and empty input have deliberate behavior.
+- [x] Every field's type and valid range can be explained.
+- [x] No integer code substitutes for the scoped enum.
 
 ### Stretch Goal
 
